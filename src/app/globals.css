@@ -4,24 +4,49 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+  /* --- CUSTOM --- */
+  /* Theme */
+  --primary-rgba: 17, 17, 17, 1;
+  --secondary-rgba: 102, 102, 102, 1;
+  --tertiary-rgba: 153, 153, 153, 1;
+  /* black */
+  --black-default-rgba: 244, 245, 245, 1;
+  --black-100-rgba: 255, 255, 255, 1;
+  --black-200-rgba: 239, 239, 240, 1;
+  /* accent */
+  --accent-default-rgba: 161, 88, 48, 1;
+  --accent-background-rgba: 250, 233, 225, 1;
+  /* green */
+  --green-default-rgba: 8, 128, 70, 1;
+  --green-background-rgba: 9, 227, 125, 0.16;
+  /* border */
+  --border-rgba: 255, 255, 255, 0.8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html.dark  {
+  --foreground-rgb: 255, 255, 255;
+
+  /* --- CUSTOM --- */
+  /* Theme */
+  --primary-rgba: 255, 255, 255, 1;
+  --secondary-rgba: 255, 255, 255, 0.6;
+  --tertiary-rgba: 255, 255, 255, 0.4;
+  /* black */
+  --black-default-rgba: 20, 20, 20, 1;
+  --black-100-rgba: 26, 26, 26, 1;
+  --black-200-rgba: 40, 40, 40, 1;
+  /* accent */
+  --accent-default-rgba: 250, 188, 155, 1;
+  --accent-background-rgba: 56, 34, 24, 1;
+  /* green */
+  --green-default-rgba: 18, 201, 113, 1;
+  --green-background-rgba: 15, 138, 81, 0.21;
+  /* border */
+  --border-rgba: 255, 255, 255, 0.6;  
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgba(var(--black-default-rgba));
 }
