@@ -1,6 +1,8 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 import { Button } from 'flowbite-react';
 import { Sidebar } from 'flowbite-react';
@@ -55,6 +57,17 @@ function SideNav() {
   const router = useRouter();
   const path = usePathname();
 
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="sticky left-0 top-0 hidden h-screen sm:block">
       <Sidebar
@@ -81,7 +94,7 @@ function SideNav() {
         </div>
         <div
           className={
-            'border-border order-1 mt-auto flex flex-col items-center justify-center gap-2 border-t lg:border-none py-4 lg:order-none lg:mt-0 lg:flex-row'
+            'border-border order-1 mt-auto flex flex-col items-center justify-center gap-2 border-t py-4 lg:order-none lg:mt-0 lg:flex-row lg:border-none'
           }
         >
           <Link
@@ -117,8 +130,15 @@ function SideNav() {
             })}
           </Sidebar.ItemGroup>
         </Sidebar.Items>
-        <Button className="hover:bg-black-100 order-2 mx-auto w-max transition  duration-75 hover:text-gray-900 lg:mt-auto dark:text-gray-400 dark:hover:text-white [&>span]:p-2">
-          <MdOutlineLightMode className="h-6 w-6 text-gray-500" />
+        <Button
+          className="hover:bg-black-100 order-2 mx-auto w-max transition  duration-75 hover:text-gray-900 lg:mt-auto dark:text-gray-400 dark:hover:text-white [&>span]:p-2"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          {theme === 'dark' ? (
+            <MdOutlineLightMode className="h-6 w-6 text-gray-500" />
+          ) : (
+            <MdOutlineDarkMode className="h-6 w-6 text-gray-500" />
+          )}
         </Button>
       </Sidebar>
     </div>

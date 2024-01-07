@@ -10,13 +10,13 @@ export default function Home() {
           Available for work
         </div>
         <h1 className="text-4xl font-semibold leading-normal">
-          <span>Hello! I’m Patryk 👏</span>
+          <span>Hello! I’m Iris 👏</span>
           <br />
           <span
             className="text-secondary
           "
           >
-            Real Things. Experienced Designer.
+            Real Things. Experienced Engineer.
           </span>
         </h1>
         <div className="text-accent flex items-center gap-2 text-lg">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import SideNav from '@/components/side-nav';
+import { ThemeProvider } from './helper/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,12 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="bg-slate-600 flex">
-          <SideNav />
-          <main className='rounded-xl m-2 bg-black-100 w-full p-6 lg:p-12 xl:p-20'>{children}</main>
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <div className="bg-slate-600 flex">
+            <SideNav />
+            <main className="bg-black-100 m-2 w-full rounded-xl p-6 lg:p-12 xl:p-20">
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
