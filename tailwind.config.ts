@@ -40,6 +40,7 @@ const config: Config = {
       }
     },
   },
-  plugins: [require('flowbite/plugin'), 'prettier-plugin-tailwindcss'],
+  plugins: [require('flowbite/plugin'),
+  require('@tailwindcss/line-clamp'), 'prettier-plugin-tailwindcss'],
 };
 export default config;

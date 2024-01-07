@@ -21,7 +21,7 @@
   --green-default-rgba: 8, 128, 70, 1;
   --green-background-rgba: 9, 227, 125, 0.16;
   /* border */
-  --border-rgba: 255, 255, 255, 0.8;
+  --border-rgba: 0, 0, 0, 0.2;
 }
 
 html.dark  {
@@ -43,7 +43,7 @@ html.dark  {
   --green-default-rgba: 18, 201, 113, 1;
   --green-background-rgba: 15, 138, 81, 0.21;
   /* border */
-  --border-rgba: 255, 255, 255, 0.6;  
+  --border-rgba: 255, 255, 255, 0.2;
 }
 
 body {

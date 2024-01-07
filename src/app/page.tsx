@@ -9,11 +9,11 @@ export default function Home() {
         <div className='text-green bg-green-background before:content[""] before:bg-green inline-flex w-max items-center justify-center rounded-full px-3 py-1 text-sm before:me-2 before:block before:h-1.5 before:w-1.5 before:rounded-full'>
           Available for work
         </div>
-        <h1 className="text-4xl leading-normal">
+        <h1 className="text-4xl font-semibold leading-normal">
           <span>Hello! I’m Patryk 👏</span>
           <br />
           <span
-            className="text-seo
+            className="text-secondary
           "
           >
             Real Things. Experienced Designer.
@@ -23,7 +23,7 @@ export default function Home() {
           <IoLocationOutline />
           <span className="text-base">New Taipei, Taiwan</span>
         </div>
-        <div className="text-lg text-secondary leading-8">
+        <div className="text-secondary text-lg leading-8">
           Product designer and design system specialist with over 9 years of
           experience focusing on user experience and design systems to creating
           a user-centered design in SaaS products.
