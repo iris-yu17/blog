@@ -22,7 +22,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="bg-slate-600 flex">
             <SideNav />
-            <main className="bg-black-100 m-2 w-full rounded-xl p-6 lg:p-12 xl:p-20">
+            <main className="bg-black-100 m-2 w-full rounded-xl p-4 md:p-6 lg:p-12 xl:p-20">
               {children}
             </main>
           </div>
