@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev --hostname=0.0.0.0",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p $PORT",
+    "lint": "next lint",
+    "docker:build": "docker build -f Dockerfile -t my-blog .",
+    "docker:run": "docker run -i -p 3000:3000 my-blog"
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
