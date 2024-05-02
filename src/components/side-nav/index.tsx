@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
 import { Button } from 'flowbite-react';
@@ -9,12 +8,11 @@ import { Sidebar } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiUser, HiHome, HiMail, HiViewBoards, HiSearch } from 'react-icons/hi';
-import { MdArticle } from 'react-icons/md';
 import { PiInstagramLogoBold } from 'react-icons/pi';
-import PageUrls from '@/core/enum/page-url';
-import classNames from 'classnames';
+import PageUrls from '@/types/enum/page-url';
 import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
+import { MdArticle, MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
+import { Theme } from '@/types/enum/theme';
 
 const nav = [
   {
@@ -57,16 +55,7 @@ function SideNav() {
   const router = useRouter();
   const path = usePathname();
 
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className="sticky left-0 top-0 hidden h-screen sm:block">
@@ -87,25 +76,25 @@ function SideNav() {
           </div>
         </div>
         <div className="hidden lg:block">
-          <div className="text-primary text-center">IRIS YU</div>
-          <div className="text-secondary text-center text-sm">
+          <div className="text-center text-primary">IRIS YU</div>
+          <div className="text-center text-sm text-secondary">
             Front-end engineer
           </div>
         </div>
         <div
           className={
-            'border-border order-1 mt-auto flex flex-col items-center justify-center gap-2 border-t py-4 lg:order-none lg:mt-0 lg:flex-row lg:border-none'
+            'order-1 mt-auto flex flex-col items-center justify-center gap-2 border-t border-border py-4 lg:order-none lg:mt-0 lg:flex-row lg:border-none'
           }
         >
           <Link
             href={'#'}
-            className="hover:bg-black-100 dark:hover:bg-black-200 rounded-lg p-2 text-2xl text-gray-500"
+            className="rounded-lg p-2 text-2xl text-gray-500 hover:bg-black-100 dark:hover:bg-black-200"
           >
             <PiInstagramLogoBold />
           </Link>
           <Link
             href={'#'}
-            className="hover:bg-black-100 dark:hover:bg-black-200 rounded-lg p-2 text-2xl text-gray-500"
+            className="rounded-lg p-2 text-2xl text-gray-500 hover:bg-black-100 dark:hover:bg-black-200"
           >
             <HiMail />
           </Link>
@@ -131,10 +120,12 @@ function SideNav() {
           </Sidebar.ItemGroup>
         </Sidebar.Items>
         <Button
-          className="hover:bg-black-100 order-2 mx-auto w-max transition  duration-75 hover:text-gray-900 lg:mt-auto dark:text-gray-400 dark:hover:text-white [&>span]:p-2"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="order-2 mx-auto w-max transition duration-75  hover:bg-black-100 hover:text-gray-900 lg:mt-auto dark:text-gray-400 dark:hover:text-white [&>span]:p-2"
+          onClick={() =>
+            setTheme(theme === Theme.dark ? Theme.light : Theme.dark)
+          }
         >
-          {theme === 'dark' ? (
+          {theme === Theme.dark ? (
             <MdOutlineLightMode className="h-6 w-6 text-gray-500" />
           ) : (
             <MdOutlineDarkMode className="h-6 w-6 text-gray-500" />

@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 const config: Config = {
   content: [
@@ -40,7 +40,10 @@ const config: Config = {
       }
     },
   },
-  plugins: [require('flowbite/plugin'),
-  require('@tailwindcss/line-clamp'), 'prettier-plugin-tailwindcss'],
+  plugins: [
+    require('flowbite/plugin'),
+    require('@tailwindcss/line-clamp'), 'prettier-plugin-tailwindcss',
+    require('@tailwindcss/typography')
+  ],
 };
 export default config;
