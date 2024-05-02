@@ -11,10 +11,14 @@ import { HiUser, HiHome, HiMail, HiViewBoards, HiSearch } from 'react-icons/hi';
 import { PiInstagramLogoBold } from 'react-icons/pi';
 import PageUrls from '@/types/enum/page-url';
 import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { MdArticle, MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
+import {
+  MdArticle,
+  MdOutlineLightMode,
+  MdOutlineDarkMode,
+} from 'react-icons/md';
 import { Theme } from '@/types/enum/theme';
 
-const nav = [
+export const NAV = [
   {
     icon: HiHome,
     text: 'Home',
@@ -101,7 +105,7 @@ function SideNav() {
         </div>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            {nav.map((item, index) => {
+            {NAV.map((item, index) => {
               const { text, icon, link } = item;
               return (
                 <Sidebar.Item

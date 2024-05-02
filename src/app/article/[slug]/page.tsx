@@ -10,7 +10,7 @@ export default function Article() {
         <MdArrowBackIos />
         <span>Back to list</span>
       </button>
-      <div className="my-6 border-b border-solid border-tertiary">
+      <div className="my-6 border-b border-solid border-border">
         <h1 className="text-4xl font-semibold leading-normal">
           [教學] 用 Github Actions 在 Google Cloud Run 上部署 Next.js
         </h1>
