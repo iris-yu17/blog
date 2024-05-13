@@ -2,8 +2,20 @@ import ArticleCard from '@/components/article-card';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Prose from '@/components/Prose';
 import { MdArrowBackIos } from 'react-icons/md';
+import articles from '@/data/article';
 
-export default function Article() {
+export default async function Article({ params }) {
+  const pathname = params;
+  const { slug } = pathname;
+
+  const filename = articles.find((item) => item.id === slug).name;
+  const encodedFileName = encodeURIComponent(filename);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/markdown/${encodedFileName}`,
+  );
+
+  const data = await res.text();
+
   return (
     <>
       <button className="flex items-center gap-1">
@@ -18,18 +30,7 @@ export default function Article() {
       </div>
       <div className="flex flex-col gap-16">
         <Prose>
-          <MDXRemote
-            source={`
-
-## 前言
-### Cloud Run 是什麼？
-是Google Cloud 的 Serverless 服務之一。
-
-讓使用者僅需透過簡單的指令或 Console 介面即可直接在 Google Cloud 上開發及快速部署具備高擴充性的容器化應用程式及管理服務。
-
-必須將程式包裝成 Container image ，才能夠部署至 Cloud Run。
-`}
-          />
+          <MDXRemote source={data} />
         </Prose>
       </div>
     </>

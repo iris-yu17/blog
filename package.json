@@ -11,6 +11,7 @@
     "docker:run": "docker run -i -p 3000:3000 my-blog"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.10.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "classnames": "^2.5.1",
     "flowbite": "^2.2.1",
