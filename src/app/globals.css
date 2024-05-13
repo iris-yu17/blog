@@ -24,7 +24,7 @@
   --border-rgba: 0, 0, 0, 0.2;
 }
 
-html.dark  {
+html.dark {
   --foreground-rgb: 255, 255, 255;
 
   /* --- CUSTOM --- */
@@ -49,4 +49,25 @@ html.dark  {
 body {
   color: rgb(var(--foreground-rgb));
   background: rgba(var(--black-default-rgba));
+}
+
+h2 code {
+  background: rgba(var(--green-background-rgba));
+  font-weight: 600 !important;
+}
+
+code {
+  background: rgba(var(--border-rgba));
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: 1em !important;
+}
+
+code {
+  font-weight: 400 !important;
+}
+
+code:before,
+code::after {
+  display: none;
 }
