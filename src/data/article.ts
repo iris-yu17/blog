@@ -1,6 +1,7 @@
 import { Category } from '@/types/enum/category';
+import { Article } from '@/types/enum/article';
 
-const articles = [
+const articles: Article[] = [
   {
     id: 'gcp-get-bucket-obj',
     name: '[GCP] 使用用戶端程式庫來取得 Bucket 內的物件',
@@ -19,7 +20,7 @@ const articles = [
     id: 'accessibile-web-development',
     name: '[無障礙] 網頁開發筆記',
     description: '網頁開發筆記',
-    tags: [Category.Pixi],
+    tags: [Category.WA],
     updated: '2024-05-10',
   },
   {

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ArticleCard from '@/components/article-card';
 import Pagination from '@/components/pagination';
 import articles from '@/data/article';
+import PageUrls from '@/types/enum/page-url';
 
 export default async function Article({
   searchParams,
@@ -31,7 +32,11 @@ export default async function Article({
         {slicedArticles.map((item) => {
           const { name, updated, description, id, tags } = item;
           return (
-            <Link href={`/article/${id}`} key={id} className="group/link">
+            <Link
+              href={`/${PageUrls.Article}/${id}`}
+              key={id}
+              className="group/link"
+            >
               <div className="flex flex-col gap-2">
                 <div className="text-sm text-tertiary">
                   Last Updated: {updated}

@@ -1,15 +1,25 @@
 import ArticleCard from '@/components/article-card';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Prose from '@/components/Prose';
-import { MdArrowBackIos } from 'react-icons/md';
+import GoBackButton from '@/components/go-back-button';
 import articles from '@/data/article';
+import { Article as ArticleType } from '@/types/enum/article';
+import { Badge } from 'flowbite-react';
 
-export default async function Article({ params }) {
+export default async function Article({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const pathname = params;
   const { slug } = pathname;
 
-  const filename = articles.find((item) => item.id === slug).name;
-  const encodedFileName = encodeURIComponent(filename);
+  const article: ArticleType =
+    articles.find((item) => item.id === slug) || articles[0];
+
+  const { id, name, tags, updated } = article;
+
+  const encodedFileName = encodeURIComponent(name);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/markdown/${encodedFileName}.md`,
   );
@@ -18,13 +28,21 @@ export default async function Article({ params }) {
 
   return (
     <>
-      <button className="flex items-center gap-1">
-        <MdArrowBackIos />
-        <span>Back to list</span>
-      </button>
+      <GoBackButton />
       <div className="my-6 border-b border-solid border-border">
-        <h1 className="text-4xl font-semibold leading-normal">{filename}</h1>
-        <div className="py-4 text-xs text-tertiary">2023/12/30</div>
+        <h1 className="text-4xl font-semibold leading-normal">{name}</h1>
+        <div className="flex items-center gap-2">
+          <div className="py-4 text-xs text-tertiary">{updated}</div>
+          <>
+            {tags.map((item) => {
+              return (
+                <Badge color="indigo" key={item}>
+                  {item}
+                </Badge>
+              );
+            })}
+          </>
+        </div>
       </div>
       <div className="flex flex-col gap-16">
         <Prose>
