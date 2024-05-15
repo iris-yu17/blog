@@ -58,7 +58,7 @@ h2 code {
 
 code {
   background: rgba(var(--border-rgba));
-  padding: 0.25rem;
+  padding: 0.125rem 0.25rem;
   border-radius: 4px;
   font-size: 1em !important;
 }
