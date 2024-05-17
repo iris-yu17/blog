@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Prose from '@/components/Prose';
 import GoBackButton from '@/components/go-back-button';
 import articles from '@/data/article';
-import { Article as ArticleType } from '@/types/enum/article';
+import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 
 export default async function Article({

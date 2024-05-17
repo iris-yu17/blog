@@ -41,8 +41,8 @@ export const NAV = [
   },
   {
     icon: HiViewBoards,
-    text: 'Stream',
-    link: PageUrls.Stream,
+    text: 'Category',
+    link: PageUrls.Category,
   },
 ];
 

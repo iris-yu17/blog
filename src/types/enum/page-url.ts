@@ -3,7 +3,7 @@ enum PageUrls {
   About = '/about',
   Article = '/article',
   Search = '/search',
-  Stream = '/stream',
+  Category = '/category',
 }
 
 export default PageUrls
