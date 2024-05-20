@@ -1,10 +1,10 @@
-import ArticleCard from '@/components/article-card';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Prose from '@/components/Prose';
 import GoBackButton from '@/components/go-back-button';
 import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
+import { CategoryText } from '@/types/enum/category';
 
 export default async function Article({
   params,
@@ -37,7 +37,7 @@ export default async function Article({
             {tags.map((item) => {
               return (
                 <Badge color="indigo" key={item}>
-                  {item}
+                  {CategoryText[item]}
                 </Badge>
               );
             })}

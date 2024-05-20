@@ -31,7 +31,7 @@ export default async function Article({
       <div className="flex flex-col gap-4 lg:gap-8">
         {slicedArticles.map((item) => {
           const { id } = item;
-          const href = `/${PageUrls.Article}/${id}`;
+          const href = `${PageUrls.Article}/${id}`;
           return <ArticleCard key={id} data={item} href={href} />;
         })}
       </div>
