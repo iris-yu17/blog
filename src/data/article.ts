@@ -58,6 +58,55 @@ const articles: Article[] = [
     tags: [CategoryKey.Js],
     updated: '2024-05-10',
   },
+  {
+    id: 'redux-1',
+    name: '[Redux] #1 介紹',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-2',
+    name: '[Redux] #2 Store, Action, Reudcer 基本寫法',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-3',
+    name: '[Redux] #3 多個 Reducer',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-4',
+    name: '[Redux] #4 Middleware',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-5',
+    name: '[Redux] #5 用 Redux-thunk Middleware 處理非同步動作',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-6',
+    name: '[Redux] #6 Redux-toolkit 使用步驟',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
+  {
+    id: 'redux-7',
+    name: '[Redux] #7 Redux-toolkit 複習',
+    description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
+    tags: [CategoryKey.Redux],
+    updated: '2024-05-10',
+  },
 ];
 
 export default articles;
