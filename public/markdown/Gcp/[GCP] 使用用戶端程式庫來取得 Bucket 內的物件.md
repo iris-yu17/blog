@@ -24,7 +24,7 @@ npm install --save @google-cloud/storage
 export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
 ```
 ## - Step3. 列出 bucket 裡的物件
-```javascript=1
+```javascript
 // Imports the Google Cloud client library
 const { Storage } = require('@google-cloud/storage');
 // Creates a client

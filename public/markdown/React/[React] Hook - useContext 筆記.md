@@ -16,7 +16,7 @@
 2. 把子元件用 `Provider` 包住
 3. 在 `Provider` 的 `value` 傳入需要傳遞的值
 
-```javascript=1
+```javascript
 import { createContext, useState } from "react";
 
 // 1. 創建 Context
@@ -43,7 +43,7 @@ export default function App() {
 1. import `Context`
 2. 使用 `useContext` 來讀取狀態
 
-```javascript=1
+```javascript
 // 1. import context
 import { ThemeContext } from "./App";
 

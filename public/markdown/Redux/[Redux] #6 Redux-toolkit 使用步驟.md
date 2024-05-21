@@ -39,7 +39,7 @@ npm i @reduxjs/toolkit
 
 引入 createSlice
 
-```javascript=1
+```javascript
 // features/cakes/cakeSlice.js
 // (因為是 node 環境，所以用 require)
 const createSlice = require("@reduxjs/toolkit").createSlice;
@@ -51,7 +51,7 @@ createSlice 接收一個物件，此物件包含三個參數：
 2. 初始狀態
 3. reducers
 
-```javascript=1
+```javascript
 // features/cakes/cakeSlice.js
 const cakeSlice = createSlice({
   name: "cake", // slice的名字
@@ -66,7 +66,7 @@ const cakeSlice = createSlice({
 
 在前面不使用 `redux-toolkit` 時，我們用 `switch case` 來處理。
 
-```javascript=1
+```javascript
 // features/cakes/cakeSlice.js
 const cakeReducer = (prevState = cakeState, action) => {
   switch (action.type) {
@@ -88,7 +88,7 @@ const cakeReducer = (prevState = cakeState, action) => {
 2. 不同於之前的寫法，使用了 `createSlice`，我們可以直接改變 `state`，不用 return 新的狀態。
    （`redux-toolkit` 使用了 [Immer](https://immerjs.github.io/immer/)，因此我們可以直接改變狀態）
 
-```javascript=1
+```javascript
 // features/cakes/cakeSlice.js
 const cakeSlice = createSlice({
   name: "cake",
@@ -113,7 +113,7 @@ const cakeSlice = createSlice({
 
 ### export actions 和 reducers
 
-```javascript=1
+```javascript
 // features/cakes/cakeSlice.js
 module.exports = cakeSlice.reducer;
 module.exports.cakeActions = cakeSlice.actions;
@@ -124,7 +124,7 @@ module.exports.cakeActions = cakeSlice.actions;
 - 我們要在 `store.js` ，使用 configureStore 來創建 store
 - configureStore 接收一個物件，裡面有個 `reducer` 屬性，我們把 slices 的 reducer 設置在這邊。
 
-```javascript=1
+```javascript
 // app/store.js
 const configureStore = require("@reduxjs/toolkit").configureStore;
 const cakeReducer = require("../features/cakes/cakeSlice");
@@ -144,7 +144,7 @@ module.exports = store;
 - 使用 `dispatch()` 來發送 `action`
 - 直接使用 `redux-toolkit` 幫我們產生的 action creator
 
-```javascript=1
+```javascript
 // index.js
 const store = require("./app/store");
 const cakeActions = require("./features/cakes/cakeSlice").cakeActions;

@@ -9,7 +9,7 @@
 
 ### - step0. 基本計數器配置
 
-```javascript=1
+```javascript
 export default function App() {
   const increment = () => {};
 
@@ -34,7 +34,7 @@ export default function App() {
 1. reducer：我們會在這邊定義好要如何更新狀態。
 2. 初始值：這個參數就像我們用 `useState()` 的初始值一樣，不過 `useReducer` 是用在較複雜的 state 處理，所以通常不會是單純數字、字串等，因此範例中用 `{count: 0}`。
 
-```javascript=1
+```javascript
 // reducer 函式
 const reducer = () => {
 
@@ -70,7 +70,7 @@ export default function App() {
 2. action：描述要做什麼動作，慣例上會是包含一個 `type` property 的物件。
    （詳見 step4）
 
-```javascript=1
+```javascript
 const reducer = (state, action) => {
   return { count: state.count + 1 };
 };
@@ -105,7 +105,7 @@ code 說明：
 以下範例中，點擊 `+` 按鈕，會執行 `dispatch()`， 而 `dispatch` 會呼叫 `reducer`。
 在 `reducer` 中，把當前 count 加ㄧ，並更新狀態。
 
-```javascript=1
+```javascript
 const reducer = (state, action) => {
   console.log(action) // 印出 { tpye: "plus" }
   return { count: state.count + 1 };
@@ -142,7 +142,7 @@ export default function App() {
    同樣地，在點擊 `-` 時，也呼叫 `dispatch` ，並傳入另一個 action `{type: 'minus'}`
 2. 在 `reducer` 裡，判斷 action type 為 `plus` 或 `minus`，來做相對應的動作。
 
-```javascript=1
+```javascript
 const reducer = (state, action) => {
   // 判斷 action type，執行相對應的動作
   switch (action.type) {
@@ -184,7 +184,7 @@ export default function App() {
 - 用物件的寫法來代替原本的 `plus` `minus` 字串
 - 這樣做相較於原本寫死的字串，可以 auto-complete，開發更方便，且不會打錯字。有什麼 action 一目瞭然，程式的可讀性更高。
 
-```javascript=1
+```javascript
 const ACTIONS = {
   PLUS: "plus",
   MINUS: "minus"

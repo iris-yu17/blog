@@ -16,7 +16,7 @@ NEXT_PUBLIC_API_DOMAIN=https://my-api.com
 
 使用時我們這樣寫
 
-```javascript=1
+```javascript
 const response = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/user`);
 ```
 

@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import Prose from '@/components/Prose';
 import GoBackButton from '@/components/go-back-button';
@@ -6,11 +7,12 @@ import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 import { CategoryText } from '@/types/enum/category';
+import '@/styles/highlight-js/atom-one-dark.css';
 
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeHighlight],
   },
 };
 

@@ -50,7 +50,7 @@
 
 以蛋糕店的例子，我們的 `state` 就會是
 
-```javascript=1
+```javascript
 {
     cakes: 200
 }
@@ -63,7 +63,7 @@
 
 以蛋糕店例子，`action` 會是
 
-```javascript=1
+```javascript
 {
     type: 'ORDER',
     payload: {
@@ -77,7 +77,7 @@
 - `reducer` 會是一個 function，我們要在裡面定義如何更新 `state`
 - `reducer` 基本上就是一個單純的 function，它接收兩個參數(1. 舊的 `state`, 2. `action` 物件)，經過處理後回傳新的 `state`
 
-```javascript=1
+```javascript
 // 接收兩個參數：
 // 1. 舊的 state
 // 2. action
@@ -90,7 +90,7 @@ const reudcer = (prevState, action) => {
 
 以蛋糕店例子，`reducer` 可能會像這樣
 
-```javascript=1
+```javascript
 const reudcer = (prevState, action) => {
   switch (action.type) {
     case 'ORDER':

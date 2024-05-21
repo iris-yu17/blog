@@ -29,7 +29,7 @@ Callback function又稱為回調、回呼函式。
 
 不同於一般函式會被直接呼叫，我們會把callback function當作另一個函式的參數傳入，在另一個函式裡呼叫它。
 
-```javascript=1
+```javascript
 // 一般函式: 直接調用
 showAlert();
 
@@ -47,7 +47,7 @@ setTimeout(showAlert, 3000);
 範例：
 有以下兩個函式，我們想要先印出 `this is task A` 再印出 `this is task B`
 
-```javascript=1
+```javascript
 function taskA() {
   setTimeout(function () {
     console.log("this is task A");
@@ -61,7 +61,7 @@ function taskB() {
 
 若直接呼叫`taskA`再呼叫`taskB`
 
-```javascript=1
+```javascript
 taskA();
 taskB();
 ```
@@ -82,7 +82,7 @@ this is task A
 - taskA執行完自己要做的事後，再呼叫這個函式參數
 - 把taskB作為參數傳入taskA
 
-```javascript=1
+```javascript
 function taskA(callback) {
   setTimeout(function () {
     console.log("this is task A");

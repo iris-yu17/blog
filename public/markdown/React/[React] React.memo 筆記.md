@@ -14,7 +14,7 @@
 - 在父元件有個 counter，會顯示當前數字，並且能夠點擊按鈕來加一。
 - 有一個 input，input 的值會傳入子元件 `Child`
 
-```javascript=1
+```javascript
 export default function App() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("");
@@ -47,7 +47,7 @@ export default function App() {
 - 接收來自父元件的 props，並顯示在畫面中。
 - 當元件渲染時，會印出 `child component re-rendered` 文字。
 
-```javascript=1
+```javascript
 function Child({ name }) {
   console.log("child component re-rendered");
 
@@ -65,7 +65,7 @@ export default Child;
 
 使用 `React.memo` 將子元件包起來
 
-```javascript=1
+```javascript
 export default React.memo(Child);
 ```
 

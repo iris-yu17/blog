@@ -15,7 +15,7 @@ demo: https://codesandbox.io/s/redux-4-redux-logger-f68f37?file=/src/App.js
 
 ### - step1. 配置 logger
 
-```javascript=1
+```javascript
 // import
 import { createLogger } from 'redux-logger'
 
@@ -27,7 +27,7 @@ const logger = createLogger();
 
 把它作為 `createStore` 的參數傳入
 
-```javascript=1
+```javascript
 const store = createStore(reducers, applyMiddleware(logger));
 ```
 

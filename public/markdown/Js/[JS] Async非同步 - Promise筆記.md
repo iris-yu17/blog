@@ -7,7 +7,7 @@
 `taskA`裡呼叫`taskB`, `taskB`裡再呼叫`taskC`，`taskC`裡再呼叫`taskD`...
 一層層嵌套下去，讓程式變得更複雜，不好理解。
 
-```javascript=1
+```javascript
 taskA(function (a) {
   taskB(a, function (b) {
     taskC(b, function (c) {
@@ -32,7 +32,7 @@ taskA(function (a) {
 
 ### - step1. 創建實例
 
-```javascript=1
+```javascript
 const myPromise = new Promise()
 ```
 
@@ -41,7 +41,7 @@ const myPromise = new Promise()
 `Promise()` 需傳入一個函式作為參數，而這個函式會有兩個參數：resolve和reject，這2個東西也都是函式。
 (resolve, reject是形式參數，習慣上用這兩個名稱，要用別的名稱也可)
 
-```javascript=1
+```javascript
 const myPromise = new Promise((resolve, reject) => {
 
 })
@@ -58,7 +58,7 @@ const myPromise = new Promise((resolve, reject) => {
 若成功就呼叫`resolve()`，promise變成fulfilled狀態
 失敗則呼叫`reject()`，promise變成rejected狀態
 
-```javascript=1
+```javascript
 const myPromise = new Promise((resolve, reject) => {
   if (success) {
     resolve();
@@ -70,7 +70,7 @@ const myPromise = new Promise((resolve, reject) => {
 
 `resolve()` `reject()` 中也可傳入參數
 
-```javascript=1
+```javascript
 const myPromise = new Promise((resolve, reject) => {
   if (success) {
     resolve('yeeee!!!');
@@ -94,7 +94,7 @@ const myPromise = new Promise((resolve, reject) => {
 > 1. 第一個函式是當 Promise 狀態變為fulfilled(成功)時會被調用
 > 2. 第二個函式是當 Promise 狀態變為rejected(失敗)時會被調用，這個參數是選擇性的不一定需要
 
-```javascript=1
+```javascript
 myPromise.then(
   function (value) {
     // 當狀態是 fulfilled時，執行這個函式
@@ -112,7 +112,7 @@ myPromise.then(
 
 可以用 `catch()` 來綁定當 rejected 狀態時，要執行的函數。
 
-```javascript=1
+```javascript
 myPromise.catch(
   function (error) {
     // 當狀態是 rejected時，執行這個函式
@@ -126,7 +126,7 @@ myPromise.catch(
 - 在大部分情況下，開發者習慣僅使用`then()`來綁定成功的結果，失敗的部分則寫在`catch()`
 - 可串連多個 `then()`，它會依照同步流程的原則，一步一步往下執行。
 
-```javascript=1
+```javascript
 const example = new Promise((resolve, reject) => {
   // 會隨機產生數字0或1或2 (0代表失敗, 1,2代表成功)
   const success = Math.floor(Math.random() * 3);

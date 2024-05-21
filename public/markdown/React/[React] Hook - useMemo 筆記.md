@@ -16,7 +16,7 @@
 - 每次 render 的時候都會執行 `slowFunction` ，在 [demo](https://codesandbox.io/s/usememo-nffpkl?file=/src/App.js) 中可以看到輸入後，都要等約一秒，Double value 才改變
 - 在切換 theme 的時候也一樣，點擊按鈕後也會有 lag，主題顏色才改變，這是因為只要 state 有改變，**就會觸發畫面的 re-render，`slowFunction` 都會再執行一次**
 
-```javascript=1
+```javascript
 function slowFunction(num) {
   for (let i = 0; i < 1000000000; i++) {}
   return num * 2;
@@ -64,7 +64,7 @@ export default function App() {
   第一個：callback function
   第二個：是一個陣列，像 `useEffect` 那樣，當陣列裡某元素的值改變時，就會執行第一個參數的 function
 
-```javascript=1
+```javascript
 // 原本寫法
 const doubleValue = slowFunction(value);
 
@@ -89,7 +89,7 @@ const doubleValue = useMemo(() => {
 
 簡單解釋什麼是 Referential Equality：物件型別擁有 call by reference 的特性，所以即使字面上看起來一樣，兩個物件其實是不一樣的。
 
-```javascript=1
+```javascript
 const person1 = {
     name: 'Ben'
 }
@@ -102,7 +102,7 @@ console.log(person1 === person2) // -> false
 
 若我們在範例中加上
 
-```javascript=1
+```javascript
 useEffect(() => {
     console.log("theme changed");
 }, [themeStyle]);
@@ -114,7 +114,7 @@ useEffect(() => {
 
 因此也可以使用 `useMemo` 來解決這個問題
 
-```javascript=1
+```javascript
 // 原本
 const themeStyle = {
   color: darkTheme ? "#fff" : "#1b1b1b",

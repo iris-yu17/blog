@@ -61,7 +61,7 @@
 
 #### 下面這段程式碼的 console 結果為何？
 
-```javascript=1
+```javascript
 console.log(123);
 
 setTimeout(() => {
@@ -73,7 +73,7 @@ console.log("World");
 
 #### 解答
 
-```javascript=1
+```javascript
 123
 "World"
 "Hello"
@@ -92,7 +92,7 @@ console.log("World");
 
 #### 下面這段程式碼的 `console` 結果為何？
 
-```javascript=1
+```javascript
 console.log("begins");
 
 setTimeout(() => {
@@ -118,7 +118,7 @@ new Promise(function (resolve, reject) {
 
 #### 解答
 
-```javascript=1
+```javascript
 "begins"
 "promise 2"
 "setTimeout 1"

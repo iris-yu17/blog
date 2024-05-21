@@ -8,7 +8,7 @@
 
 新增 iceCream 狀態
 
-```javascript=1
+```javascript
 const intialState = {
   cakes: 200,
   iceCream: 100
@@ -19,7 +19,7 @@ const intialState = {
 
 新增 `orderIceCream` action creator
 
-```javascript=1
+```javascript
 const orderCake = () => {
   return {
     type: "CAKE_ORDER",
@@ -43,7 +43,7 @@ const orderIceCream = () => {
 
 `reducer` 中，對應 `ICECREAM_ORDER` 這個 `action` ，制定好相對應的狀態更新
 
-```javascript=1
+```javascript
 const reducer = (prevState = initialState, action) => {
   switch (action.type) {
     case "CAKE_ORDER":
@@ -68,7 +68,7 @@ const reducer = (prevState = initialState, action) => {
 
 ### - 初始 `State`
 
-```javascript=1
+```javascript
 const initialCakeState = {
   cakes: 200
 };
@@ -80,7 +80,7 @@ const initialIceCreamState = {
 
 ### - `Reducer`
 
-```javascript=1
+```javascript
 // cake reducer
 const cakeReducer = (prevState = initialCakeState, action) => {
   switch (action.type) {
@@ -115,7 +115,7 @@ const iceCreamReducer = (prevState = initialIceCreamState, action) => {
 - 由於 `createStore` 只接收一個 `reducer` ，我們要把兩個 `reducer` 合併，可使用 `redux` 的 `combineReducers()`
 - `combineReducers()` 接收一個物件，裡面一個 key-value pair 相對應於一個 `reducer`
 
-```javascript=1
+```javascript
 // 合併 reducers
 const reducers = combineReducers({
   cakeState: cakeReducer,

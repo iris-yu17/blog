@@ -7,7 +7,7 @@
 - 在 `Redux` 中，`reducer` 的 `action` 必須是物件，而`Redux-thunk` 讓我們可以寫一個回傳 function 的 `action creator`。透過這個 `thunk`，我們可以控制發送 `action` 的時機。
 - `Redux-thunk` 的源碼就是單純判斷 `action` 是否為 `function` 而已 ，如果是的話，就執行這個 `function`。
 
-```javascript=1
+```javascript
 // Redux-thunk 的源碼
 function createThunkMiddleware(extraArgument) {
   return ({ dispatch, getState }) => next => action => {
@@ -33,7 +33,7 @@ export default thunk;
 
 ### - `State`
 
-```javascript=1
+```javascript
 const initialState = {
   loading: false,
   users: [],
@@ -43,7 +43,7 @@ const initialState = {
 
 ### - `Action`
 
-```javascript=1
+```javascript
 const FETCH_USER_REQUESTED = "FETCH_USER_REQUESTED";
 const FETCH_USER_SUCCEEDED = "FETCH_USER_SUCCEEDED";
 const FETCH_USER_FALIED = "FETCH_USER_FALIED";
@@ -70,7 +70,7 @@ const fetchUserFailure = (error) => {
 
 ### - `Reducer`
 
-```javascript=1
+```javascript
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_REQUESTED:
@@ -102,7 +102,7 @@ const reducer = (state = initialState, action) => {
 
 #### function
 
-```javascript=1
+```javascript
 const fetchUser = () => {
   store.dispatch(fetchUserRequest());
   fetch("https://jsonplaceholder.typicodes.com/users")
@@ -122,7 +122,7 @@ const fetchUser = () => {
 
 #### Store
 
-```javascript=1
+```javascript
 const store = createStore(reducer);
 fetchUser();
 ```
@@ -134,7 +134,7 @@ fetchUser();
 
 #### Action creator
 
-```javascript=1
+```javascript
 const fetchUserActionCreator = () => {
   return (dispatch) => {
     dispatch(fetchUserRequest());
@@ -156,7 +156,7 @@ const fetchUserActionCreator = () => {
 
 #### Store
 
-```javascript=1
+```javascript
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 store.dispatch(fetchUserActionCreator());
 ```

@@ -7,7 +7,7 @@
 
 三個亮燈函數已經存在：
 
-```javascript=1
+```javascript
 function red() {
   console.log("red    - ", new Date());
 }
@@ -23,7 +23,7 @@ function yellow() {
 
 ### - Callback 寫法
 
-```javascript=1
+```javascript
 function callbackLoop() {
   setTimeout(() => {
     red();
@@ -42,7 +42,7 @@ callbackLoop()
 
 ### - Promise 寫法
 
-```javascript=1
+```javascript
 const ticker = (second, func) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -73,7 +73,7 @@ promiseLoop();
 
 ### - Async/await 寫法
 
-```javascript=1
+```javascript
 async function awaitLoop() {
   await ticker(3, red);
   await ticker(2, green);

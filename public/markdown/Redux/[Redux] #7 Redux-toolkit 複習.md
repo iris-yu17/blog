@@ -9,7 +9,7 @@ Demo: https://codesandbox.io/p/sandbox/redux-6-redux-toolkit-yyy4r2
 1. 在 `/features/iceCream` 下創建 `iceCreamSlice.js`
 2. 引入 `createSlice`
 
-```javascript=1
+```javascript
 const createSlice = require("@reduxjs/toolkit").createSlice;
 ```
 
@@ -18,7 +18,7 @@ const createSlice = require("@reduxjs/toolkit").createSlice;
 1. 設定 `slice` 名稱為 `iceCream`
 2. 設置初始狀態
 
-```javascript=1
+```javascript
 const iceCreamSlice = createSlice({
   name: "iceCream",
   initialState: {
@@ -29,7 +29,7 @@ const iceCreamSlice = createSlice({
 
 ## - step3. 定義 reducer
 
-```javascript=1
+```javascript
 const iceCreamSlice = createSlice({
   name: "iceCream",
   initialState: {
@@ -49,14 +49,14 @@ const iceCreamSlice = createSlice({
 
 ## - step4. export reducer 和 action
 
-```javascript=1
+```javascript
 module.exports = iceCreamSlice.reducer;
 module.exports.iceActions = iceCreamSlice.actions;
 ```
 
 ## - step5. 在 `store.js` 裡設置 reducer
 
-```javascript=1
+```javascript
 // 1. 引入 reducer
 const iceCreamReducer = require("../features/iceCream/iceCreamSlice");
 
@@ -71,7 +71,7 @@ const store = configureStore({
 
 ## - step6. 在 `index.js` 裡使用
 
-```javascript=1
+```javascript
 // 1. 引入 actions
 const iceCreamActions = require("./features/iceCream/iceCreamSlice").iceCreamActions;
 
@@ -100,7 +100,7 @@ Updated State: { cake: { numOfCakes: 17 }, iceCream: { numOfIceCream: 0 } }
 
 在純 `redux` 裡，會用 `combineReducers` 來合併多個 reducer，如下：
 
-```javascript=1
+```javascript
 const reducers = combineReducers({
   cake: cakeReducer,
   iceCream: iceCreamReducer

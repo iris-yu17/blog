@@ -7,7 +7,7 @@
 
 ### promise寫法
 
-```javascript=1
+```javascript
 function getData() {
   sendRequest()
     .then((rawData) => {
@@ -21,7 +21,7 @@ function getData() {
 
 ### async/await寫法
 
-```javascript=1
+```javascript
 async function getData() {
   const rawData = await sendRequest();
   const data = await rawData.json();
@@ -40,7 +40,7 @@ async function getData() {
 
 範例：先創建一個 `sendRequest` 函式，模擬向伺服器發送請求，取得user name。
 
-```javascript=1
+```javascript
 function sendRequest() {
   return new Promise((resolve, reject) => {
     // 會隨機產生數字0或1, 來決定是否請求成功
@@ -58,7 +58,7 @@ function sendRequest() {
 
 ### - step1. 創建 async function
 
-```javascript=1
+```javascript
 // 使用 async 關鍵字
 async function getUserData () {
 
@@ -67,7 +67,7 @@ async function getUserData () {
 
 ### - step2. 使用await
 
-```javascript=1
+```javascript
 async function getUserData() {
   const userData = await sendRequest();
   // 會等到非同步事件 sendRequest() 完成後，才執行console.log
@@ -79,7 +79,7 @@ async function getUserData() {
 
 使用 `try...catch` 捕捉錯誤，語法如下：
 
-```javascript=1
+```javascript
 try {
  // 欲執行的程式碼
 } catch(e) {
@@ -87,7 +87,7 @@ try {
 }
 ```
 
-```javascript=1
+```javascript
 async function getUserData() {
   try {
     const userData = await sendRequest();

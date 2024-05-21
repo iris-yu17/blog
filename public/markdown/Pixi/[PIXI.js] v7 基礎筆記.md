@@ -23,7 +23,7 @@ import * as PIXI from 'pixi.js';
 - `new PIXI.Application` 的 arguments 可參考官方文件
   （範例中使用 `antialias: true` 可讓畫面不會有鋸齒狀、寬高設為`window.innerWidth`和`window.innerHeight` 來填滿畫面）
 
-```javascript=1
+```javascript
 // 創建 pixi app
 const app = new PIXI.Application({
   width: window.innerWidth,
@@ -47,7 +47,7 @@ document.body.appendChild(app.view);
 > lineStyle的三個參數如下：
 > lineStyle(寬度, 顏色, 透明度)
 
-```javascript=1
+```javascript
 const line = new PIXI.Graphics();
 
 line.lineStyle(5, 0xDE3249, 1)
@@ -66,7 +66,7 @@ app.stage.addChild(line)
 
 ### - 方形
 
-```javascript=1
+```javascript
 const rectangle = new PIXI.Graphics();
 
 rectangle
@@ -82,7 +82,7 @@ app.stage.addChild(rectangle)
 > drawCircle的三個參數如下：
 > drawCircle(圓心的x座標, 圓心的y座標, 半徑長度)
 
-```javascript=1
+```javascript
 // 有外框線的圓型
 const circleWithStroke = new PIXI.Graphics();
 
@@ -108,7 +108,7 @@ app.stage.addChild(circleWithStroke, circle)
 - 要創建文字，使用`Text` Class
 - 若要給文字加上樣式，使用`TextStyle`這個Class
 
-```javascript=1
+```javascript
 // 樣式
 const myStyle = new PIXI.TextStyle({
   fontFamily: 'Arial',
@@ -127,7 +127,7 @@ app.stage.addChild(myText);
 
 - 若要改變文字內容，使用`text`這個property
 
-```javascript=1
+```javascript
 myText.text = 'Text changed！'
 ```
 
@@ -145,7 +145,7 @@ myText.text = 'Text changed！'
 2. 再用 `Sprite()` 將 texture 轉為 sprite
 3. 放到舞台上
 
-```javascript=1
+```javascript
 // 1.轉為 texture
 const carTexture = PIXI.Texture.from('./src/images/car.svg');
 
@@ -168,7 +168,7 @@ app.stage.addChild(car);
 - 也可改變 `container` 及裡面物件的的大小、位置。
 - `container` 裡面物件的位置是相對於 `container` (可以想像成：`container` 是 css 中的 `position: relative`，而裡面物件是 `position: absolute` 的概念)
 
-```javascript=1
+```javascript
 // 創建 container
 const container = new PIXI.Container();
 
@@ -199,7 +199,7 @@ app.stage.addChild(container);
 
 先畫一個方形
 
-```javascript=1
+```javascript
 // 方形
 const rectangle = new PIXI.Graphics();
 rectangle
@@ -215,7 +215,7 @@ app.stage.addChild(rectangle);
 - 用 `ticker.add()` 方法來製造動態
 - 用 `ticker.remove()` 來移除動態
 
-```javascript=1
+```javascript
 // 方形移動function
 const move = (delta) => {
   // x座標加1 (往右移)
@@ -236,7 +236,7 @@ app.ticker.remove(move);
 
 先畫一個方形
 
-```javascript=1
+```javascript
 const rectangle = new PIXI.Graphics();
 rectangle
   .beginFill(0xaaffaa) // 顏色
@@ -248,7 +248,7 @@ app.stage.addChild(rectangle);
 
 寫好一個往右移動的function
 
-```javascript=1
+```javascript
 function moveRight () {
   rectangle.x += 10;
 }
@@ -256,7 +256,7 @@ function moveRight () {
 
 設定互動
 
-```javascript=1
+```javascript
 // 設為可互動的
 rectangle.eventMode = 'dynamic';
 
@@ -266,7 +266,7 @@ rectangle.cursor = 'pointer';
 
 綁定事件
 
-```javascript=1
+```javascript
 // 綁定點擊事件
 rectangle.on('pointerdown', moveRight);
 
@@ -291,7 +291,7 @@ window.addEventListener("keydown", (e) => {
 3. 再把這個 `texture` 轉成 `sprite`
 4. 放到舞台上
 
-```javascript=1
+```javascript
 // 1.載入圖片
 const texturePromise = PIXI.Assets.load('./src/images/car.png');
 
@@ -325,7 +325,7 @@ texturePromise.then((texture) => {
 | ![](https://i.imgur.com/T6N0xWi.png) | ![](https://i.imgur.com/u4iyYEH.png) |
 | ------------------------------------ | ------------------------------------ |
 
-```javascript=1
+```javascript
 // 載入壽司圖片
 const texturePromise = PIXI.Assets.load('./src/images/sushi.png');
 
@@ -349,7 +349,7 @@ texturePromise.then((texture) => {
 這樣的結果就會得到上面那個壽司，若想要裁出下面的壽司，要改變裁切的位置。
 如下：
 
-```javascript=1
+```javascript
   const rect = new PIXI.Rectangle(0, 96, 96, 96);
 ```
 
@@ -425,7 +425,7 @@ texturePromise.then((texture) => {
 **練習：**
 用 json 的方式來產生 `sprite`
 
-```javascript=1
+```javascript
 // 載入 json
 const promise = PIXI.Assets.load('./src/images/sushi.json');
 
@@ -449,7 +449,7 @@ promise.then(() => {
 - 例如遊戲中會有道具不斷閃爍的效果，就可以用 `AnimatedSprite` 來作
   ![Imgur](https://i.imgur.com/QzsqKPK.gif)
 
-```javascript=1
+```javascript
 import app from "./index.js";
 
 const promise = PIXI.Assets.load('./src/images/sushi.json');

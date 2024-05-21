@@ -18,7 +18,7 @@
 - `getData` return 的資料會依 `input` 值而改變
 - 把 `getData` 作為 props 傳到子元件 `<List/>`
 
-```javascript=1
+```javascript
 import List from "./List";
 
 export default function App() {
@@ -65,7 +65,7 @@ export default function App() {
 - 子元件接收 `getData` 這個 props，呼叫並使用 `getData` 回傳的資料
 - 每次 `getData` 改變時，就重新用 `setArray` 設置畫面所顯示的 list 項目，並印出 "get data" 文字
 
-```javascript=1
+```javascript
 export default function List(props) {
   const { getData } = props;
   const [array, setArray] = useState([]);
@@ -100,7 +100,7 @@ export default function List(props) {
   第一個：callback function
   第二個：是一個陣列，像 useEffect 那樣，當陣列裡某元素的值改變時，就會執行第一個參數的 function
 
-```javascript=1
+```javascript
 // 原本寫法
 const getData = () => {
   return [input + 1, input + 2, input + 3];
@@ -114,7 +114,7 @@ const getData = useCallback(() => {
 
 **`useCallback` 跟 `useMemo` 比較** 1.`useMemo` 不能傳入參數，而 `useCallback` 可以2. `useCallback` `useMemo` 都會接收一個 function，但`useMemo` 會回傳此 function 的回傳值，而 `useCallback` 會回傳此 function 3. `useCallback(fn, [deps])` 就相當於 `useMemo(() => fn, [deps])`
 
-```javascript=1
+```javascript
 // 也可用 useMemo 寫法
 const getData = useMemo(() => {
   return () => {
