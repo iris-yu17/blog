@@ -22,6 +22,10 @@ export const categoryList = [
     path: 'react'
   },
   {
+    tag: CategoryKey.Next,
+    path: 'next'
+  },
+  {
     tag: CategoryKey.Redux,
     path: 'redux'
   },

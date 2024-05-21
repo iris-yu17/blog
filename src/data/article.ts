@@ -107,6 +107,62 @@ const articles: Article[] = [
     tags: [CategoryKey.Redux],
     updated: '2024-05-10',
   },
+  {
+    id: 'gcp-deploy-with-github-actions',
+    name: '[GCP] 用 Github Actions 在 Google Cloud Run 上部署 Next.js',
+    description: '用 Github Actions 在 Google Cloud Run 上部署 Next.js',
+    tags: [CategoryKey.Gcp],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'next-notes',
+    name: '[Next.js] 開發筆記',
+    description: '開發筆記',
+    tags: [CategoryKey.Next],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'freego-notes',
+    name: '[無障礙] Freego 檢測錯誤排查筆記',
+    description: 'Freego 檢測錯誤排查筆記',
+    tags: [CategoryKey.WA],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'react-usecallback',
+    name: '[React] Hook - useCallback 筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'react-usecontext',
+    name: '[React] Hook - useContext 筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'react-usememo',
+    name: '[React] Hook - useMemo 筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'react-usereducer',
+    name: '[React] Hook - useReducer 筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2024-05-10'
+  },
+  {
+    id: 'react-memo',
+    name: '[React] React.memo 筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2024-05-10'
+  },
 ];
 
 export default articles;

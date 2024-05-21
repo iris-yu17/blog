@@ -4,6 +4,7 @@ export enum CategoryKey {
   Pixi = 'Pixi',
   WA = 'WA',
   React = 'React',
+  Next = 'Next',
   Redux = 'Redux',
   Docker = 'Docker',
   TypeScript = 'TypeScript'
@@ -15,6 +16,7 @@ export enum CategoryText {
   Pixi = 'Pixi',
   WA = '無障礙',
   React = 'React',
+  Next = 'Next.js',
   Redux = 'Redux',
   Docker = 'Docker',
   TypeScript = 'TypeScript'
