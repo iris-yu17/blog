@@ -1,10 +1,18 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import Prose from '@/components/Prose';
 import GoBackButton from '@/components/go-back-button';
 import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 import { CategoryText } from '@/types/enum/category';
+
+const options = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
+};
 
 export default async function Article({
   params,
@@ -21,7 +29,7 @@ export default async function Article({
 
   const encodedFileName = encodeURIComponent(name);
 
-  const file = tags[0]
+  const file = tags[0];
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${encodedFileName}.md`,
   );
@@ -48,7 +56,7 @@ export default async function Article({
       </div>
       <div className="flex flex-col gap-16">
         <Prose>
-          <MDXRemote source={data} />
+          <MDXRemote source={data} options={options} />
         </Prose>
       </div>
     </>

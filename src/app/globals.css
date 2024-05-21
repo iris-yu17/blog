@@ -71,3 +71,14 @@ code:before,
 code::after {
   display: none;
 }
+blockquote {
+  padding: 0.125rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: rgba(var(--black-200-rgba));
+}
+
+blockquote p::before,
+blockquote p::after {
+  display: none;
+}
+

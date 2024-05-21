@@ -11,8 +11,6 @@
 **非同步則是一次執行好幾件事。** 不需要等到前一件事情做完才做下一件事情。
 假如任務B需要許多時間處理，那麼可以先執行C、D、E。
 
----
-
 ## (2) 什麼是Callback function？
 
 Callback function又稱為回調、回呼函式。
@@ -38,8 +36,6 @@ showAlert();
 // callback: 作為參數
 setTimeout(showAlert, 3000);
 ```
-
----
 
 ## (3) Callback function 的使用
 

@@ -5,5 +5,5 @@ type propsType = {
 };
 
 export default function Prose(props: propsType) {
-  return <div className="prose prose-h2:mt-0">{props.children}</div>;
+  return <div className="prose prose-h2:border-b prose-a:text-blue-500">{props.children}</div>;
 }

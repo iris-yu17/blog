@@ -1,10 +1,13 @@
-Demo: https://codesandbox.io/s/redux-3-zhlzkj
+> Demo: https://codesandbox.io/s/redux-3-zhlzkj
 
 ## 只用一個 Reducer
+
 延續前篇蛋糕店的例子，假設現在蛋糕店除了蛋糕以外，還賣冰淇淋，我們可以這樣寫：
 
-### - 初始 `state` 
+### - 初始 `state`
+
 新增 iceCream 狀態
+
 ```javascript=1
 const intialState = {
   cakes: 200,
@@ -13,7 +16,9 @@ const intialState = {
 ```
 
 ### - `Action`
+
 新增 `orderIceCream` action creator
+
 ```javascript=1
 const orderCake = () => {
   return {
@@ -35,7 +40,9 @@ const orderIceCream = () => {
 ```
 
 ### - `Reducer`
+
 `reducer` 中，對應 `ICECREAM_ORDER` 這個 `action` ，制定好相對應的狀態更新
+
 ```javascript=1
 const reducer = (prevState = initialState, action) => {
   switch (action.type) {
@@ -58,7 +65,9 @@ const reducer = (prevState = initialState, action) => {
 ```
 
 ## 拆分 Reducer
+
 ### - 初始 `State`
+
 ```javascript=1
 const initialCakeState = {
   cakes: 200
@@ -70,6 +79,7 @@ const initialIceCreamState = {
 ```
 
 ### - `Reducer`
+
 ```javascript=1
 // cake reducer
 const cakeReducer = (prevState = initialCakeState, action) => {
@@ -101,8 +111,10 @@ const iceCreamReducer = (prevState = initialIceCreamState, action) => {
 ```
 
 ### - `Store`
+
 - 由於 `createStore` 只接收一個 `reducer` ，我們要把兩個 `reducer` 合併，可使用 `redux` 的 `combineReducers()`
 - `combineReducers()` 接收一個物件，裡面一個 key-value pair 相對應於一個 `reducer`
+
 ```javascript=1
 // 合併 reducers
 const reducers = combineReducers({
@@ -115,8 +127,10 @@ const store = createStore(reducers);
 ```
 
 ## 拆分後的 `state`
+
 - 拆分後，我們用 `store.getState()` 來看看 `state` 狀態，會發現包含了兩個物件
 - 裡面的 `cakeState` 和 `iceCreamState` 相對應於我們 `combineReducers` 傳入物件的 `key`
+
 ```
 {
   cakeState: {
@@ -129,8 +143,10 @@ const store = createStore(reducers);
 ```
 
 ## 總結
+
 當我們的應用程式越來越大時，可以拆分 `reducer`，讓他們各自獨立、處理他們自己的 `state`，例如 `profile reducer` `user reducer` ...等
 
---- 
+---
+
 > 參考資料
 > https://www.youtube.com/watch?v=-1I-HpvUiBQ&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=12

@@ -39,7 +39,7 @@ const articles: Article[] = [
   },
   {
     id: 'js-async-await',
-    name: '[JS] Async非同步 - async_await筆記',
+    name: '[JS] Async非同步 - async-await筆記',
     description: '...',
     tags: [CategoryKey.Js],
     updated: '2024-05-10',
