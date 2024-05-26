@@ -23,7 +23,7 @@ export default function Category({
 
   return (
     <>
-      <h1 className="text-3xl font-semibold leading-normal text-yellow-400">
+      <h1 className="text-3xl font-semibold leading-normal text-quaternary">
         文章分類
       </h1>
       <p className="mb-5 text-lg font-light text-gray-200">

@@ -42,9 +42,9 @@ export default async function Article({
     <>
       <GoBackButton />
       <div className="my-6 border-b border-solid border-border">
-        <h1 className="text-4xl font-semibold leading-normal">{name}</h1>
+        <h1 className="text-3xl font-semibold leading-normal">{name}</h1>
         <div className="flex items-center gap-2">
-          <div className="py-4 text-xs text-tertiary">{updated}</div>
+          <div className="py-4 text-xs text-quaternary">{updated}</div>
           <>
             {tags.map((item) => {
               return (

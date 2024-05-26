@@ -14,6 +14,7 @@ const config: Config = {
       primary: 'rgba(var(--primary-rgba))',
       secondary: 'rgba(var(--secondary-rgba))',
       tertiary: 'rgba(var(--tertiary-rgba))',
+      quaternary: 'rgba(var(--quaternary-rgba))',
       black: colors.black,
       green: {
         DEFAULT: 'rgba(var(--green-default-rgba))',
