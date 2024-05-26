@@ -15,7 +15,7 @@ export default function ArticleCard({
   return (
     <Link href={href} key={id} className="group/link font-rbtm py-2 hover:bg-black-100">
       <div className="flex flex-col gap-2">
-        <div className="text-sm text-gray-300">Last Updated: {updated}</div>
+        <div className="text-sm text-gray-300">上次更新: {updated}</div>
         <div className="text-xl text-secondary group-hover/link:underline">
           {name}
         </div>
