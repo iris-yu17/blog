@@ -17,17 +17,18 @@ export default function Category({ params }: { params: { slug: string } }) {
       return _tag === tag;
     });
   });
-  console.log(filteredArticles);
 
   return (
     <>
-      <h1 className="text-4xl font-semibold leading-normal">文章分類</h1>
-      <p className="mb-12 text-lg text-secondary">
-        目前顯示分類為：{CategoryText[tag]}
+      <h1 className="text-3xl font-semibold leading-normal text-tertiary">
+        文章分類
+      </h1>
+      <p className="mb-5 text-lg font-light text-gray-200">
+        目前顯示分類為：全部文章
       </p>
       <CategoryBlock />
-      <div className="flex flex-col gap-4 lg:gap-8">
-        {filteredArticles.map((item) => {
+      <div className="flex flex-col gap-2 lg:gap-4">
+        {articles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;
           return <ArticleCard key={id} data={item} href={href} />;

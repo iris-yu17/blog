@@ -1,27 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-
   /* --- CUSTOM --- */
   /* Theme */
-  --primary-rgba: 17, 17, 17, 1;
-  --secondary-rgba: 102, 102, 102, 1;
-  --tertiary-rgba: 153, 153, 153, 1;
+  --primary-rgba: 0, 122, 204, 1; /* Blue 06 */
+  --secondary-rgba: 0, 151, 251, 1; /* Blue 05 */
+  --tertiary-rgba: 51, 153, 187, 1; /* Blue 04 */
   /* black */
-  --black-default-rgba: 244, 245, 245, 1;
-  --black-100-rgba: 255, 255, 255, 1;
-  --black-200-rgba: 239, 239, 240, 1;
-  /* accent */
-  --accent-default-rgba: 161, 88, 48, 1;
-  --accent-background-rgba: 250, 233, 225, 1;
-  /* green */
-  --green-default-rgba: 8, 128, 70, 1;
-  --green-background-rgba: 9, 227, 125, 0.16;
+  --black-100-rgba: 60, 60, 60, 1; /* #3c3c3c */
+  --black-200-rgba: 37, 37, 38, 1; /* #252526 */
+  --black-300-rgba: 30, 30, 30, 1; /* #1e1e1e */
+  /* grey */
+  --gray-default-rgba: 128, 128, 128, 1; /* #d4d4d4 */
+  --gray-100-rgba: 229, 229, 229, 1; /* #e5e5e5 */
+  /* code */
+  --code-400-rgba: 50, 126, 54, 1; /* Green 04 */
+  --code-200-rgba: 46, 200, 174, 1; /* Green 02 */
+  --code-300-rgba: 22, 130, 93, 1; /* Green 03 */
   /* border */
-  --border-rgba: 0, 0, 0, 0.2;
+  --border-rgba: 255, 255, 255, 0.2;
 }
 
 html.dark {
@@ -47,8 +49,8 @@ html.dark {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgba(var(--black-default-rgba));
+  color: rgb(var(--gray-100-rgba));
+  background: rgba(var(--black-200-rgba));
 }
 
 h2 code {
@@ -57,7 +59,7 @@ h2 code {
 }
 
 code {
-  background: rgba(var(--border-rgba));
+  background: rgb(var(--gray-100-rgba));
   padding: 0.125rem 0.25rem;
   border-radius: 4px;
   font-size: 1em !important;
@@ -82,3 +84,9 @@ blockquote p::after {
   display: none;
 }
 
+.prose { 
+  max-width: none;
+}
+.prose > * {
+  color: rgb(var(--gray-100-rgba));
+}

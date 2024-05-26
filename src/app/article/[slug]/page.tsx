@@ -48,8 +48,8 @@ export default async function Article({
           <>
             {tags.map((item) => {
               return (
-                <Badge color="indigo" key={item}>
-                  {CategoryText[item]}
+                <Badge color="success" key={item}>
+                  #{CategoryText[item]}
                 </Badge>
               );
             })}

@@ -4,7 +4,8 @@ import './globals.css';
 import SideNav from '@/components/side-nav';
 import Header from '@/components/header';
 import { Footer } from 'flowbite-react';
-import { ThemeProvider } from './helper/theme-provider';
+import SideMenu from '@/components/side-menu';
+// import { ThemeProvider } from './helper/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,23 +22,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="bg-slate-600 sm:flex">
-            <SideNav />
-            <Header />
-            <main className="m-2 mt-16 rounded-xl bg-black-100 p-4 sm:mt-0 md:w-full md:p-6 lg:p-12 xl:p-20">
-              {children}
+        {/* <ThemeProvider attribute="class" defaultTheme="dark"> */}
+        <div className="bg-slate-600 sm:flex">
+          <SideNav />
+          <SideMenu />
+          <Header />
+          <main className="py-4 px-6">
+            {children}
 
-              <Footer.Divider />
-              <Footer.Copyright
-                href="#"
-                by="All Rights Reserved. IRIS YU"
-                year={2024}
-                className="mb-6 text-center"
-              />
-            </main>
-          </div>
-        </ThemeProvider>
+            <Footer.Divider />
+            <Footer.Copyright
+              href="#"
+              by="All Rights Reserved. IRIS YU"
+              year={2024}
+              className="mb-6 text-center"
+            />
+          </main>
+        </div>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

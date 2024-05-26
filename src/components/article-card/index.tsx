@@ -13,13 +13,13 @@ export default function ArticleCard({
 }) {
   const { name, updated, description, id, tags } = data;
   return (
-    <Link href={href} key={id} className="group/link">
+    <Link href={href} key={id} className="group/link font-rbtm py-2 hover:bg-black-100">
       <div className="flex flex-col gap-2">
-        <div className="text-sm text-tertiary">Last Updated: {updated}</div>
-        <div className="text-xl font-semibold text-primary group-hover/link:underline">
+        <div className="text-sm text-gray-300">Last Updated: {updated}</div>
+        <div className="text-xl text-secondary group-hover/link:underline">
           {name}
         </div>
-        <div className="w-100 mb-3 line-clamp-2 text-secondary group-hover/link:underline">
+        <div className="line-clamp-2 text-gray-200 text-wrap">
           {description}
         </div>
       </div>
