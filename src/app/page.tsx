@@ -1,34 +1,43 @@
-import Image from 'next/image';
-import { IoLocationOutline } from 'react-icons/io5';
+import ArticleCard from '@/components/article-card';
+import Pagination from '@/components/pagination';
+import articles from '@/data/article';
+import PageUrls from '@/types/enum/page-url';
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const { page = 1 } = searchParams;
+  const currentPage = Number(page);
+
+  const totalCount = articles.length;
+  const ARTICLE_PER_PAGE = 10;
+  const TOTAL_PAGES = Math.ceil(totalCount / ARTICLE_PER_PAGE);
+
+  const slicedArticles = articles.slice(
+    ARTICLE_PER_PAGE * (currentPage - 1),
+    ARTICLE_PER_PAGE * currentPage,
+  );
+
   return (
     <>
-      <div className="flex flex-col gap-8">
-        {/* Intro */}
-        <div className='text-green bg-green-background before:content[""] before:bg-green inline-flex w-max items-center justify-center rounded-full px-3 py-1 text-sm before:me-2 before:block before:h-1.5 before:w-1.5 before:rounded-full'>
-          Available for work
-        </div>
-        <h1 className="text-4xl font-semibold leading-normal">
-          <span>Hello! I’m Iris 👏</span>
-          <br />
-          <span
-            className="text-secondary
-          "
-          >
-            Real Things. Experienced Engineer.
-          </span>
-        </h1>
-        <div className="text-accent flex items-center gap-2 text-lg">
-          <IoLocationOutline />
-          <span className="text-base">New Taipei, Taiwan</span>
-        </div>
-        <div className="text-secondary text-lg leading-8">
-          Product designer and design system specialist with over 9 years of
-          experience focusing on user experience and design systems to creating
-          a user-centered design in SaaS products.
-        </div>
+      <h1 className="text-4xl font-semibold leading-normal">Articles</h1>
+      <p className="mb-12 text-lg text-secondary">
+        Insights, thoughts and trends in design
+      </p>
+      <div className="flex flex-col gap-4 lg:gap-8">
+        {slicedArticles.map((item) => {
+          const { id } = item;
+          const href = `${PageUrls.Article}/${id}`;
+          return <ArticleCard key={id} data={item} href={href} />;
+        })}
       </div>
+      <Pagination
+        totalPages={TOTAL_PAGES}
+        currentPage={currentPage}
+        mainPath={PageUrls.Home}
+      />
     </>
   );
 }

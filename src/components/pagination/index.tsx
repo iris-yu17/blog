@@ -3,12 +3,17 @@
 import { Pagination as FlowBitePagination } from 'flowbite-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import PageUrls from '@/types/enum/page-url';
 
-export default function Pagination({ totalPages, currentPage }) {
+export default function Pagination({
+  totalPages,
+  currentPage,
+  mainPath = PageUrls.Home,
+}) {
   const router = useRouter();
 
   const onPageChange = (page: number) => {
-    router.push(`/article?page=${page}`)
+    router.push(`${mainPath}?page=${page}`);
   };
 
   return (

@@ -21,21 +21,25 @@ export const NAV = [
     icon: VscHome,
     text: 'Home',
     link: PageUrls.Home,
+    activePath: PageUrls.Article,
   },
   {
     icon: VscVerified,
     text: 'About',
     link: PageUrls.About,
+    activePath: PageUrls.About,
   },
   {
     icon: VscSearch,
     text: 'Search',
     link: PageUrls.Search,
+    activePath: PageUrls.Search,
   },
   {
     icon: VscListTree,
     text: 'Category',
     link: PageUrls.Category,
+    activePath: PageUrls.Category,
   },
 ];
 
@@ -58,8 +62,9 @@ function SideNav() {
     <div className="sticky left-0 top-0 flex h-screen flex-col justify-between border-r border-border bg-black-300">
       <div>
         {NAV.map((item) => {
-          const { icon, link, text } = item;
-          const active = path === link;
+          const { icon, link, text, activePath } = item;
+          const active = path === link || path.includes(activePath);
+
           return (
             <Tooltip
               content={text}

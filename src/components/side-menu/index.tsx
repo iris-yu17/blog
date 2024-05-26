@@ -24,7 +24,7 @@ export default function SideMenu() {
                     <Link
                       href={`${PageUrls.Article}/${id}`}
                       key={id}
-                      className="block text-nowrap py-0.5"
+                      className="block text-nowrap py-0.5 hover:bg-black-100 min-w-full w-max"
                     >
                       {name}
                     </Link>

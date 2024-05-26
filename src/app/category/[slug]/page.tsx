@@ -20,15 +20,15 @@ export default function Category({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold leading-normal text-tertiary">
+      <h1 className="text-3xl font-semibold leading-normal text-yellow-400">
         文章分類
       </h1>
       <p className="mb-5 text-lg font-light text-gray-200">
-        目前顯示分類為：全部文章
+        目前顯示分類為：{CategoryText[tag]}
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 lg:gap-4">
-        {articles.map((item) => {
+        {filteredArticles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;
           return <ArticleCard key={id} data={item} href={href} />;
