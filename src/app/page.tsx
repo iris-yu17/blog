@@ -22,11 +22,10 @@ export default async function Home({
 
   return (
     <>
-      <h1 className="text-4xl font-semibold leading-normal">Articles</h1>
-      <p className="mb-12 text-lg text-secondary">
-        Insights, thoughts and trends in design
-      </p>
-      <div className="flex flex-col gap-4 lg:gap-8">
+      <h1 className="text-3xl font-semibold leading-normal text-quaternary mb-5">
+        {`{ 文章列表 }`}
+      </h1>
+      <div className="flex flex-col gap-2 lg:gap-4">
         {slicedArticles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;

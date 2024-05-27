@@ -14,7 +14,7 @@ export default function Accordion(props: Props) {
   const { title, children, defaultExpand = false } = props;
   const [expand, setExpand] = useState(defaultExpand);
   return (
-    <div className="text-sm">
+    <div className="text-md">
       {/* title */}
       <button
         type="button"

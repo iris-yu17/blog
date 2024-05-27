@@ -23,11 +23,14 @@ export default function Category({
 
   return (
     <>
-      <h1 className="text-3xl font-semibold leading-normal text-quaternary">
-        文章分類
+      <h1 className="mb-2 text-3xl font-semibold leading-normal text-quaternary">
+        {`{ 文章分類 }`}
       </h1>
       <p className="mb-5 text-lg font-light text-gray-200">
-        目前顯示分類為：全部文章
+        目前顯示分類為：
+        <span className="font-medium">
+          全部文章
+        </span>
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 lg:gap-4">

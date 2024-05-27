@@ -34,12 +34,14 @@ const config: Config = {
           100: 'rgba(var(--black-100-rgba))',
           200: 'rgba(var(--black-200-rgba))',
           300: 'rgba(var(--black-300-rgba))',
+          400: 'rgba(var(--black-400-rgba))',
         },
         gray: {
           DEFAULT: 'rgba(var(--gray-default-rgba))',
           100: 'rgba(var(--gray-100-rgba))',
         },
         code: {
+          100: 'rgba(var(--code-100-rgba))',
           200: 'rgba(var(--code-200-rgba))',
           300: 'rgba(var(--code-300-rgba))',
           400: 'rgba(var(--code-400-rgba))',

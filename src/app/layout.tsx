@@ -27,9 +27,8 @@ export default function RootLayout({
           <SideNav />
           <SideMenu />
           <Header />
-          <main className="py-4 px-6 w-full">
+          <main className="w-full px-6 py-4 font-rbtm">
             {children}
-
             <Footer.Divider />
             <Footer.Copyright
               href="#"

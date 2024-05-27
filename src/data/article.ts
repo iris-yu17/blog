@@ -163,6 +163,13 @@ const articles: Article[] = [
     tags: [CategoryKey.React],
     updated: '2024-05-10'
   },
+  {
+    id: 'mdxremote-add-anchor-to-title',
+    name: 'MDXRemote 為標題加上錨點',
+    description: '',
+    tags: [CategoryKey.Next],
+    updated: '2024-05-10'
+  }
 ];
 
 export default articles;

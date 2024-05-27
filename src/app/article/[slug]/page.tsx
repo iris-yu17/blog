@@ -7,12 +7,30 @@ import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 import { CategoryText } from '@/types/enum/category';
-import '@/styles/highlight-js/atom-one-dark.css';
+import '@/styles/highlight-js/github-dark-dim.css';
+// import '@/styles/highlight-js/atom-one-dark.css';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeHighlight],
+    rehypePlugins: [
+      rehypeHighlight,
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'prepend',
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: { class: 'text-quaternary text-3xl mr-2' },
+            children: [{ type: 'text', value: '#' }],
+          },
+        },
+      ],
+    ],
   },
 };
 
@@ -41,10 +59,9 @@ export default async function Article({
   return (
     <>
       <GoBackButton />
-      <div className="my-6 border-b border-solid border-border">
-        <h1 className="text-3xl font-semibold leading-normal">{name}</h1>
+      <div className="my-6 border-b-2 border-dashed border-gray-100">
         <div className="flex items-center gap-2">
-          <div className="py-4 text-xs text-quaternary">{updated}</div>
+          <div className="text-code-100 py-2 text-sm">{updated}</div>
           <>
             {tags.map((item) => {
               return (
@@ -55,6 +72,7 @@ export default async function Article({
             })}
           </>
         </div>
+        <h1 className="text-3xl font-semibold leading-normal">{name}</h1>
       </div>
       <div className="flex flex-col gap-16">
         <Prose>

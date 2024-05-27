@@ -8,7 +8,7 @@ export default function GoBackButton() {
 
   return (
     <button
-      className="flex items-center gap-1"
+      className="flex items-center gap-1 text-quaternary"
       onClick={() => {
         router.back();
       }}
