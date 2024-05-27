@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import SideNav from '@/components/side-nav';
 import Header from '@/components/header';
-import { Footer } from 'flowbite-react';
 import SideMenu from '@/components/side-menu';
+import Footer from '@/components/footer';
 // import { ThemeProvider } from './helper/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -27,17 +27,9 @@ export default function RootLayout({
           <SideNav />
           <SideMenu />
           <Header />
-          <main className="w-full px-6 py-4 font-rbtm">
-            {children}
-            <Footer.Divider />
-            <Footer.Copyright
-              href="#"
-              by="All Rights Reserved. IRIS YU"
-              year={2024}
-              className="mb-6 text-center"
-            />
-          </main>
+          <main className="w-full px-6 pb-17 pt-4 font-rbtm">{children}</main>
         </div>
+        <Footer />
         {/* </ThemeProvider> */}
       </body>
     </html>

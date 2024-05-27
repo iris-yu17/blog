@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function SideMenu() {
   return (
-    <div className="sticky left-0 top-0 h-screen w-60 min-w-60 overflow-auto px-1 text-gray-100 border-border border-r">
+    <div className="sticky left-0 top-0 h-screen w-60 min-w-60 overflow-auto px-1 text-gray-100 border-border border-r pb-7">
       <div className="text-md font-press p-4">
         <span className="text-primary">IRIS</span> Code
       </div>
