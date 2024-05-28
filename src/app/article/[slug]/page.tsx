@@ -58,8 +58,8 @@ export default async function Article({
 
   return (
     <>
-      <GoBackButton />
-      <div className="my-6 border-b-2 border-dashed border-gray-100">
+      {/* <GoBackButton /> */}
+      <div className="mb-6 border-b-2 border-dashed border-gray-100">
         <div className="flex items-center gap-2">
           <div className="text-code-100 py-2 text-sm">{updated}</div>
           <>
