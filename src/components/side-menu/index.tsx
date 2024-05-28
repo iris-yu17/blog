@@ -10,14 +10,17 @@ import Link from 'next/link';
 
 export default function SideMenu() {
   const dragging = useRef(false);
-  const [menuWidth, setMenuWidth] = useState(300);
+  const [menuWidth, setMenuWidth] = useState(250);
 
   useEffect(() => {
     window.addEventListener('mousemove', (e) => {
       if (!dragging.current) {
         return;
       }
-      setMenuWidth((previousWidth) => previousWidth + e.movementX / 2);
+      setMenuWidth((previousWidth) => {
+        const newWidth = previousWidth + e.movementX / 2;
+        return newWidth < 250 ? previousWidth : newWidth;
+      });
     });
 
     window.addEventListener('mouseup', () => {
@@ -27,11 +30,11 @@ export default function SideMenu() {
 
   return (
     <div
-      className="sticky left-0 top-0 h-screen pb-7 pl-1 text-gray-100"
+      className="sticky left-0 top-0 h-screen overflow-hidden pb-7 pl-1 text-gray-100"
       style={{ width: menuWidth, minWidth: menuWidth }}
     >
       <div className="flex h-full w-full">
-        <div className="w-full">
+        <div className="w-[calc(100%-4px)]">
           <div className="text-md p-4 font-press">
             <span className="text-primary">IRIS</span> Code
           </div>
@@ -60,7 +63,7 @@ export default function SideMenu() {
           </Accordion>
         </div>
         <div
-          className="h-full cursor-ew-resize border-l border-transparent hover:border-l-2 hover:border-secondary"
+          className="h-full cursor-ew-resize border-l border-transparent hover:border-l-4 hover:border-secondary relative z-10"
           onMouseDown={() => {
             dragging.current = true;
           }}

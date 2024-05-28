@@ -28,7 +28,7 @@ export default function Accordion(props: Props) {
       </button>
 
       {/* content */}
-      {expand && <div className="w-100 overflow-auto pl-4 pr-2">{children}</div>}
+      {expand && <div className="w-100 overflow-auto pl-4 pr-1">{children}</div>}
     </div>
   );
 }
