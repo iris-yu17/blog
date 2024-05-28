@@ -11,7 +11,7 @@ type BreadCrumbItem = {
 
 export default function BreadCrumb({ items }: { items: BreadCrumbItem[] }) {
   return (
-    <div className="sticky left-0 top-10 -ms-6 mb-4 flex w-[calc(100%+3rem)] gap-1 bg-black-200 px-2 py-1 text-sm font-light text-gray-100 shadow-md shadow-[#131313] items-center">
+    <div className="sticky left-0 top-10 -ms-6 mb-4 flex w-[calc(100%+3rem)] gap-1 bg-black-200 px-2 py-1 text-sm font-light text-gray-100 shadow-lg shadow-[#131313] items-center">
       <div>IRIS Code</div>
       <VscChevronRight />
       {items.map((item, index) => {

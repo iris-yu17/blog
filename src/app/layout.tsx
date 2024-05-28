@@ -28,7 +28,7 @@ export default function RootLayout({
           <SideNav />
           <SideMenu />
           <Header />
-          <main className="w-full pb-20 font-rbtm">
+          <main className="w-full pb-20 font-rbtm border-l border-border">
             <PageTab />
             <div className='px-6'>{children}</div>
           </main>
