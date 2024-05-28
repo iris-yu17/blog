@@ -1,8 +1,10 @@
 import articles from '@/data/article';
 import ArticleCard from '@/components/article-card';
+import BreadCrumb from '@/components/breadcrumb';
 import Pagination from '@/components/pagination';
 import CategoryBlock from '@/components/category-block';
 import PageUrls from '@/types/enum/page-url';
+import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 
 export default function Category({
   searchParams,
@@ -23,14 +25,19 @@ export default function Category({
 
   return (
     <>
+      <BreadCrumb
+        items={[
+          {
+            key: BreadcrumbKey.Category,
+          },
+        ]}
+      />
       <h1 className="mb-2 text-3xl font-semibold leading-normal text-quaternary">
         {`{ 文章分類 }`}
       </h1>
       <p className="mb-5 text-lg font-light text-gray-200">
         目前顯示分類為：
-        <span className="font-medium">
-          全部文章
-        </span>
+        <span className="font-medium">全部文章</span>
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 lg:gap-4">

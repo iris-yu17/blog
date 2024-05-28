@@ -1,3 +1,11 @@
+import BreadCrumb from '@/components/breadcrumb';
+import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+
 export default function Search() {
-  return <div>Search page</div>;
+  return (
+    <>
+      <BreadCrumb items={[{ key: BreadcrumbKey.Search }]} />
+      <div>Search page</div>
+    </>
+  );
 }

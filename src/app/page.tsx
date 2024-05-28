@@ -1,7 +1,9 @@
 import ArticleCard from '@/components/article-card';
+import BreadCrumb from '@/components/breadcrumb';
 import Pagination from '@/components/pagination';
 import articles from '@/data/article';
 import PageUrls from '@/types/enum/page-url';
+import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 
 export default async function Home({
   searchParams,
@@ -22,7 +24,14 @@ export default async function Home({
 
   return (
     <>
-      <h1 className="text-3xl font-semibold leading-normal text-quaternary mb-5">
+      <BreadCrumb
+        items={[
+          {
+            key: BreadcrumbKey.Home,
+          },
+        ]}
+      />
+      <h1 className="mb-5 text-3xl font-semibold leading-normal text-quaternary">
         {`{ 文章列表 }`}
       </h1>
       <div className="flex flex-col gap-2 lg:gap-4">
