@@ -30,7 +30,7 @@ export default function RootLayout({
           <Header />
           <main className="w-full pb-20 font-rbtm">
             <PageTab />
-            <div className='px-6 pt-4'>{children}</div>
+            <div className='px-6'>{children}</div>
           </main>
         </div>
         <Footer />

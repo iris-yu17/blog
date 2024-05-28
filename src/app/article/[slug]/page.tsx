@@ -2,7 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import Prose from '@/components/Prose';
-import GoBackButton from '@/components/go-back-button';
+import BreadCrumb from '@/components/breadcrumb';
 import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
@@ -11,6 +11,7 @@ import '@/styles/highlight-js/github-dark-dim.css';
 // import '@/styles/highlight-js/atom-one-dark.css';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 
 const options = {
   mdxOptions: {
@@ -58,10 +59,20 @@ export default async function Article({
 
   return (
     <>
-      {/* <GoBackButton /> */}
+      <BreadCrumb
+        items={[
+          {
+            key: BreadcrumbKey.Home,
+          },
+          {
+            text: name,
+            href: '#',
+          },
+        ]}
+      />
       <div className="mb-6 border-b-2 border-dashed border-gray-100">
         <div className="flex items-center gap-2">
-          <div className="text-code-100 py-2 text-sm">{updated}</div>
+          <div className="py-2 text-sm text-code-100">{updated}</div>
           <>
             {tags.map((item) => {
               return (
