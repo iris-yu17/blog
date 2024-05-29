@@ -87,13 +87,19 @@ blockquote p::after {
 }
 
 .prose {
-  max-width: none;
+  max-width: calc(100vw - 2.875rem - 2rem - 1px);
   font-weight: 300;
   --tw-prose-pre-bg: rgba(var(--black-400-rgba));
   --tw-prose-code: rgba(var(--gray-100-rgba));
   --tw-prose-bold: rgba(var(--gray-100-rgba));
   --tw-prose-quotes: rgba(var(--gray-100-rgba));
   --tw-prose-counters: rgba(var(--gray-100-rgba));
+}
+
+@media (min-width: 768px) {
+  .prose {
+    max-width: none;
+  }
 }
 
 .prose > * {

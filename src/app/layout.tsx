@@ -33,7 +33,6 @@ export default function RootLayout({
           </div>
           <Header />
           <main className="w-full border-l border-border pb-20 font-rbtm">
-            {/* <Header /> */}
             <PageTab />
             <div className="px-4 pt-10 lg:px-6 lg:pt-0">{children}</div>
           </main>
