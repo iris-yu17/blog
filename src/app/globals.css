@@ -8,7 +8,7 @@
 :root {
   /* --- CUSTOM --- */
   /* Theme */
-  --primary-rgba: 0, 122, 204, 1; /* Blue 06 */
+  --primary-rgba: 127, 17, 224, 1; /* Blue 06 */
   --secondary-rgba: 0, 151, 251, 1; /* Blue 05 */
   --tertiary-rgba: 51, 153, 187, 1; /* Blue 04 */
   --quaternary-rgba: 117, 190, 255, 1; /* Blue 01 */
@@ -30,24 +30,25 @@
 }
 
 html.dark {
-  --foreground-rgb: 255, 255, 255;
-
   /* --- CUSTOM --- */
   /* Theme */
-  --primary-rgba: 255, 255, 255, 1;
-  --secondary-rgba: 255, 255, 255, 0.6;
-  --tertiary-rgba: 255, 255, 255, 0.4;
+  --primary-rgba: 0, 122, 204, 1; /* Blue 06 */
+  --secondary-rgba: 0, 151, 251, 1; /* Blue 05 */
+  --tertiary-rgba: 51, 153, 187, 1; /* Blue 04 */
+  --quaternary-rgba: 117, 190, 255, 1; /* Blue 01 */
   /* black */
-  --black-default-rgba: 20, 20, 20, 1;
-  --black-100-rgba: 26, 26, 26, 1;
-  --black-200-rgba: 40, 40, 40, 1;
-  --black-300-rgba: 40, 44, 52, 1; /* prose code bg */
-  /* accent */
-  --accent-default-rgba: 250, 188, 155, 1;
-  --accent-background-rgba: 56, 34, 24, 1;
-  /* green */
-  --green-default-rgba: 18, 201, 113, 1;
-  --green-background-rgba: 15, 138, 81, 0.21;
+  --black-100-rgba: 60, 60, 60, 1; /* #3c3c3c */
+  --black-200-rgba: 37, 37, 38, 1; /* #252526 */
+  --black-300-rgba: 30, 30, 30, 1; /* #1e1e1e */
+  --black-400-rgba: 34, 39, 46, 1; /* prose code bg */
+  /* grey */
+  --gray-default-rgba: 128, 128, 128, 1; /* Gray 05 */
+  --gray-100-rgba: 229, 229, 229, 1; /* Gray 04 */
+  /* code */
+  --code-100-rgba: 141, 193, 73, 1; /* Green Seti */
+  --code-400-rgba: 50, 126, 54, 1; /* Green 04 */
+  --code-200-rgba: 46, 200, 174, 1; /* Green 02 */
+  --code-300-rgba: 22, 130, 93, 1; /* Green 03 */
   /* border */
   --border-rgba: 255, 255, 255, 0.2;
 }
