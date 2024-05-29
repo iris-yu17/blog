@@ -35,12 +35,12 @@ export default function Category({
       <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
         {`{ 文章分類 }`}
       </h1>
-      <p className="text-md mb-5 font-light text-gray-200 lg:text-lg">
+      <p className="text-md mb-5 font-light text-gray-200 md:text-lg">
         目前顯示分類為：
         <span className="font-medium">全部文章</span>
       </p>
       <CategoryBlock />
-      <div className="flex flex-col gap-2 lg:gap-4">
+      <div className="flex flex-col gap-2 md:gap-4">
         {slicedArticles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;

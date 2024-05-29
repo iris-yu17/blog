@@ -30,11 +30,11 @@ export default function SideMenu() {
 
   return (
     <div
-      className="fixed right-0 top-[calc(2.5rem+1px)] z-50 h-screen overflow-hidden border-l border-border bg-black-200 pb-7 pl-1 text-gray-100 md:sticky md:left-0 md:right-auto  md:top-0 md:border-0"
+      className="fixed right-0 top-[calc(2.5rem+1px)] z-10 h-screen overflow-hidden border-l border-border bg-black-200 pb-7 pl-1 text-gray-100 md:sticky md:left-0 md:right-auto  md:top-0 md:border-0"
       style={{ width: menuWidth, minWidth: menuWidth }}
     >
       <div className="flex h-full w-full overflow-auto">
-        <div className="w-[calc(100%-4px)]">
+        <div className="w-[calc(100%-4px)] pb-10 md:pb-0">
           <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
             <span className="text-primary">IRIS</span> Code
           </div>

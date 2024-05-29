@@ -6,7 +6,7 @@ import { VscListSelection, VscClose } from 'react-icons/vsc';
 import SideMenu from '../side-menu';
 
 export default function Header() {
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden">

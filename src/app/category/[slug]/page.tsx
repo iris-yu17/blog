@@ -41,7 +41,7 @@ export default function Category({ params }: { params: { slug: string } }) {
         <span className="font-medium">{CategoryText[tag]}</span>
       </p>
       <CategoryBlock />
-      <div className="flex flex-col gap-2 lg:gap-4">
+      <div className="flex flex-col gap-2 md:gap-4">
         {filteredArticles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;

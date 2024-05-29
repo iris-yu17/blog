@@ -59,7 +59,7 @@ function SideNav() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="sticky left-0 top-10 flex h-[calc(100vh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 lg:h-screen">
+    <div className="sticky left-0 top-10 flex h-[calc(100vh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-screen z-50">
       <nav>
         {NAV.map((item) => {
           const { icon, link, text, activePath } = item;
@@ -83,7 +83,7 @@ function SideNav() {
             >
               <Link
                 href={link}
-                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray lg:p-3
+                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3
                 ${active && 'border-primary text-white'}
                 `)}
                 scroll={false}
