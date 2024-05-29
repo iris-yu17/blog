@@ -20,14 +20,14 @@ export default function ArticleCard({
       key={id}
       className="group/link py-2 font-rbtm hover:bg-black-100"
     >
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <div className="flex gap-2">
           <div className="border-b border-dashed  border-gray-300 text-sm text-gray-300">
             上次更新: {updated}
           </div>
           <div className="text-code-100 text-sm">[#{CategoryText[tag]}]</div>
         </div>
-        <div className="text-xl text-secondary">{name}</div>
+        <div className="text-lg md:text-xl text-secondary">{name}</div>
         <div className="line-clamp-2 text-wrap text-gray-200">
           {description}
         </div>

@@ -31,7 +31,7 @@ export default async function Home({
           },
         ]}
       />
-      <h1 className="mb-5 text-3xl font-semibold leading-normal text-quaternary">
+      <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
         {`{ 文章列表 }`}
       </h1>
       <div className="flex flex-col gap-2 lg:gap-4">

@@ -5,7 +5,7 @@ import { CategoryText } from '@/types/enum/category';
 
 export default function CategoryBlock() {
   return (
-    <div className="mb-5 pb-5 flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 pb-5 lg:mb-5">
       {categoryList.map((item) => {
         const { tag, path } = item;
         return (
