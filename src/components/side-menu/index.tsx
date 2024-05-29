@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export default function SideMenu() {
   const dragging = useRef(false);
-  const [menuWidth, setMenuWidth] = useState(250);
+  const [menuWidth, setMenuWidth] = useState<number>(250);
 
   useEffect(() => {
     window.addEventListener('mousemove', (e) => {
@@ -30,12 +30,12 @@ export default function SideMenu() {
 
   return (
     <div
-      className="sticky left-0 top-0 h-screen overflow-hidden pb-7 pl-1 text-gray-100"
+      className="fixed right-0 top-[calc(2.5rem+1px)] z-50 h-screen overflow-hidden border-l border-border bg-black-200 pb-7 pl-1 text-gray-100 md:sticky md:left-0 md:right-auto  md:top-0 md:border-0"
       style={{ width: menuWidth, minWidth: menuWidth }}
     >
-      <div className="flex h-full w-full">
+      <div className="flex h-full w-full overflow-auto">
         <div className="w-[calc(100%-4px)]">
-          <div className="text-md p-4 font-press">
+          <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
             <span className="text-primary">IRIS</span> Code
           </div>
           <Accordion title={'所有文章'} defaultExpand={true}>
@@ -63,7 +63,7 @@ export default function SideMenu() {
           </Accordion>
         </div>
         <div
-          className="h-full cursor-ew-resize border-l border-transparent hover:border-l-4 hover:border-secondary relative z-10"
+          className="relative z-10 h-full cursor-ew-resize border-l border-transparent hover:border-l-4 hover:border-secondary"
           onMouseDown={() => {
             dragging.current = true;
           }}

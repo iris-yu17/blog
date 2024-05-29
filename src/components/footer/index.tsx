@@ -12,7 +12,7 @@ export default function Footer() {
         <span>main*</span>
       </div>
       <div className="flex-1 text-center">© 2024 All Rights Reserved. IRIS YU.</div>
-      <div className="flex items-center gap-1 px-2">
+      <div className="hidden lg:flex items-center gap-1 px-2">
         <TbBrandNextjs />
         <span>Powered by Next.js</span>
       </div>

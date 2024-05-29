@@ -6,6 +6,7 @@ import Header from '@/components/header';
 import SideMenu from '@/components/side-menu';
 import Footer from '@/components/footer';
 import PageTab from '@/components/page-tab';
+import SideSection from '@/components/side-section';
 // import { ThemeProvider } from './helper/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -24,13 +25,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         {/* <ThemeProvider attribute="class" defaultTheme="dark"> */}
-        <div className="bg-slate-600 sm:flex">
+        <div className="bg-slate-600 flex">
+          {/* <SideSection /> */}
           <SideNav />
-          <SideMenu />
+          <div className="hidden md:block">
+            <SideMenu />
+          </div>
           <Header />
-          <main className="w-full pb-20 font-rbtm border-l border-border">
+          <main className="w-full border-l border-border pb-20 font-rbtm">
+            {/* <Header /> */}
             <PageTab />
-            <div className='px-6'>{children}</div>
+            <div className="px-6 pt-10 lg:pt-0">{children}</div>
           </main>
         </div>
         <Footer />

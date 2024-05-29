@@ -6,9 +6,9 @@ import Link from 'next/link';
 import {
   VscHome,
   VscSearch,
-  VscListTree,
   VscVerified,
   VscAccount,
+  VscLayers
 } from 'react-icons/vsc';
 import PageUrls from '@/types/enum/page-url';
 import type { CustomFlowbiteTheme } from 'flowbite-react';
@@ -36,7 +36,7 @@ export const NAV = [
     activePath: PageUrls.Search,
   },
   {
-    icon: VscListTree,
+    icon: VscLayers,
     text: 'Category',
     link: PageUrls.Category,
     activePath: PageUrls.Category,
@@ -59,8 +59,8 @@ function SideNav() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="sticky left-0 top-0 flex h-screen flex-col justify-between border-r border-border bg-black-300">
-      <div>
+    <div className="sticky left-0 top-10 flex h-[calc(100vh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 lg:h-screen">
+      <nav>
         {NAV.map((item) => {
           const { icon, link, text, activePath } = item;
           const active = path === link || path.includes(activePath);
@@ -83,16 +83,17 @@ function SideNav() {
             >
               <Link
                 href={link}
-                className={twMerge(`block border-l-2 border-black-300 p-3 text-gray
+                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray lg:p-3
                 ${active && 'border-primary text-white'}
                 `)}
+                scroll={false}
               >
                 {icon({ size: 28 })}
               </Link>
             </Tooltip>
           );
         })}
-      </div>
+      </nav>
     </div>
   );
 }
