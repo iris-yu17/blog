@@ -9,7 +9,7 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden">
+    <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden z-50">
       <div className="flex-grow py-2.5 font-press text-sm">
         <span className="text-primary">IRIS</span> Code
       </div>

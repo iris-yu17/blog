@@ -7,11 +7,11 @@ import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 import { CategoryText } from '@/types/enum/category';
-import '@/styles/highlight-js/github-dark-dim.css';
-// import '@/styles/highlight-js/atom-one-dark.css';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+
+import CodeTheme from '@/components/code-theme';
 
 const options = {
   mdxOptions: {
@@ -59,6 +59,7 @@ export default async function Article({
 
   return (
     <>
+      <CodeTheme />
       <BreadCrumb
         items={[
           {
