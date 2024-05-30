@@ -18,7 +18,7 @@ export default function Accordion(props: Props) {
       {/* title */}
       <button
         type="button"
-        className="flex w-full items-center justify-start py-0.5 hover:bg-black-100"
+        className="flex w-full items-center justify-start py-0.5 pl-1 hover:bg-black-100"
         onClick={() => {
           setExpand(!expand);
         }}

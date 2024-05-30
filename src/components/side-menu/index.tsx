@@ -1,16 +1,25 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Dispatch, SetStateAction } from 'react';
 import Accordion from '../accordion';
 import articles from '@/data/article';
 import { categoryList } from '@/data/category';
 import { CategoryText } from '@/types/enum/category';
 import PageUrls from '@/types/enum/page-url';
 import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
 
-export default function SideMenu() {
+const DEFAULT_WIDTH = 256;
+
+type Props = {
+  showMenu: boolean;
+  setShowMenu: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function SideMenu(props: Props) {
+  const { showMenu = true, setShowMenu } = props;
   const dragging = useRef(false);
-  const [menuWidth, setMenuWidth] = useState<number>(250);
+  const [menuWidth, setMenuWidth] = useState<number>(DEFAULT_WIDTH);
 
   useEffect(() => {
     window.addEventListener('mousemove', (e) => {
@@ -19,7 +28,7 @@ export default function SideMenu() {
       }
       setMenuWidth((previousWidth) => {
         const newWidth = previousWidth + e.movementX / 2;
-        return newWidth < 250 ? previousWidth : newWidth;
+        return newWidth < DEFAULT_WIDTH ? previousWidth : newWidth;
       });
     });
 
@@ -30,7 +39,11 @@ export default function SideMenu() {
 
   return (
     <div
-      className="fixed right-0 top-[calc(2.5rem+1px)] z-10 h-screen overflow-hidden border-l border-border bg-black-200 pb-7 pl-1 text-gray-100 md:sticky md:left-0 md:right-auto  md:top-0 md:border-0"
+      className={twMerge(
+        `fixed right-0 top-[calc(2.5rem+1px)] z-10 h-screen overflow-hidden border-l border-border bg-black-200 pb-7 text-gray-100 transition-all md:sticky md:left-0 md:right-auto md:top-0 md:border-0 ${
+          !showMenu && '-right-64'
+        }`,
+      )}
       style={{ width: menuWidth, minWidth: menuWidth }}
     >
       <div className="flex h-full w-full overflow-auto">
@@ -52,6 +65,10 @@ export default function SideMenu() {
                           href={`${PageUrls.Article}/${id}`}
                           key={id}
                           className="block overflow-hidden text-ellipsis whitespace-nowrap py-0.5 hover:bg-black-100"
+                          onClick={() => {
+                            setShowMenu && setShowMenu(false);
+                          }}
+                          scroll={false}
                         >
                           {name}
                         </Link>

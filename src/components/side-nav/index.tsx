@@ -76,8 +76,8 @@ function SideNav() {
             >
               <Link
                 href={link}
-                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white-default md:p-3
-                ${active && 'border-primary text-white-default'}
+                className={twMerge(`hover:text-white-default block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3
+                ${active && 'text-white-default border-primary'}
                 `)}
                 scroll={false}
               >
@@ -87,7 +87,7 @@ function SideNav() {
           );
         })}
         <button
-          className="mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white-default md:p-3"
+          className="hover:text-white-default mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3"
           onClick={() => {
             setShowSetting(!showSetting);
           }}
@@ -102,6 +102,7 @@ function SideNav() {
           <button
             onClick={() => {
               setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
+              setShowSetting(false);
             }}
             className="block text-nowrap rounded px-2 py-1 text-xs leading-3 hover:bg-primary"
           >
