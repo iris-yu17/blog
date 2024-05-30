@@ -36,9 +36,14 @@ const config: Config = {
           300: 'rgba(var(--black-300-rgba))',
           400: 'rgba(var(--black-400-rgba))',
         },
+        white: {
+          DEFAULT: 'rgba(var(--white-default-rgba))',
+        },
         gray: {
           DEFAULT: 'rgba(var(--gray-default-rgba))',
           100: 'rgba(var(--gray-100-rgba))',
+          200: 'rgba(var(--gray-200-rgba))',
+          300: 'rgba(var(--gray-300-rgba))',
         },
         code: {
           100: 'rgba(var(--code-100-rgba))',

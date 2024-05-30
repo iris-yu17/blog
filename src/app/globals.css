@@ -8,25 +8,29 @@
 :root {
   /* --- CUSTOM --- */
   /* Theme */
-  --primary-rgba: 127, 17, 224, 1; /* Blue 06 */
-  --secondary-rgba: 0, 151, 251, 1; /* Blue 05 */
-  --tertiary-rgba: 51, 153, 187, 1; /* Blue 04 */
-  --quaternary-rgba: 117, 190, 255, 1; /* Blue 01 */
+  --primary-rgba: 0, 122, 204, 1;
+  --secondary-rgba: 32, 133, 222, 1;
+  --tertiary-rgba: 51, 153, 187, 1;
+  --quaternary-rgba: 0, 92, 175, 1;
+  /* white */
+  --white-default-rgba: 255, 255, 255;
   /* black */
-  --black-100-rgba: 60, 60, 60, 1; /* #3c3c3c */
-  --black-200-rgba: 37, 37, 38, 1; /* #252526 */
-  --black-300-rgba: 30, 30, 30, 1; /* #1e1e1e */
-  --black-400-rgba: 34, 39, 46, 1; /* prose code bg */
+  --black-100-rgba: 210, 210, 210, 1;
+  --black-200-rgba: 237, 237, 237, 1;
+  --black-300-rgba: 245, 245, 245, 1;
+  --black-400-rgba: 34, 39, 46, 1;
   /* grey */
-  --gray-default-rgba: 128, 128, 128, 1; /* Gray 05 */
-  --gray-100-rgba: 229, 229, 229, 1; /* Gray 04 */
+  --gray-default-rgba: 120, 120, 120, 1;
+  --gray-100-rgba: 20, 20, 20, 1;
+  --gray-200-rgba: 60, 60, 60, 1;
+  --gray-300-rgba: 70, 70, 70, 1;
   /* code */
-  --code-100-rgba: 141, 193, 73, 1; /* Green Seti */
-  --code-400-rgba: 50, 126, 54, 1; /* Green 04 */
-  --code-200-rgba: 46, 200, 174, 1; /* Green 02 */
-  --code-300-rgba: 22, 130, 93, 1; /* Green 03 */
+  --code-100-rgba: 5, 143, 0, 1;
+  --code-400-rgba: 50, 126, 54, 1;
+  --code-200-rgba: 46, 200, 174, 1;
+  --code-300-rgba: 22, 130, 93, 1;
   /* border */
-  --border-rgba: 255, 255, 255, 0.2;
+  --border-rgba: 0, 0, 0, 0.1;
 }
 
 html.dark {
@@ -36,14 +40,18 @@ html.dark {
   --secondary-rgba: 0, 151, 251, 1; /* Blue 05 */
   --tertiary-rgba: 51, 153, 187, 1; /* Blue 04 */
   --quaternary-rgba: 117, 190, 255, 1; /* Blue 01 */
+  /* white */
+  --white-default-rgba: 0, 0, 0, 2;
   /* black */
-  --black-100-rgba: 60, 60, 60, 1; /* #3c3c3c */
-  --black-200-rgba: 37, 37, 38, 1; /* #252526 */
-  --black-300-rgba: 30, 30, 30, 1; /* #1e1e1e */
+  --black-100-rgba: 60, 60, 60, 1; /* Base 14 */
+  --black-200-rgba: 37, 37, 38, 1; /* Base 19 */
+  --black-300-rgba: 30, 30, 30, 1; /* Base 20 */
   --black-400-rgba: 34, 39, 46, 1; /* prose code bg */
   /* grey */
-  --gray-default-rgba: 128, 128, 128, 1; /* Gray 05 */
-  --gray-100-rgba: 229, 229, 229, 1; /* Gray 04 */
+  --gray-default-rgba: 128, 128, 128, 1; /* Base 05 */
+  --gray-100-rgba: 229, 229, 229, 1; /* Base 04 */
+  --gray-200-rgba: 229, 231, 235, 1; /* tailwind gray 200 */
+  --gray-300-rgba: 209, 213, 219, 1; /* tw gray 300 */
   /* code */
   --code-100-rgba: 141, 193, 73, 1; /* Green Seti */
   --code-400-rgba: 50, 126, 54, 1; /* Green 04 */

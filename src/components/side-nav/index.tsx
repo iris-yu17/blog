@@ -76,8 +76,8 @@ function SideNav() {
             >
               <Link
                 href={link}
-                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white md:p-3
-                ${active && 'border-primary text-white'}
+                className={twMerge(`block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white-default md:p-3
+                ${active && 'border-primary text-white-default'}
                 `)}
                 scroll={false}
               >
@@ -87,7 +87,7 @@ function SideNav() {
           );
         })}
         <button
-          className="mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white md:p-3"
+          className="mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray hover:text-white-default md:p-3"
           onClick={() => {
             setShowSetting(!showSetting);
           }}

@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="bg-slate-600 flex">
+          <div className="flex">
             <SideNav />
             <div className="hidden md:block">
               <SideMenu />
