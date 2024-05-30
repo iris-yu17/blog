@@ -8,8 +8,8 @@
 :root {
   /* --- CUSTOM --- */
   /* Theme */
-  --primary-rgba: 0, 122, 204, 1;
-  --secondary-rgba: 32, 133, 222, 1;
+  --primary-rgba: 65, 166, 255, 1;
+  --secondary-rgba: 0, 122, 204, 1;
   --tertiary-rgba: 51, 153, 187, 1;
   --quaternary-rgba: 0, 92, 175, 1;
   /* white */
