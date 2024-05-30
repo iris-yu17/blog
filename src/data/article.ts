@@ -169,6 +169,13 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Next],
     updated: '2024-05-10'
+  },
+  {
+    id: 'nextjs-sc-get-current-url',
+    name: '在 Next.js Server Components 中取得當前 URL',
+    description: '',
+    tags: [CategoryKey.Next],
+    updated: '2024-05-30',
   }
 ];
 
