@@ -7,7 +7,8 @@ export enum CategoryKey {
   Next = 'Next',
   Redux = 'Redux',
   Docker = 'Docker',
-  TypeScript = 'TypeScript'
+  TypeScript = 'TypeScript',
+  Dev = 'Dev'
 }
 
 export enum CategoryText {
@@ -19,5 +20,6 @@ export enum CategoryText {
   Next = 'Next.js',
   Redux = 'Redux',
   Docker = 'Docker',
-  TypeScript = 'TypeScript'
+  TypeScript = 'TypeScript',
+  Dev = '開發'
 }

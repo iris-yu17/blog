@@ -37,4 +37,8 @@ export const categoryList = [
     tag: CategoryKey.TypeScript,
     path: 'typescript'
   },
+  {
+    tag: CategoryKey.Dev,
+    path: 'dev'
+  },
 ];

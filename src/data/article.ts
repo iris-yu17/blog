@@ -176,6 +176,13 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Next],
     updated: '2024-05-30',
+  },
+  {
+    id: 'access-localhost-from-mobile',
+    name: '用手機連 mac 開發環境的 localhost',
+    description: '',
+    tags: [CategoryKey.Dev],
+    updated: '2024-05-31',
   }
 ];
 
