@@ -52,7 +52,7 @@ function SideNav() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="sticky left-0 top-10 z-50 flex h-[calc(100vh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-screen">
+    <div className="sticky left-0 top-10 z-50 flex h-[calc(100dvh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">
       <nav className="flex h-full flex-col pb-7">
         {NAV.map((item) => {
           const { icon, link, text, activePath } = item;
@@ -98,13 +98,13 @@ function SideNav() {
 
       {/* setting items */}
       {showSetting && (
-        <div className="absolute bottom-10 left-14 ml-1 rounded border border-border bg-black-100 p-1">
+        <div className="absolute bottom-10 left-12 ml-1 rounded border border-border bg-black-100 p-1 md:left-14">
           <button
             onClick={() => {
               setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
               setShowSetting(false);
             }}
-            className="block text-nowrap rounded px-2 py-1 text-xs leading-3 hover:bg-primary"
+            className="block whitespace-nowrap text-nowrap rounded px-2 py-1 text-xs leading-3 hover:bg-primary"
           >
             切換亮/暗色模式
           </button>
