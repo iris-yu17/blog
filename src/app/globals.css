@@ -95,14 +95,18 @@ blockquote p::after {
   display: none;
 }
 
+
 .prose {
   max-width: calc(100vw - 2.875rem - 2rem - 2px);
-  font-weight: 300;
   --tw-prose-pre-bg: rgba(var(--black-400-rgba));
   --tw-prose-code: rgba(var(--gray-100-rgba));
   --tw-prose-bold: rgba(var(--gray-100-rgba));
   --tw-prose-quotes: rgba(var(--gray-100-rgba));
   --tw-prose-counters: rgba(var(--gray-100-rgba));
+}
+
+.dark .prose {
+  font-weight: 300;
 }
 
 @media (min-width: 768px) {
@@ -117,7 +121,4 @@ blockquote p::after {
 
 .prose h2 > a {
   text-decoration: none !important;
-}
-.prose :not(h2) > a {
-  display: none;
 }

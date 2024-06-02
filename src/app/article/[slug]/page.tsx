@@ -7,18 +7,36 @@ import articles from '@/data/article';
 import { Article as ArticleType } from '@/types/article';
 import { Badge } from 'flowbite-react';
 import { CategoryText } from '@/types/enum/category';
-import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+import { visit } from 'unist-util-visit';
 
 import CodeTheme from '@/components/code-theme';
+
+function addIdToH2() {
+  return (tree) => {
+    visit(tree, 'element', (node) => {
+      if (node.tagName === 'h2') {
+        if (!node.properties.id) {
+          const id = node.children
+            .filter((child) => child.type === 'text')
+            .map((child) => child.value)
+            .join(' ')
+            .toLowerCase()
+            .replace(/\s+/g, '-');
+          node.properties.id = id;
+        }
+      }
+    });
+  };
+}
 
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeHighlight,
-      rehypeSlug,
+      addIdToH2,
       [
         rehypeAutolinkHeadings,
         {
