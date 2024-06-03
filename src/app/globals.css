@@ -103,6 +103,7 @@ blockquote p::after {
   --tw-prose-bold: rgba(var(--gray-100-rgba));
   --tw-prose-quotes: rgba(var(--gray-100-rgba));
   --tw-prose-counters: rgba(var(--gray-100-rgba));
+  --tw-prose-links: rgba(var(--secondary-rgba));
 }
 
 .dark .prose {
