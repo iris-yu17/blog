@@ -95,7 +95,6 @@ blockquote p::after {
   display: none;
 }
 
-
 .prose {
   max-width: calc(100vw - 2.875rem - 2rem - 2px);
   --tw-prose-pre-bg: rgba(var(--black-400-rgba));
@@ -112,7 +111,8 @@ blockquote p::after {
 
 @media (min-width: 768px) {
   .prose {
-    max-width: none;
+    --w: calc(100vw - 3.375rem - 3rem - 300px);
+    max-width: min(75vw, var(--w));
   }
 }
 
