@@ -107,5 +107,5 @@ const reudcer = (prevState, action) => {
 
 ---
 
-> 參考資料：
-> https://www.youtube.com/playlist?list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3
+參考資料：
+https://www.youtube.com/playlist?list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3

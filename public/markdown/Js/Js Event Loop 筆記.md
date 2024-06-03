@@ -65,18 +65,18 @@
 console.log(123);
 
 setTimeout(() => {
-  console.log("Hello");
+  console.log('Hello');
 }, 1000);
 
-console.log("World");
+console.log('World');
 ```
 
 #### 解答
 
 ```javascript
-123
-"World"
-"Hello"
+123;
+('World');
+('Hello');
 ```
 
 #### 說明
@@ -93,23 +93,23 @@ console.log("World");
 #### 下面這段程式碼的 `console` 結果為何？
 
 ```javascript
-console.log("begins");
+console.log('begins');
 
 setTimeout(() => {
-  console.log("setTimeout 1");
+  console.log('setTimeout 1');
   Promise.resolve().then(() => {
-    console.log("promise 1");
+    console.log('promise 1');
   });
 }, 0);
 
 new Promise(function (resolve, reject) {
-  console.log("promise 2");
+  console.log('promise 2');
   setTimeout(function () {
-    console.log("setTimeout 2");
-    resolve("resolve 1");
+    console.log('setTimeout 2');
+    resolve('resolve 1');
   }, 0);
 }).then((res) => {
-  console.log("dot then 1");
+  console.log('dot then 1');
   setTimeout(() => {
     console.log(res);
   }, 0);
@@ -119,13 +119,13 @@ new Promise(function (resolve, reject) {
 #### 解答
 
 ```javascript
-"begins"
-"promise 2"
-"setTimeout 1"
-"promise 1"
-"setTimeout 2"
-"dot then 1"
-"resolve 1"
+'begins';
+'promise 2';
+'setTimeout 1';
+'promise 1';
+'setTimeout 2';
+'dot then 1';
+'resolve 1';
 ```
 
 #### 說明
@@ -142,5 +142,8 @@ new Promise(function (resolve, reject) {
 10. 呼叫 resolve 所以進入到 .then 於是印出 `dot then 1`
 11. 又有一個 setTimeout，把它放到 Task Queue。此時 Stack 是空的，Task Queue 也沒有微任務了，因此執行 setTimeout，印出 `resolve 1`。
 
-> 參考資料
-> https://www.explainthis.io/zh-hant/swe/js-event-loop-questions
+---
+
+參考資料
+
+- https://www.explainthis.io/zh-hant/swe/js-event-loop-questions

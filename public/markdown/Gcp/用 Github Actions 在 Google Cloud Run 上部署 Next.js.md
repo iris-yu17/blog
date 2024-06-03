@@ -193,14 +193,15 @@ jobs:
   - `CLOUD_RUN_PROJECT_NAME`: 專案的 ID
   - `CLOUD_RUN_SERVICE_ACCOUNT` — 這是 base64 編碼的私鑰。我們要把剛剛下載的 `JSON` 檔轉為 base64 編碼並貼上。
     在 `macOS` ，可以直接這樣：
-    `     base64 <存放JSON檔的路徑>
-    `
+    `    base64 <存放JSON檔的路徑>`
   - `CLOUD_RUN_SERVICE_ACCOUNT_EMAIL`：服務帳戶的 EMAIL
     ![Imgur](https://i.imgur.com/7os5XPw.png)
 
 ## - step5. Push code 至 Github 就完成了 🎉
 
-> 參考資料：
->
-> - https://larrylu.blog/step-by-step-dockerize-your-app-ecd8940696f4
-> - https://medium.com/weekly-webtips/this-is-how-i-deploy-next-js-into-google-cloud-run-with-github-actions-1d7d2de9d203
+---
+
+參考資料：
+
+- https://larrylu.blog/step-by-step-dockerize-your-app-ecd8940696f4
+- https://medium.com/weekly-webtips/this-is-how-i-deploy-next-js-into-google-cloud-run-with-github-actions-1d7d2de9d203

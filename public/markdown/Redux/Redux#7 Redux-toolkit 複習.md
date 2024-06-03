@@ -109,4 +109,6 @@ const reducers = combineReducers({
 
 在 `redux-toolkit` 裡，`configureStore` 會直接幫我們做這件事。
 
-> 參考資料： https://www.youtube.com/watch?v=Q-KZCLu5cbI&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=21
+--- 
+參考資料：
+- https://www.youtube.com/watch?v=Q-KZCLu5cbI&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=21

@@ -168,7 +168,6 @@ example
 
 ---
 
-> 參考資料
-
+參考資料
 - https://www.casper.tw/development/2020/02/16/all-new-promise/
 - https://www.fooish.com/javascript/ES6/Promise.html

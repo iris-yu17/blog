@@ -193,4 +193,5 @@ Updated State: { cake: { numOfCakes: 17 } }
 
 ---
 
-> 參考資料：https://www.youtube.com/watch?v=5EMyvYGzv0o&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=20
+參考資料：
+- https://www.youtube.com/watch?v=5EMyvYGzv0o&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=20

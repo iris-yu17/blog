@@ -33,5 +33,5 @@ const store = createStore(reducers, applyMiddleware(logger));
 
 ---
 
-> 參考資料
-> https://www.youtube.com/watch?v=rRtM82jBQJo
+參考資料
+https://www.youtube.com/watch?v=rRtM82jBQJo

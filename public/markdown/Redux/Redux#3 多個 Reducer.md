@@ -148,5 +148,5 @@ const store = createStore(reducers);
 
 ---
 
-> 參考資料
-> https://www.youtube.com/watch?v=-1I-HpvUiBQ&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=12
+參考資料
+https://www.youtube.com/watch?v=-1I-HpvUiBQ&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3&index=12

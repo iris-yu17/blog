@@ -87,5 +87,5 @@ store.subscribe(() => {
 
 ---
 
-> 參考資料
-> https://www.youtube.com/watch?v=WDJ2eidE-b0&t=339s
+參考資料
+https://www.youtube.com/watch?v=WDJ2eidE-b0&t=339s
