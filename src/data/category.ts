@@ -41,4 +41,8 @@ export const categoryList = [
     tag: CategoryKey.Dev,
     path: 'dev'
   },
+  {
+    tag: CategoryKey.Css,
+    path: 'css'
+  },
 ];
