@@ -10,8 +10,6 @@
 
 ## Action
 
-重點：
-
 - `action` 是我們的 app 唯一能和 `store` 互動的方式
 - `action` 是個物件，慣例上會包含一個 type 屬性，若有其他資訊會放在 payload 屬性。
 - 在 `Redux` 裡，還有個東西叫做 `action creator`，它是一個產生 `action` 的函式。
@@ -19,38 +17,34 @@
 ```javascript
 // action creator
 const orderCake = () => {
-    // return 一個 action
-    return {
-        type: 'ORDER',
-        quantity: 1,
-    }
-}
+  // return 一個 action
+  return {
+    type: 'ORDER',
+    quantity: 1,
+  };
+};
 ```
 
 ## Reducer
 
-重點：
-
 - 在 `reudcer` 裡，我們會制定好依據發送的 `action` ， `state` 會如何改變。
-- `reducer` 是一個函式，它接收 舊的`state` 和 `action` 作為參數，並回傳新的 `state`。
+- `reducer` 是一個函式，它接收舊的 `state` 和 `action` 作為參數，並回傳新的 `state`。
 
 ```javascript
 // 初始的 State 狀態
 const initialState = {
-  cake: 200
+  cake: 200,
 };
 
 // 寫好 reducer
 // 這邊使用預設參數，若沒有傳入 prevState，就使用 initialState
 const reducer = (prevState = initialState, action) => {
-    // ...做處理
-    return newState;
-}
+  // ...做處理
+  return newState;
+};
 ```
 
 ## Store
-
-重點：
 
 - 我們的 `state` 會存放在 `store` 裡；整個應用程式只會有一個 `store`。
 
@@ -79,7 +73,7 @@ store.dispatch(orderCake());
 ```javascript
 // 偵測狀態改變
 store.subscribe(() => {
-  console.log("Updated state:", store.getState());
+  console.log('Updated state:', store.getState());
 });
 ```
 
@@ -88,4 +82,4 @@ store.subscribe(() => {
 ---
 
 參考資料
-https://www.youtube.com/watch?v=WDJ2eidE-b0&t=339s
+- https://www.youtube.com/watch?v=WDJ2eidE-b0&t=339s

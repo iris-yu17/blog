@@ -98,6 +98,7 @@ blockquote p::after {
 .prose {
   max-width: calc(100vw - 2.875rem - 2rem - 2px);
   --tw-prose-pre-bg: rgba(var(--black-400-rgba));
+  --tw-prose-headings: rgba(var(--gray-100-rgba));
   --tw-prose-code: rgba(var(--gray-100-rgba));
   --tw-prose-bold: rgba(var(--gray-100-rgba));
   --tw-prose-quotes: rgba(var(--gray-100-rgba));

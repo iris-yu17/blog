@@ -4,7 +4,7 @@
 
 - 什麼是 `thunk`？
   被另一個函式回傳出來的函式，就叫做 `thunk`。
-- 在 `Redux` 中，`reducer` 的 `action` 必須是物件，而`Redux-thunk` 讓我們可以寫一個回傳 function 的 `action creator`。透過這個 `thunk`，我們可以控制發送 `action` 的時機。
+- 在 `Redux` 中，`reducer` 的 `action` 必須是物件，而 `Redux-thunk` 讓我們可以寫一個回傳 `function` 的 `action creator`。透過這個 `thunk`，我們可以控制發送 `action` 的時機。
 - `Redux-thunk` 的源碼就是單純判斷 `action` 是否為 `function` 而已 ，如果是的話，就執行這個 `function`。
 
 ```javascript
@@ -165,4 +165,4 @@ store.dispatch(fetchUserActionCreator());
 
 1. 統一管理：把非同步操作的邏輯在單獨的地方集中管理，提高程式碼的重用性和可測試性。
 2. 分開邏輯：分開元件的渲染邏輯和網路請求邏輯，元件不用直接處理非同步操作，只需呼叫 action creator，不需要處理請求、回應等細節。
-3. 程式碼的可讀性：以本文章的例子，不使用 `Redux-thunk` 的情況，我們會呼叫 `fetchUser()` ；使用 `Redux-thunk` 的情況，則是 `dispatch(fetchUserActionCreator())`。相比起來，當我們一看到 `dispatch(fetchUserActionCreator())` 就會知道這是非同步的行為，而不是單純的函式調用。
+3. 程式碼的可讀性：以本文章的例子，不使用 `Redux-thunk` 的情況，我們會呼叫 `fetchUser()`；使用 `Redux-thunk` 的情況，則是 `dispatch(fetchUserActionCreator())`。相比起來，當我們一看到 `dispatch(fetchUserActionCreator())` 就會知道這是非同步的行為，而不是單純的函式調用。

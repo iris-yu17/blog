@@ -1,12 +1,11 @@
-> **備註：此篇範例是在 `node.js` 的環境跑**
+> 備註：此篇範例是在 `node.js` 的環境跑\
+> Demo：https://codesandbox.io/p/sandbox/redux-6-redux-toolkit-yyy4r2
 
 ## 前言
 
 - 在 `Redux` 中，有許多重複性高的模板code (boilerplate code)。像我們每次都要創建一個 `action` 物件、`action creator`、在 `reducer` 裡使用 switch case 來改變 `state` ...等。在專案中重複這些動作是很不方便的事。
 - 使用 `Redux-toolkit` 可以讓開發變得更加有效率。
 - 在這個章節會使用 `Redux-toolkit` 來實作前面蛋糕店、冰淇淋店的例子。
-
-範例：https://codesandbox.io/p/sandbox/redux-6-redux-toolkit-yyy4r2
 
 ## - step0. 專案 set up
 
@@ -19,8 +18,7 @@ npm i @reduxjs/toolkit
 2. 資料夾結構
 
 - `Redux-toolkit` 提供了一個建議的資料夾結構，以協助組織 `Redux` 相關的程式碼。
-- 建議的資料夾結構通常是基於功能的(feature)，而不是基於檔案類型的。
-
+- 建議的資料夾結構通常是基於功能的(feature)，所有關於同個功能的檔案放在同一個資料夾。
 ```
 /app
     - index.js
@@ -34,7 +32,7 @@ npm i @reduxjs/toolkit
 說明：
 
 - 在 `redux-toolkit` 中，建議把一個功能的 `reducer` 邏輯和 `action` 放在一起，且檔案名稱以 `slice` 作為後綴。
-- 把應用程式分成一個個 `slice` 來管理狀態。
+- 把應用程式分成一個個的 `slice` 來管理狀態。
 - 我們在 `cake` 資料夾底下，新增 `cakeSlice.js`
 
 引入 createSlice
@@ -140,7 +138,7 @@ module.exports = store;
 
 ## - step4. 使用 store
 
-- 如同單純 `redux` 一樣，使用 `getState()` 來得到狀態；使用 `subscribe()` 來註冊。(詳見[[Redux] #2 Store, Action, Reudcer 基本寫法](https://hackmd.io/3vNH6QuVRNO7RGbgFl1MCA?view#Store))
+- 如同單純 `redux` 一樣，使用 `getState()` 來得到狀態；使用 `subscribe()` 來註冊。(詳見 [Redux#2 Store, Action, Reudcer 基本寫法](./redux-2))
 - 使用 `dispatch()` 來發送 `action`
 - 直接使用 `redux-toolkit` 幫我們產生的 action creator
 

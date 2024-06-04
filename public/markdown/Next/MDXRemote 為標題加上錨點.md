@@ -127,6 +127,10 @@ yarn add unist-util-visit
 ```
 ### 自訂 `function` 
 ```javascript
+import { visit } from 'unist-util-visit';
+
+// ...
+
 function addIdToH2() {
   return (tree) => {
     visit(tree, 'element', (node) => {

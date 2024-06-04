@@ -2,7 +2,7 @@ Demo: https://codesandbox.io/p/sandbox/redux-6-redux-toolkit-yyy4r2
 
 ## 前言
 
-在[前一章節](https://hackmd.io/@iris-yu17/redux_6)，我們介紹了`redux-toolkit` 的使用步驟，並創建了 cake feature。在這章節，我們再加上 iceCream feature。
+在[前一章節](./redux_6)，我們介紹了`redux-toolkit` 的使用步驟，並創建了 cake feature。在這章節，我們再加上 iceCream feature。
 
 ## - step1. create iceCreamSlice
 
