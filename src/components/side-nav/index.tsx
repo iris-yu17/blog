@@ -52,7 +52,7 @@ function SideNav() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="sticky left-0 top-10 z-50 flex h-[calc(100dvh-2.5rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">
+    <div className="sticky left-0 top-12 z-50 flex h-[calc(100dvh-3rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">
       <nav className="flex h-full flex-col pb-7">
         {NAV.map((item) => {
           const { icon, link, text, activePath } = item;

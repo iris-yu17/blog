@@ -40,7 +40,7 @@ export default function SideMenu(props: Props) {
   return (
     <div
       className={twMerge(
-        `fixed right-0 top-[calc(2.5rem+1px)] z-10 h-[calc(100dvh-4.25rem-1px)] overflow-hidden border-l border-border bg-black-200 text-gray-100 transition-all md:sticky md:left-0 md:right-auto md:top-0 md:h-screen md:border-0 md:pb-7 ${
+        `fixed right-0 top-[calc(3rem+1px)] z-10 h-[calc(100dvh-4.25rem-1px)] overflow-hidden border-l border-border bg-black-200 text-gray-100 transition-all md:sticky md:left-0 md:right-auto md:top-0 md:h-screen md:border-0 md:pb-7 ${
           !showMenu && '-right-64'
         }`,
       )}

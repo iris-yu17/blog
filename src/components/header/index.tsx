@@ -10,11 +10,11 @@ export default function Header() {
 
   return (
     <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden">
-      <div className="flex-grow py-2.5 font-press text-sm">
+      <div className="flex-grow py-3 font-press text-md">
         <span className="text-primary">IRIS</span> Code
       </div>
       <button
-        className="text-2xl text-gray-100"
+        className="text-3xl text-gray-100"
         onClick={() => {
           setShowMenu((oldVal) => !oldVal);
         }}
@@ -23,7 +23,7 @@ export default function Header() {
       </button>
 
       {showMenu && (
-        <div className="fixed left-0 top-10 h-full w-screen bg-gray-500/50 dark:bg-gray-700/50">
+        <div className="fixed left-0 top-12 h-full w-screen bg-gray-500/50 dark:bg-gray-700/50">
           <div
             className="h-full w-full"
             onClick={() => {
