@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'redux-9',
+    name: 'Redux#9 Redux-toolkit 和 Extra reducers',
+    description: '',
+    tags: [CategoryKey.Redux],
+    updated: '2024-06-06',
+  },
+  {
     id: 'redux-8',
     name: 'Redux#8 Redux-toolkit 和 Middleware',
     description: '',

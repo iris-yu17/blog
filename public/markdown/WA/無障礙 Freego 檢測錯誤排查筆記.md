@@ -15,9 +15,9 @@
 可以依[這邊](https://accessibility.moda.gov.tw/Questions/Detail/4467?Category=20)指示的步驟，下載 ChromeDriver，並覆蓋 Freego 裡的 ChromeDriver。
 
 若還是無法運作，可以檢查自己電腦的 Chrome 版本，跟下載的 ChromeDrive 版本是否一致。
-!![Imgur](https://i.imgur.com/WaImf6r.png)
+![Imgur](https://i.imgur.com/WaImf6r.png)
 
-    ![Imgur](https://i.imgur.com/KmK5LoY.png)
+![Imgur](https://i.imgur.com/KmK5LoY.png)
 
 ### 2. 檢測到無效的連結
 
