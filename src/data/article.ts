@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'redux-8',
+    name: 'Redux#8 Redux-toolkit 和 Middleware',
+    description: '',
+    tags: [CategoryKey.Redux],
+    updated: '2024-06-05',
+  },
+  {
     id: 'css-scroll-driven-animation',
     name: 'animation-timeline - 用純 CSS 實現滾動動畫',
     description: '',
@@ -109,7 +116,7 @@ const articles: Article[] = [
   },
   {
     id: 'redux-7',
-    name: 'Redux#7 Redux-toolkit 複習',
+    name: 'Redux#7 Redux-toolkit 使用步驟複習',
     description: '貫光且封開人口牛寺世京昌五？不雨現瓜回禾中，風起面反門說魚過消背得圓開。飯昔寸親早。至司抱言棵怪姊要貫頁聲蛋：象住耍道穴方菜室唱。',
     tags: [CategoryKey.Redux],
     updated: '2024-05-10',

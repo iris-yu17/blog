@@ -12,9 +12,11 @@
 
 1. 預設：載入後就執行動畫
 2. `Scroll Progress Timeline`（滾動進度時間軸）：
-   動畫的時間軸是根據滾動容器的 scrollbar 位置來決定。\例如：scrollbar 滾到一半，時間軸會是 50%；scrollbar 滾到最底，時間軸為 100%。
+   動畫的時間軸是根據滾動容器的 scrollbar 位置來決定。\
+   例如：scrollbar 滾到一半，時間軸會是 50%；scrollbar 滾到最底，時間軸為 100%。
 3. `View Progress Timeline`（視區進度時間軸）：
-   動畫的時機軸是根據目標元素在的滾動容器中的顯示比例來決定。\例如：目標元素剛進入容器時，時間軸會是 0%；當目標元素到達畫面邊緣時，則是 100%。
+   動畫的時機軸是根據目標元素在的滾動容器中的顯示比例來決定。\
+   例如：目標元素剛進入容器時，時間軸會是 0%；當目標元素到達滾動容器邊緣時，則是 100%。
 
 ## Scroll Progress Timeline 寫法
 
@@ -80,8 +82,10 @@ body {
 scroll() 裡面的參數可以參考[這邊](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll)。
 
 大致說明一下 scroll() 的參數，可放入兩個參數，一個是 `scroller`，一個是 `axis`。\
-`scroller`：要以什麼元素來控制動畫滾動，預設為 `nearest`，代表使用最近可滾動的父元素。\
-`axis`：滾動方向，預設為 `block`。代表與書寫方向垂直，例如中文是橫向書寫，滾動方向就是直向 (y軸)。
+1. `scroller`：要以什麼元素來控制動畫滾動。\
+   預設為 `nearest`，代表使用最近可滾動的父元素。
+2. `axis`：滾動方向。\
+   預設為 `block`，代表與書寫方向垂直，例如中文是橫向書寫，滾動方向就是直向 (y軸)。
 
 ```css
 #square {
@@ -175,8 +179,8 @@ p {
 
 要在滾動元素使用 `animation-timeline: view()`。\
 大致說明 view() 的參數，有兩個， `inset` 和 `axis`：\
-`inset`：可以有兩個值，預設是 `auto`。 `inset` 是用來設定動畫的起訖點。若為正，表示觸發動畫開始或結束的位置向內移動（也就是動畫會變晚開始或變早結束），反之亦然。\
-`axis`：和 scroll() 一樣。
+1. `inset`：可以有兩個值，預設是 `auto`。 `inset` 是用來設定動畫的起訖點。若為正，表示觸發動畫開始或結束的位置向內移動（也就是動畫會變晚開始或變早結束），反之亦然。
+2. `axis`：和 scroll() 一樣。
 
 ```css
 .animation {
