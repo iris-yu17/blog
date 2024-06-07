@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'redux-10',
+    name: 'Redux#10 Redux-toolkit 處理非同步',
+    description: '',
+    tags: [CategoryKey.Redux],
+    updated: '2024-06-07',
+  },
+  {
     id: 'redux-9',
     name: 'Redux#9 Redux-toolkit 和 Extra reducers',
     description: '',

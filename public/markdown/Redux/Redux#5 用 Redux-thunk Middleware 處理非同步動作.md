@@ -130,7 +130,7 @@ fetchUser();
 ### - 使用 `Redux-thunk` 寫法
 
 - 創建一個回傳 function 的 `action creator`
-- 回傳的 funcion (`thunk`) 接收 `dispatch` 作為參數。
+- 回傳的 funcion (也就是 `thunk`) 接收 `dispatch` 作為參數。
 
 #### Action creator
 
