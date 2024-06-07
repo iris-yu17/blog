@@ -136,7 +136,7 @@ const iceCreamSlice = createSlice({
 #### 寫法二
 
 使用 build function，這是比較建議的寫法，寫法如下\
-`extraReducers` 的值會是一個函式\
+`extraReducers` 的值會是一個函式
 
 - 此函式有一個 `builder` 參數
 - 在函式裡面，我們可以用這個 `builder` 來新增一個情況，語法為 `builder.addCase()`
@@ -145,7 +145,7 @@ const iceCreamSlice = createSlice({
 
 ### 完成🎉
 
-如果查看 terminal，同樣可以看到 iceCream 隨著 `cake/order` 減一
+## 如果查看 terminal，同樣可以看到 iceCream 隨著 `cake/order` 減一
 
 參考資料：
 
