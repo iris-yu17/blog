@@ -1,4 +1,4 @@
-> Demo: https://codesandbox.io/p/devbox/redux-9-redux-toolkit-with-async-thunk-zj6fg3
+> Demo: https://codesandbox.io/p/devbox/redux-10-redux-toolkit-with-async-thunk-zj6fg3
 
 ## 前言
 
@@ -57,7 +57,7 @@ const userSlice = createSlice({
 
 - `Redux-toolkit` 提供了 `createAsyncThunk` 這個 function 來幫我們建立、發送非同步的 `action`
 - `createAsyncThunk` 接收兩個參數：
-  1. `action` 名稱字串
+  1. action 的名稱
   2. 一個回傳 promise 的 callback function
 - `createAsyncThunk` 會自動發送基於這個 promise 生命週期 (pending, fulfilled, rejected) 的 `action`，因此會有三個 `action types`： `pending`, `fulfilled`, `rejected`
 

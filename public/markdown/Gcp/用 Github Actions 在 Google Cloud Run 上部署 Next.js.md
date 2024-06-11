@@ -92,7 +92,7 @@ IAM 管理 > 服務帳戶 > 建立服務帳戶
 點擊建立新的金鑰，會跳出一個彈窗，選擇 `JSON` ，會下載一個金鑰的 `JSON` 檔
 ![Imgur](https://i.imgur.com/eMkquGA.png)
 
-## -step3. 更新 `package.json` 的 `Scripts`
+## - step3. 更新 `package.json` 的 `Scripts`
 
 執行 `start` 時，需要從 `cloud run` 接收一個 PORT
 
@@ -110,7 +110,7 @@ IAM 管理 > 服務帳戶 > 建立服務帳戶
 PORT=3000 npm start
 ```
 
-## -step4. 配置 `Github Actions`
+## - step4. 配置 `Github Actions`
 
 ### 1. 創建 `cloud-run.yml`
 

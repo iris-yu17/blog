@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'redux-11',
+    name: 'Redux#11 React-redux 教學',
+    description: '',
+    tags: [CategoryKey.Redux],
+    updated: '2024-06-11',
+  },
+  {
     id: 'redux-10',
     name: 'Redux#10 Redux-toolkit 處理非同步',
     description: '',
