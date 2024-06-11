@@ -34,7 +34,9 @@ export default function Category({ params }: { params: { slug: string } }) {
         ]}
       />
       <h1 className="mb-2 text-3xl font-semibold leading-normal text-quaternary">
-        {`{ 文章分類 }`}
+        {`<`}
+        <span className="mx-1">文章分類</span>
+        {`/>`}
       </h1>
       <p className="mb-5 text-lg font-light text-gray-200">
         目前顯示分類為：

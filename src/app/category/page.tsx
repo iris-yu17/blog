@@ -33,7 +33,9 @@ export default function Category({
         ]}
       />
       <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
-        {`{ 文章分類 }`}
+        {`<`}
+        <span className="mx-1">文章分類</span>
+        {`/>`}
       </h1>
       <p className="text-md mb-5 font-light text-gray-200 md:text-lg">
         目前顯示分類為：

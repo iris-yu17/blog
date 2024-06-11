@@ -54,8 +54,11 @@ export default function SideMenu(props: Props) {
           <Accordion title={'所有文章'} defaultExpand={true}>
             {categoryList.map((category) => {
               const { tag } = category;
+              const count = articles.filter(
+                (item) => item.tags[0] === tag,
+              ).length;
               return (
-                <Accordion key={tag} title={CategoryText[tag]}>
+                <Accordion key={tag} title={`${CategoryText[tag]} (${count})`}>
                   {articles.map((item) => {
                     const { tags, name, id } = item;
                     const _tag = tags[0];

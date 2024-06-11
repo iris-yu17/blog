@@ -32,7 +32,9 @@ export default async function Home({
         ]}
       />
       <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
-        {`{ 文章列表 }`}
+        {`<`}
+        <span className="mx-1">文章列表</span>
+        {`/>`}
       </h1>
       <div className="flex flex-col gap-2 md:gap-4">
         {slicedArticles.map((item) => {
