@@ -9,12 +9,13 @@ Demo 說明：\
 
 在這章節，終於要進入 `react-redux` 了。
 
-- 在 `React` 中使用 `Redux`，我們會使用 `Redux-toolkit` 來幫忙建立 `slice`, `store`，方式就跟前面章節說明的一樣，差別只在於前面章節是在 node.js 環境跑，這次是在瀏覽器環境，因此可使用 `import`。
+- 在 `React` 中使用 `Redux`，我們會使用 `Redux-toolkit` 來幫忙建立 `slice` 和 `store`，方式就跟前面章節說明的一樣，差別只在於前面章節是在 node.js 環境跑，這次是在瀏覽器環境，因此可使用 `import`。
 - 我們會從 0 開始，一步步重新建立 `slice` 和 `store`，並且示範在 `react-redux` 要如何取得 `state` 和發送 action 來更新 `state`。
 
 ## - step0. 建立專案、安裝相關套件
 
 ### 建立 React 專案
+
 ```
 npx create-react-app my-app
 ```
@@ -56,7 +57,7 @@ const cakeSlice = createSlice({
       state.numOfCakes -= 1;
     },
     restock: (state, action) => {
-      state.numOfCakes += action.payload.quantity;
+      state.numOfCakes += action.payload;
     },
   },
 });
@@ -177,17 +178,25 @@ export function Cake() {
 ## - step5. 用 useDispatch 來發送 action
 
 - 引入 `action creator`\
-  記得嗎，`action creator` 會回傳一個 action，例如：
+   複習：記得嗎，`action creator` 會回傳一個 action，例如：
 
   ```javascript
+  // action creator
+  restock(5);
+  ```
+
+  會回傳
+
+  ```javascript
+  // action
   {
     type: 'cake/restock',
-    payload: 1
+    payload: 5
   }
   ```
 
 - 使用 `react-redux` 的 `useDispatch` hook，它會回傳 `redux store` 的 `dispatch` function\
-   像在前面 `redux-toolkit`，若要發送 action，我們會這樣寫
+  像在前面 `redux-toolkit`，若要發送 action，我們會這樣寫
 
   ```javascript
   store.dispatch(action 放這);
@@ -215,7 +224,6 @@ export function Cake() {
       <div>Cake 數量： {cakeCount}</div>
       <button
         onClick={() => {
-          // order() 是 action creator, 它會回傳 action（一個包含 type 和 payload 的物件）
           disaptch(order());
         }}
       >
@@ -223,16 +231,7 @@ export function Cake() {
       </button>
       <button
         onClick={() => {
-          // restock() 是 action creator, 它會回傳 action（一個包含 type 和 payload 的物件）
-          disaptch(restock({ quantity: 5 }));
-
-          // 相當於
-          // disaptch({
-          //   type: 'cake/restock'
-          //   payload: {
-          //     quantity:5
-          //   }
-          // });
+          disaptch(restock(5));
         }}
       >
         Restock Cake
