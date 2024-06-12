@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'js-var-let-const-diff',
+    name: 'var, let, const 差別',
+    description: '',
+    tags: [CategoryKey.Js],
+    updated: '2024-06-12',
+  },
+  {
     id: 'redux-11',
     name: 'Redux#11 React-redux 教學',
     description: '',
