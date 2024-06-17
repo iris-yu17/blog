@@ -17,14 +17,16 @@ Javascript 建立執行環境時會分2個階段：
 
 ## 小觀念補充
 
-稍微說明一下 `undefined` 跟 `XXX is not defined` 的差別。
+為了之後的內容，先稍微說明一下 `undefined` 跟 `XXX is not defined` 的差別。
 
 - undefined：代表的是**未定義**\
   例如 `a is undefined`，是指這個變數 a 是存在的，只是 a 的值還未被定義。
-- `XXX is not defined`：代表的是**不存在**\
+- XXX is not defined：代表的是**不存在**\
   例如 `a is not defined`，指的是 a 這個變數並不存在。
 
-我們直接用幾個例子來說明：
+---
+
+接下來我們直接用幾個例子來說明「提升」：
 
 ## (1) 變數提升
 
