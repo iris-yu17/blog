@@ -79,7 +79,7 @@ function SideNav() {
                 className={twMerge(`hover:text-white-default block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3
                 ${active && 'text-white-default border-primary'}
                 `)}
-                scroll={false}
+                // scroll={false}
               >
                 {icon({ size: 28 })}
               </Link>

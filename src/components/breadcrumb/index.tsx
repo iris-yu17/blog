@@ -24,7 +24,7 @@ export default function BreadCrumb({ items }: { items: BreadCrumbItem[] }) {
             <Link
               href={href || PageUrls[key]}
               className="hover:text-white-default hover:font-medium dark:hover:font-normal"
-              scroll={false}
+              // scroll={false}
             >
               {text || BreadcrumbText[key]}
             </Link>

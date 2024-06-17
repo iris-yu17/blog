@@ -71,7 +71,7 @@ export default function SideMenu(props: Props) {
                           onClick={() => {
                             setShowMenu && setShowMenu(false);
                           }}
-                          scroll={false}
+                          // scroll={false}
                         >
                           {name}
                         </Link>
