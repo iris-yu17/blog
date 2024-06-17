@@ -13,17 +13,7 @@
    不斷檢查 Stack 是否為空，若為空就把 Queue 裡的任務放到 Stack 中執行，如此循環往復。
 4. Web API：Web API 是瀏覽器提供的方法，例如：`setTimeout`、`XMLHttpRequest` ...等，運作於瀏覽器端，並不是 JavaScript 引擎的一部分，所以他們可以同時執行。
 
-```
- {Call Stack}                   {Web API}
- -------------           -----------------------
-|             |         |  e.g. setTimeout()    |
-|             |          -----------------------
-|             |
-| [functionA] |               {Task Queue}
-| [functionB] |     -----------------------------------
-| [functionC] |    | [task1] [task2] [task3]           |
- -------------      -----------------------------------
-```
+![Imgur](https://i.imgur.com/0EyLg6m.jpg)
 
 ## 事件循環步驟
 
@@ -53,7 +43,14 @@
 ### 常見的宏任務與微任務
 
 - 宏任務：`Script` (整體程式碼)、 `setTimeout` 、`setInterval`、UI渲染、事件
-- 微任務：`Promise` 的 `then` 方法、`MutationObserver`
+- 微任務：`Promise` 的 `then` 方法、`MutationObserver`、`await` 後的程式碼
+
+### 執行順序如下：
+
+1. 執行宏任務（最一開始會是整個 `Srcipt`）
+2. 若遇到宏任務，就放到 Task Queue 中的宏任務列隊；若遇到微任務，就放到 Task Queue 中的微任務列隊
+3. 當 call stack 空了，檢查微任務列隊，執行完所有的微任務
+4. 再回到第一步，執行宏任務
 
 ## 練習
 
@@ -131,11 +128,11 @@ new Promise(function (resolve, reject) {
 #### 說明
 
 1. 依順序執行程式碼，因此先印出 `begins`
-2. 接著跑到 setTimeout，把它放到 Task Queue
+2. 接著跑到 setTimeout，把它放到 Task Queue 的宏任務
 3. 再往下走，執行 new Promise 裡的內容，會印出 `promise 2`
-4. 又遇到 setTimeout，把它放到 Task Queue
+4. 又遇到 setTimeout，把它放到 Task Queue 的宏任務
 5. 此時主線程 (Stack) 空了，去看 Task Queue 的任務，Task Queue 有兩個 setTimeout (兩個都是宏任務)
-6. 先執行第一個 setTimeout，因此會印出 `setTimeout 1`，往下遇到 Promise.resolve，把它放到 Task Queue
+6. 先執行第一個 setTimeout，因此會印出 `setTimeout 1`，往下遇到 Promise.resolve，把它放到 Task Queue 的微任務
 7. 由於宏任務一次只執行一個，因此不會再執行第二個 setTimeout，而是去看有沒有微任務。
 8. 發現 Task Queue 裡此時有第 6 步放進的 Promise.resolve，所以印出 `promise 1`
 9. 再回來執行宏任務 setTimeout，印出 `setTimeout 2`
@@ -146,4 +143,5 @@ new Promise(function (resolve, reject) {
 
 參考資料
 
+- https://www.explainthis.io/zh-hant/swe/what-is-event-loop
 - https://www.explainthis.io/zh-hant/swe/js-event-loop-questions
