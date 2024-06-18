@@ -172,6 +172,7 @@ false
 因為即使把 `func2` 寫在 `obj` 裡，但它並不是作為 `obj` 的方法來呼叫的。因此 `func2` 裡面的 `this` 並不會自動指向 `obj`，而是預設的 window 物件。
 
 ---
+
 參考資料
 
 - https://www.shubo.io/javascript-this/#什麼是-this
