@@ -5,11 +5,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PageUrls from '@/types/enum/page-url';
 
+type PaginationProps = {
+  totalPages: number;
+  currentPage: number;
+  mainPath: PageUrls;
+};
+
 export default function Pagination({
   totalPages,
   currentPage,
   mainPath = PageUrls.Home,
-}) {
+}: PaginationProps) {
   const router = useRouter();
 
   const onPageChange = (page: number) => {
@@ -17,7 +23,7 @@ export default function Pagination({
   };
 
   return (
-    <div className="mt-10 flex overflow-x-auto justify-center">
+    <div className="mt-10 flex justify-center overflow-x-auto">
       <FlowBitePagination
         theme={{
           pages: {

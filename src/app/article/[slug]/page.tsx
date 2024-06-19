@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { Pluggable } from 'unified';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import Prose from '@/components/Prose';
@@ -14,13 +15,13 @@ import { visit } from 'unist-util-visit';
 import CodeTheme from '@/components/code-theme';
 
 function addIdToH2() {
-  return (tree) => {
+  return (tree: any) => {
     visit(tree, 'element', (node) => {
       if (node.tagName === 'h2') {
         if (!node.properties.id) {
           const id = node.children
-            .filter((child) => child.type === 'text')
-            .map((child) => child.value)
+            .filter((child: any) => child.type === 'text')
+            .map((child: any) => child.value)
             .join(' ')
             .toLowerCase()
             .replace(/\s+/g, '-');
@@ -35,7 +36,7 @@ const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
-      rehypeHighlight,
+      rehypeHighlight as Pluggable<any[]>,
       addIdToH2,
       [
         rehypeAutolinkHeadings,
@@ -48,7 +49,7 @@ const options = {
             children: [{ type: 'text', value: '#' }],
           },
         },
-      ],
+      ] as Pluggable<any[]>,
     ],
   },
 };

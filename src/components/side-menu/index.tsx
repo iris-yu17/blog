@@ -12,8 +12,8 @@ import { twMerge } from 'tailwind-merge';
 const DEFAULT_WIDTH = 256;
 
 type Props = {
-  showMenu: boolean;
-  setShowMenu: Dispatch<SetStateAction<boolean>>;
+  showMenu?: boolean;
+  setShowMenu?: Dispatch<SetStateAction<boolean>>;
 };
 
 export default function SideMenu(props: Props) {
