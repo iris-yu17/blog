@@ -12,7 +12,7 @@ export default function Footer() {
         <span>main*</span>
       </div>
       <div className="flex-1 text-center font-light">
-        © 2024 All Rights Reserved. IRIS YU.
+        © 2024 All Rights Reserved. IRIS Studio
       </div>
       <div className="hidden items-center gap-1 px-2 font-light md:flex">
         <TbBrandNextjs />
@@ -22,4 +22,3 @@ export default function Footer() {
   );
 }
 
-// © 2024All Rights Reserved. IRIS YU

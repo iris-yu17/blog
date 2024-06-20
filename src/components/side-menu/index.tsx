@@ -49,7 +49,7 @@ export default function SideMenu(props: Props) {
       <div className="flex h-full w-full overflow-auto">
         <div className="w-[calc(100%-4px)] pb-10 md:pb-0">
           <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
-            <span className="text-primary">IRIS</span> Code
+            <span className="text-primary">IRIS</span> Studio
           </div>
           <Accordion title={'所有文章'} defaultExpand={true}>
             {categoryList.map((category) => {

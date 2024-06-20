@@ -39,7 +39,7 @@ export default function Pagination({
             selector: {
               base: 'w-5 h-5 md:h-8 md:w-8 rounded-full mx-2 leading-tight text-gray-100 hover:text-gray-100 enabled:hover:bg-primary',
               active:
-                'bg-secondary text-gray-100 hover:secondary hover:text-gray-100',
+                'dark:bg-secondary bg-secondary text-gray-100 hover:secondary hover:text-gray-100',
               disabled: 'cursor-not-allowed opacity-50',
             },
           },
