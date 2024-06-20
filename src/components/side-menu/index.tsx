@@ -51,7 +51,7 @@ export default function SideMenu(props: Props) {
           <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
             <span className="text-primary">IRIS</span> Studio
           </div>
-          <Accordion title={'所有文章'} defaultExpand={true}>
+          <Accordion title={'技術文章'} defaultExpand={true}>
             {categoryList.map((category) => {
               const { tag } = category;
               const count = articles.filter(
@@ -81,6 +81,7 @@ export default function SideMenu(props: Props) {
               );
             })}
           </Accordion>
+          {/* <Accordion title={'其他文章'} defaultExpand={true}></Accordion> */}
         </div>
         <div
           className="relative z-10 h-full cursor-ew-resize border-l border-transparent hover:border-l-4 hover:border-secondary"

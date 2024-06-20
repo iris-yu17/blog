@@ -31,12 +31,12 @@ export const NAV = [
     link: PageUrls.About,
     activePath: PageUrls.About,
   },
-  {
-    icon: VscSearch,
-    text: 'Search',
-    link: PageUrls.Search,
-    activePath: PageUrls.Search,
-  },
+  // {
+  //   icon: VscSearch,
+  //   text: 'Search',
+  //   link: PageUrls.Search,
+  //   activePath: PageUrls.Search,
+  // },
   {
     icon: VscLayers,
     text: 'Category',
