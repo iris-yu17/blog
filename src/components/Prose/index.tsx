@@ -6,7 +6,7 @@ type propsType = {
 
 export default function Prose(props: propsType) {
   return (
-    <div className="prose font-rbtm prose-h2:scroll-mt-20 prose-h2:border-b prose-h2:border-border prose-ul:overflow-auto prose-hr:border-dashed prose-hr:border-gray-200">
+    <div className="prose font-rbtm prose-h2:scroll-mt-20 prose-h2:border-b prose-h2:border-border prose-hr:border-dashed prose-hr:border-gray-200">
       {props.children}
     </div>
   );

@@ -189,13 +189,14 @@ jobs:
 在 `cloud-run.yml` 中可以看到有些 `secrets`，例如 `${{ secrets.CLOUD_RUN_PROJECT_NAME }}` ，我們要在 Github 的 Action Secrets 來做設定。
 ![Imgur](https://i.imgur.com/giqaKoH.png)
 
-- Secrets:
-  - `CLOUD_RUN_PROJECT_NAME`: 專案的 ID
-  - `CLOUD_RUN_SERVICE_ACCOUNT` — 這是 base64 編碼的私鑰。我們要把剛剛下載的 `JSON` 檔轉為 base64 編碼並貼上。
-    在 `macOS` ，可以直接這樣：
-    `    base64 <存放JSON檔的路徑>`
-  - `CLOUD_RUN_SERVICE_ACCOUNT_EMAIL`：服務帳戶的 EMAIL
-    ![Imgur](https://i.imgur.com/7os5XPw.png)
+Secrets:
+
+- `CLOUD_RUN_PROJECT_NAME`: 專案的 ID
+- `CLOUD_RUN_SERVICE_ACCOUNT` — 這是 base64 編碼的私鑰。我們要把剛剛下載的 `JSON` 檔轉為 base64 編碼並貼上。
+  在 `macOS` ，可以直接這樣：
+  `    base64 <存放JSON檔的路徑>`
+- `CLOUD_RUN_SERVICE_ACCOUNT_EMAIL`：服務帳戶的 EMAIL
+  ![Imgur](https://i.imgur.com/7os5XPw.png)
 
 ## - step5. Push code 至 Github 就完成了 🎉
 
