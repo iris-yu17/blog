@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const person = {
+      nickname: 'Benny',
+      age: 5
+    };
+    const person2 = {
+      nickname: 'Flynn',
+      age: 28
+    };
+
+    function intro(pronouns, hobby) {
+      console.log(`${this.nickname} is ${this.age} years old.`);
+      console.log(`${pronouns} likes to ${hobby}`);
+    }
+
+   const bindIntro = intro.bind(person, 'He', 'sing')
+   bindIntro()
+
+   // 重新綁定
+   bindIntro.bind(person2, 'He', 'drink')
+   bindIntro()
+  </script>
+</body>
+
+</html>

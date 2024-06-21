@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'js-this-methods',
+    name: 'Js - Call, Apply, Bind',
+    description: '',
+    tags: [CategoryKey.Js],
+    updated: '2024-06-21',
+  },
+  {
     id: 'js-what-is-this',
     name: 'Js This 是什麼',
     description: '',
