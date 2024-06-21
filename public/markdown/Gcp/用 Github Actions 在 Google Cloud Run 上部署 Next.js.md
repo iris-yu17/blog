@@ -2,9 +2,9 @@
 
 ### Cloud Run 是什麼？
 
-是Google Cloud 的 Serverless 服務之一。
+是Google Cloud 的 Serverless（無伺服器）服務之一。
 
-讓使用者僅需透過簡單的指令或 Console 介面即可直接在 Google Cloud 上開發及快速部署具備高擴充性的容器化應用程式及管理服務。
+傳統的應用部署通常需要配置和管理伺服器，包括操作系統更新、硬體維護、資源分配等。而無伺服器架構讓我們可以將應用程序部署到雲端，不必關心底層的伺服器硬體或運行環境，這些操作都由 Google Cloud 來處理。
 
 必須將程式包裝成 Container image ，才能夠部署至 Cloud Run。
 
