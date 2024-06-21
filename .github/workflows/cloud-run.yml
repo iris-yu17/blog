@@ -36,7 +36,7 @@ jobs:
 
     - name: Build and tag image     
       env:
-        NEXT_PUBLIC_HOST: ${{ vars.NEXT_PUBLIC_HOST }}
+        NEXT_PUBLIC_HOST: ${{ env.NEXT_PUBLIC_HOST }}
       run: |-
         docker build . --tag "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
 
