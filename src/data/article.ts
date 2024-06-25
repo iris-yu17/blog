@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'js-prototype',
+    name: 'Js 原型, 原型鏈與原型繼承',
+    description: '',
+    tags: [CategoryKey.Js],
+    updated: '2024-06-25',
+  },
+  {
     id: 'js-this-methods',
     name: 'Js - Call, Apply, Bind',
     description: '',

@@ -64,7 +64,7 @@ export default function About() {
           <div className="pl-4 md:pl-10">
             <span className="mr-2 text-quaternary">skills:</span>
             <span className="text-yellow-400 dark:text-pink-400">{`[`}</span>
-            {aboutMe.familiarWith.map((item, index) => {
+            {aboutMe.skills.map((item, index) => {
               return (
                 <span
                   key={item}
