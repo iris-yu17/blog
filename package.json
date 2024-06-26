@@ -11,6 +11,7 @@
     "docker:run": "docker run -i -p 3000:3000 my-blog"
   },
   "dependencies": {
+    "@ducanh2912/next-pwa": "^10.2.7",
     "@google-cloud/storage": "^7.10.2",
     "@tailwindcss/line-clamp": "^0.4.4",
     "classnames": "^2.5.1",
@@ -39,6 +40,7 @@
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.10",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "webpack": "^5.92.1"
   }
 }

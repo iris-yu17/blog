@@ -37,3 +37,7 @@ next-env.d.ts
 
 # gcs
 key.json
+
+# pwa
+public/sw.js
+public/workbox-*.js

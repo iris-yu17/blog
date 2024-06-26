@@ -14,6 +14,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'IRIS Studio',
   description: 'Iris 的前端開發筆記',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
