@@ -137,7 +137,7 @@ const articles: Article[] = [
   },
   {
     id: 'redux-1',
-    name: 'Redux#1 介紹',
+    name: 'Redux-1 介紹',
     description: '',
     tags: [CategoryKey.Redux],
     updated: '2024-05-10',
