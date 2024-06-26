@@ -1,12 +1,12 @@
 {
     "theme_color": "#007acc",
     "background_color": "#1E1E1E",
-    "display": "browser",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "IRIS Studio",
-    "short_name": "IRIS.s",
     "description": "Iris' blog, which shares frontend knowledge and thoughts.",
+    "name": "IRIS Studio",
+    "short_name": "IRIS Studio",
     "icons": [
         {
             "src": "/icon-192x192.png",
