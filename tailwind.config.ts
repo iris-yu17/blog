@@ -55,7 +55,26 @@ const config: Config = {
       fontFamily: {
         'rbtm': ['Roboto Mono', 'monospace'],
         'press': ['"Press Start 2P"', 'system-ui']
-      }//改寫後的指令
+      },
+      keyframes: {
+        typing: {
+          '0%': { left: '0ch' },
+          '100%': { left: '11ch' },
+        },
+        mobile_typing: {
+          '0%': { left: '0ch' },
+          '100%': { left: '4ch' },
+        },
+        flicker: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0.2' },
+        }
+      },
+      animation: {
+        typing: 'typing 2s steps(11)',
+        mobile_typing: 'mobile_typing 1.5s steps(4)',
+        flicker: 'flicker 1s linear infinite'
+      }
     },
   },
   plugins: [

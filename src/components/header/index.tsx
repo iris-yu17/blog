@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 import { VscListSelection, VscClose } from 'react-icons/vsc';
 import SideMenu from '../side-menu';
@@ -10,8 +11,8 @@ export default function Header() {
 
   return (
     <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden">
-      <div className="flex-grow py-3 font-press text-md">
-        <span className="text-primary">IRIS</span> Studio
+      <div className="h-10 w-20 flex items-center">
+        <Image src="/site-logo.svg" alt="1" width={71} height={40} />
       </div>
       <button
         className="text-3xl text-gray-100"

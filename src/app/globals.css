@@ -131,3 +131,7 @@ blockquote p::after {
 .prose h2 > a {
   text-decoration: none !important;
 }
+
+.fill-mode-forwards {
+  animation-fill-mode: forwards;
+}
