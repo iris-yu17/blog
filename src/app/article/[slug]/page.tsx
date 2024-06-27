@@ -67,11 +67,11 @@ export default async function Article({
 
   const { id, name, tags, updated } = article;
 
-  const encodedFileName = encodeURIComponent(name);
+  // const encodedFileName = encodeURIComponent(name);
 
   const file = tags[0];
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${encodedFileName}.md`,
+    `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${id}.md`,
   );
 
   const data = await res.text();
