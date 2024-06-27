@@ -107,7 +107,7 @@ blockquote p::after {
   --tw-prose-quote-borders: rgba(var(--gray-default-rgba));
 }
 
-.prose .a,
+.prose a,
 .prose code,
 .overflow-wrap-anywhere {
   overflow-wrap: anywhere;
