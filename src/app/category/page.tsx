@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import articles from '@/data/article';
 import ArticleCard from '@/components/article-card';
 import BreadCrumb from '@/components/breadcrumb';
@@ -5,6 +6,10 @@ import Pagination from '@/components/pagination';
 import CategoryBlock from '@/components/category-block';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+
+export const metadata: Metadata = {
+  title: '文章分類｜全部 - IRIS Studio',
+};
 
 export default function Category({
   searchParams,

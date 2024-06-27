@@ -1,3 +1,4 @@
+import type { Metadata, ResolvingMetadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Pluggable } from 'unified';
 import rehypeHighlight from 'rehype-highlight';
@@ -11,6 +12,7 @@ import { CategoryText } from '@/types/enum/category';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import { visit } from 'unist-util-visit';
+import { Props } from '@/types/props';
 
 import CodeTheme from '@/components/code-theme';
 
@@ -29,6 +31,19 @@ function addIdToH2() {
         }
       }
     });
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const pathname = params;
+  const { slug } = pathname;
+
+  const article: ArticleType =
+    articles.find((item) => item.id === slug) || articles[0];
+  const title = article.name;
+
+  return {
+    title: `${title} - IRIS Studio`,
   };
 }
 

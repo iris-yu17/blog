@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'IRIS Studio',
   description: 'Iris 的前端開發筆記',
   manifest: '/manifest.json',
+  openGraph: {
+    images: 'icon-512x512.png',
+  },
 };
 
 export default function RootLayout({

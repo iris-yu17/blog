@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import BreadCrumb from '@/components/breadcrumb';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import Image from 'next/image';
@@ -11,6 +12,10 @@ const aboutMe = {
   skills: ['Bootstrap', 'RWD', 'JavaScript', 'React', 'Next.js'],
   familiarWith: ['PixiJS', 'Vue', '無障礙網站開發', 'HTML 電子報開發'],
   intro: '',
+};
+
+export const metadata: Metadata = {
+  title: '關於我 - IRIS Studio',
 };
 
 export default function About() {

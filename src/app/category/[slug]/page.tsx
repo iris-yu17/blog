@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { categoryList } from '@/data/category';
 import { CategoryText } from '@/types/enum/category';
 import ArticleCard from '@/components/article-card';
@@ -6,6 +7,19 @@ import CategoryBlock from '@/components/category-block';
 import articles from '@/data/article';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+import { Props } from '@/types/props';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const category = categoryList.find((item) => item.path === params.slug) || {
+    tag: 'Gcp',
+    paht: '',
+  };
+  const { tag } = category;
+
+  return {
+    title: `文章分類｜${CategoryText[tag]} - IRIS Studio`,
+  };
+}
 
 export default function Category({ params }: { params: { slug: string } }) {
   const category = categoryList.find((item) => item.path === params.slug) || {
