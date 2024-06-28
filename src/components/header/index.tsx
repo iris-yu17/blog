@@ -11,8 +11,21 @@ export default function Header() {
 
   return (
     <div className="fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-border bg-black-200 px-2.5 md:hidden">
-      <div className="h-10 w-20 flex items-center">
-        <Image src="/site-logo.svg" alt="1" width={71} height={40} />
+      <div className="flex h-12 w-20 items-center">
+        <Image
+          src="/site-logo.svg"
+          alt="1"
+          width={85}
+          height={48}
+          className="hidden dark:block"
+        />
+        <Image
+          src="/site-logo_light.svg"
+          alt="1"
+          width={85}
+          height={48}
+          className="dark:hidden"
+        />
       </div>
       <button
         className="text-3xl text-gray-100"
