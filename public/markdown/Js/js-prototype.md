@@ -1,7 +1,7 @@
 ## 前言
 
 原型一直是讓我有點害怕的主題，網路上文章很多，但每一篇的理解方式都不一樣，每次看完總感覺好像懂了又不懂，很難完全了解它的全貌。\
-我自己在學習的時候，感到最困難的是各種名詞間的定義跟關係，因此這篇文章會一步一步講解並串連各個名詞，希望大家在閱讀時能有順暢的體驗，能夠順順地看完後就了解原型了。
+我自己在學習的時候，感到最困難的是各種名詞間的關係跟定義，因此這篇文章會一步一步講解並串連各個名詞，希望能讓人在閱讀時有順暢的體驗，能夠順順地看完後就了解原型了。🎉
 
 ## 什麼是原型（Prototype）
 
@@ -43,17 +43,16 @@ console.log('iris:', iris);
 
 // 印出 iris 的 [[prototype]]
 console.log('iris 的原型:', Object.getPrototypeOf(iris));
-
-// 這邊會得到 true，表示它們是一樣的，只是一個是舊的方法，一個是新方法
-console.log(iris.__proto__ === Object.getPrototypeOf(iris));
 ```
 
 結果：
+可以看到 iris 的 `[[prototype]]` 屬性跟 `Object.getPrototypeOf(iris)` 的結果是一樣的。
 ![Imgur](https://i.imgur.com/rtlG22n.png)
 
 ## prototype 屬性
 
-- 每個函式都有一個 prototype 屬性，它是個物件，一般函式跟建構函式都有，只是一般函式通常不會用到。
+- prototype 是**函式**的屬性，它是個物件。
+- 每個函式都有一個 prototype 屬性，一般函式跟建構函式都有，只是一般函式通常不會用到。
 - prototype 包含了由該建構函式創建的實例共享的屬性和方法。
 - 當使用建構函式創建實例時，此實例的 `[[Prototype]]` 會指向這個建構函式的 prototype。
 
@@ -71,8 +70,8 @@ function User(name) {
 // 創建 iris 實例
 const iris = new User('Iris');
 
-// 建構函式 User 的 prototype 就是 iris 這個實例的 [[Prototype]]
-User.prototype === Object.getPrototypeOf(iris); // true
+// 會得到 true，建構函式 User 的 prototype 就是 iris 這個實例的 [[Prototype]]
+console.log(User.prototype === Object.getPrototypeOf(iris));
 ```
 
 ### 補充：Js 內建的原型物件
@@ -80,7 +79,7 @@ User.prototype === Object.getPrototypeOf(iris); // true
 在銜接到下一個部分「原型鏈」之前，我們先做一點說明，以方便了解原型鏈。\
 在 JavaScript 中，我們可以使用 `Array()`, `Object()`, `String()` 等內建的建構函式，來創建陣列、物件...等。
 
-他們當然也有 prototype，例如 `Array.prototype`（陣列原型）、`Object.prototype`（物件原型）、`Function.prototype`（函式原型）...等。像我們常用的 `push`, `pop`, `forEach` 這些列方法，就是陣列原型提供的。\
+前面說了函式都會有 prototype 屬性，因此他們當然也有，例如 `Array.prototype`（陣列原型）、`Object.prototype`（物件原型）、`Function.prototype`（函式原型）...等。像我們常用的 `push`, `pop`, `forEach` 這些列方法，就是陣列原型提供的。\
 如果我們創建一個陣列，這個陣列的 `[[prototype]]` 就會指向 `Array.prototype`。
 
 ## 原型鏈（prototype chain）
@@ -96,7 +95,7 @@ console.log(nameList);
 
 ![Imgur](https://i.imgur.com/MtJkv45.png)
 
-發現在陣列裡有 `[[Prototype]]`，可以看到裡面還有 `filter`, `find`, `forEach` 這些我們熟悉的陣列操作方法，而`[[Prototype]]` 裡面又有一個 `[[Prototype]]`。
+發現在陣列裡有 `[[Prototype]]`，可以看到裡面還有 `filter`, `find`, `forEach` 這些我們熟悉的陣列操作方法，而 `[[Prototype]]` 裡面又有一個 `[[Prototype]]`。
 
 ### 說明
 
@@ -129,38 +128,37 @@ Object.getPrototypeOf(Object.prototype); // null
 
 > 原型繼承是 JavaScript 的一種繼承機制。\
 > 基於原型鏈的概念，子層物件的原型會指向父層物件，當子層物件找不到某屬性或方法時，就會往上向父層查找，從而實現屬性和方法的共享和繼承。
->
-> 簡單來說：以陣列為例，我們定義的陣列可以使用 filter, forEach...等陣列方法，就是因為有原型繼承機制。
 
-再看個例子：
-
-首先我們定義了一個物件 user，接著使用 `hasOwnProperty`。\
-`hasOwnProperty` 是 js 內建的物件方法，用來判斷物件是否有某屬性。\
-結果會印出 true，因為 user 物件裡確實有 greet 這個屬性。
+舉個很簡單的例子：
+定義一個 nameList 陣列，並且再 push 一個字串 'Angela' 進去。
 
 ```javascript
-// 定義一個物件
-const user = {
-  name: 'Iris',
-  greet: function () {
-    console.log(`Hello, my name is ${this.name}`);
-  },
-};
+const nameList = ['Iris', 'Vivi', 'Greta', 'Annie'];
 
-// 判斷 user 物件是否有 greet 屬性
-console.log(user.hasOwnProperty('greet')); // 會印出 true
+nameList.push('Angela');
+
+console.log(nameList); // ['Iris', 'Vivi', 'Greta', 'Annie', 'Angela']
 ```
 
-問題來了，我們定義的 user 並沒有 `hasOwnProperty` 這個方法，那為什麼可以使用這個內建方法呢？這是就是因為「**原型繼承**」。
+想想看，為什麼我們定義一個陣列，它可以使用 `push` 這些陣列方法呢？就是因為「**原型繼承**」。
 
 在此範例中，原型鏈是這樣的：
 
 ```
-user --> Object.prototype --> null
+nameList --> Array.prototype --> Object.prototype --> null
 ```
 
-user 的原型是物件原型；而物件原型的原型則是 `null`。\
-在 user 中沒有 `hasOwnProperty`，**但是物件原型有**，因此 user 可以使用 `hasOwnProperty` 方法。
+nameList 的原型是陣列原型\
+在 nameList 中沒有 `push`，但 JavaScript 會順著原型鏈往父層找，發現**陣列原型有**，因此 nameList 可以使用 `push` 方法。
+
+## 總結
+
+- 原型（prototype）：在 JavaScript 中，每個物件都有一個原型。當物件被初始化時，它會從其原型物件繼承屬性和方法。
+- `[[prototype]]`：是物件中一個隱藏的屬性，它會對應到此物件的原型。
+- `__proto__`：物件的一個屬性，用來讀取或設置原型，但現在已不推薦使用。
+- prototype 屬性：是**函式**的屬性。當通過建構函數創建一個實例時，該實例的原型（即 `[[prototype]]` 屬性）指向這個建構函數的 prototype 屬性。
+- 原型鏈：JavaScript 中所有的物件都有一個原型，而這個原型也可能有自己的原型，形成一條鏈，這就是原型練。
+- 原型繼承：是 JavaScript 的繼承機制，當子層物件找不到某屬性或方法時，就會往上向父層查找，讓子層物件能夠使用父層物件的屬性或方法。
 
 ---
 
@@ -170,3 +168,4 @@ user 的原型是物件原型；而物件原型的原型則是 `null`。\
 - https://ithelp.ithome.com.tw/articles/10326931
 - https://www.explainthis.io/zh-hant/swe/most-common-js-prototype-questions
 - https://www.casper.tw/javascript/2017/12/17/javascript-prototype/
+- https://maxlee.me/posts/prototype
