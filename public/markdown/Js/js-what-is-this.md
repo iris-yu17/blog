@@ -96,6 +96,37 @@ obj.printName();
 答案：`Global name`\
 因為箭頭函式的 `this` 會指向它宣告當下所在環境，因此會印出 `Global name`
 
+## 5. 建構函式
+
+當使用 new 呼叫建構函式時，`this` 會指向新創建的物件。
+
+它的步驟如下：
+
+1. 創建一個新的空物件
+2. 將這個新物件的 `[[prototype]]` 屬性設置為建構函式的 prototype 屬性。
+3. 建構函式內部的 this 綁定到這個新物件上
+4. 執行函式內的代碼
+5. 回傳新的物件
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  console.log(this);
+}
+
+const greta = new Person('Greta', 30);
+```
+
+`console.log(this)` 結果會如下：
+
+```javascript
+Person {
+  name: "Greta",
+  age: 30
+}
+```
+
 ---
 
 ## 練習

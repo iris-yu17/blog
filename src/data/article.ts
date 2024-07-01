@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'js-class-inheritance',
+    name: 'Js Clss 類別與繼承',
+    description: '',
+    tags: [CategoryKey.Js],
+    updated: '2024-07-01',
+  },
+  {
     id: 'js-prototype',
     name: '一次搞懂 JavaScript 原型、原型鏈與原型繼承',
     description: '',
