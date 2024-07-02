@@ -1,11 +1,11 @@
 ## 範例
 
-> Demo：https://codesandbox.io/s/usecontext-4m5drb?file=/src/App.js
+> Demo：https://codesandbox.io/p/sandbox/usecontext-4m5drb
 
 ## 說明：
 
 - 使用 `useContext` 就可以跨元件讀取狀態，不需用 `props` 一層層傳下去。
-- 使用的方式就是在最頂層元件中的最頂層創建 `Context` 存放所有狀態，然後在它之下的所有組件都可以存取。
+- 使用的方式就是在最頂層元件中創建 `Context` 存放所有狀態，然後在它之下的所有組件都可以存取。
 - 可把它想成是一個 global state 的概念，所有元件都可以讀取這個 `state`。
 
 ## 使用方式：

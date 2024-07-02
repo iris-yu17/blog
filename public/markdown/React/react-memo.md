@@ -4,7 +4,9 @@
 
 - 當父元件 re-render 時，即使傳入子元件的資料並沒有改變，子元件也會 re-render。這時候就可以使用 `React.memo` 來避免子元件沒必要的重新渲染。
 - `React.memo` 是一個 `HOC`，他會幫我們比較元件的 `props` 有沒有改變，我們把子元件用 `React.memo` 包起來，只要 `props` 沒改變，子元件就不會跟著父元件 re-render。
-- 寫法： `React.memo(CustomComponent, props)`，它接收兩個參數：1.元件2.想要比較的 props。 沒輸入的話，預設為全部。
+- 寫法：`React.memo(CustomComponent, props)`，它接收兩個參數：
+  1. 元件
+  2. 想要比較的 props，沒輸入的話，預設為全部。
 
 ## demo 說明
 

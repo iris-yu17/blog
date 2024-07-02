@@ -1,6 +1,6 @@
 ## 範例
 
-> Demo: https://codesandbox.io/s/usecallback-nzebwi?file=/src/App.js
+> Demo: https://codesandbox.io/p/sandbox/usecallback-nzebwi
 
 ## 畫面說明：
 
@@ -19,15 +19,15 @@
 - 把 `getData` 作為 props 傳到子元件 `<List/>`
 
 ```javascript
-import List from "./List";
+import List from './List';
 
 export default function App() {
   const [input, setInput] = useState(0);
   const [themeDark, setThemeDark] = useState(false);
 
   const style = {
-    color: themeDark ? "#fff" : "#1b1b1b",
-    background: themeDark ? "#1b1b1b" : "#fff"
+    color: themeDark ? '#fff' : '#1b1b1b',
+    background: themeDark ? '#1b1b1b' : '#fff',
   };
 
   // 假裝它會呼叫 api、回傳資料
@@ -57,7 +57,6 @@ export default function App() {
     </div>
   );
 }
-
 ```
 
 ### - 子元件
@@ -72,7 +71,7 @@ export default function List(props) {
 
   useEffect(() => {
     setArray(getData());
-    console.log("get data");
+    console.log('get data');
   }, [getData]);
 
   return (
@@ -96,8 +95,8 @@ export default function List(props) {
 
 **使用 `useCallback`**
 
-- `useCallback` 用法跟 `useMemo` 一樣，有兩個參數：
-  第一個：callback function
+- `useCallback` 用法跟 `useMemo` 一樣，有兩個參數：\
+  第一個：callback function\
   第二個：是一個陣列，像 useEffect 那樣，當陣列裡某元素的值改變時，就會執行第一個參數的 function
 
 ```javascript
@@ -112,7 +111,11 @@ const getData = useCallback(() => {
 }, [input]);
 ```
 
-**`useCallback` 跟 `useMemo` 比較** 1.`useMemo` 不能傳入參數，而 `useCallback` 可以2. `useCallback` `useMemo` 都會接收一個 function，但`useMemo` 會回傳此 function 的回傳值，而 `useCallback` 會回傳此 function 3. `useCallback(fn, [deps])` 就相當於 `useMemo(() => fn, [deps])`
+**`useCallback` 跟 `useMemo` 比較**
+
+1. `useMemo` 不能傳入參數，而 `useCallback` 可以
+2. `useCallback` `useMemo` 都會接收一個 function，但 `useMemo` 會回傳此 function 的回傳值，而 `useCallback` 會回傳此 function
+3. `useCallback(fn, [deps])` 就相當於 `useMemo(() => fn, [deps])`
 
 ```javascript
 // 也可用 useMemo 寫法

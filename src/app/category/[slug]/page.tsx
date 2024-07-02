@@ -55,6 +55,7 @@ export default function Category({ params }: { params: { slug: string } }) {
       <p className="mb-5 text-lg font-light text-gray-200">
         目前顯示分類為：
         <span className="font-medium">{CategoryText[tag]}</span>
+        <span> (共{filteredArticles.length}篇)</span>
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 md:gap-4">

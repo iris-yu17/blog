@@ -76,7 +76,7 @@ const doubleValue = useMemo(() => {
 
 ## 注意
 
-**不可以在所有地方都使用 `useMemo`**
+**不可以在所有地方都使用 `useMemo`**\
 `useMemo` 是用來優化效能的，過度使用反而會造成效能跟記憶體的額外消耗，原因說明：
 
 1. `useMemo` 要判斷 dependency array 裡面元素的值是否有改變，若有的話才執行callback function，所以它**在每次 render 都會執行**，會造成不必要的性能消耗。

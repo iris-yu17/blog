@@ -1,6 +1,6 @@
 ## useReduer 是做什麼的
 
-- 平時我們會用 `useState` 來操作 state。我們也可以用 `useReducer` 做到一樣的事， `useReducer` 適合較複雜的 state。
+- 平時我們會用 `useState` 來操作 state。我們也可以用 `useReducer` 做到一樣的事，`useReducer` 適合較複雜的 state。
 - 像 `useState` 的狀態改變會分散在不同的函式裡面；而透過 `useReducer`，我們可以將狀態的改變統一做管理。
 
 ## 範例：計數器
@@ -18,9 +18,7 @@ export default function App() {
   return (
     <div className="App d-flex">
       <button onClick={decrement}>-</button>
-      <div className="m-4">
-        // 計數器的值
-      </div>
+      <div className="m-4">// 計數器的值</div>
       <button onClick={increment}>+</button>
     </div>
   );
@@ -36,9 +34,7 @@ export default function App() {
 
 ```javascript
 // reducer 函式
-const reducer = () => {
-
-};
+const reducer = () => {};
 
 export default function App() {
   // 創建 useReducer()
@@ -51,9 +47,7 @@ export default function App() {
   return (
     <div className="App d-flex">
       <button onClick={decrement}>-</button>
-      <div className="m-4">
-        // 計數器的值
-      </div>
+      <div className="m-4">// 計數器的值</div>
       <button onClick={increment}>+</button>
     </div>
   );
@@ -67,8 +61,7 @@ export default function App() {
 `reducer()` 有兩個參數：
 
 1. state：狀態，以目前例子來說，就是 `{count: 0}`
-2. action：描述要做什麼動作，慣例上會是包含一個 `type` property 的物件。
-   （詳見 step4）
+2. action：描述要做什麼動作，慣例上會是包含一個 `type` 屬性的物件。（詳見 step4）
 
 ```javascript
 const reducer = (state, action) => {
@@ -90,7 +83,6 @@ export default function App() {
     </div>
   );
 }
-
 ```
 
 ### - step3. useReducer() 的 return value
@@ -98,16 +90,17 @@ export default function App() {
 `useReducer()` 會回傳一個 array，array 裡有兩個項目：
 
 1. state：狀態
-2. dispatch：一個 function，它會幫我們呼叫 `reducer` function。dispatch 接收一個參數，這個參數會是 `reducer()` 的 action。
+2. dispatch：一個 function，它會幫我們呼叫 `reducer` function。\
+   dispatch 接收一個參數，這個參數會是 `reducer()` 的 action。
 
 code 說明：
 
-以下範例中，點擊 `+` 按鈕，會執行 `dispatch()`， 而 `dispatch` 會呼叫 `reducer`。
+以下範例中，點擊 `+` 按鈕，會執行 `dispatch()`，而 `dispatch` 會呼叫 `reducer`。\
 在 `reducer` 中，把當前 count 加ㄧ，並更新狀態。
 
 ```javascript
 const reducer = (state, action) => {
-  console.log(action) // 印出 { tpye: "plus" }
+  console.log(action); // 印出 { tpye: "plus" }
   return { count: state.count + 1 };
 };
 
@@ -117,7 +110,7 @@ export default function App() {
 
   const increment = () => {
     // 接收的參數會是 reducer 的 action
-    dispatch({ type: "plus" });
+    dispatch({ type: 'plus' });
   };
 
   const decrement = () => {};
@@ -125,9 +118,7 @@ export default function App() {
   return (
     <div className="App d-flex">
       <button onClick={decrement}>-</button>
-      <div className="m-4">
-        {state.count}
-      </div>
+      <div className="m-4">{state.count}</div>
       <button onClick={increment}>+</button>
     </div>
   );
@@ -138,7 +129,7 @@ export default function App() {
 
 在 step3，我們點擊 `+` 時會把 count 加一，那麼減要如何實作呢？
 
-1. 在點擊 `+` 時，呼叫 `dispatch` 並傳入 action `{type: 'plus'}`
+1. 在點擊 `+` 時，呼叫 `dispatch` 並傳入 action `{type: 'plus'}`\
    同樣地，在點擊 `-` 時，也呼叫 `dispatch` ，並傳入另一個 action `{type: 'minus'}`
 2. 在 `reducer` 裡，判斷 action type 為 `plus` 或 `minus`，來做相對應的動作。
 
@@ -186,8 +177,8 @@ export default function App() {
 
 ```javascript
 const ACTIONS = {
-  PLUS: "plus",
-  MINUS: "minus"
+  PLUS: 'plus',
+  MINUS: 'minus',
 };
 
 const reducer = (state, action) => {
@@ -205,7 +196,7 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   const increment = () => {
-    dispatch({ type: ACTIONS.PLUS});
+    dispatch({ type: ACTIONS.PLUS });
   };
 
   const decrement = () => {
@@ -224,5 +215,6 @@ export default function App() {
 
 ---
 
-參考資料
-https://www.youtube.com/watch?v=kK_Wqx3RnHk&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=6
+參考資料：
+
+- [Learn useReducer In 20 Minutes](https://www.youtube.com/watch?v=kK_Wqx3RnHk&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=7)
