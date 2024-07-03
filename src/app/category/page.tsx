@@ -45,6 +45,7 @@ export default function Category({
       <p className="text-md mb-5 font-light text-gray-200 md:text-lg">
         目前顯示分類為：
         <span className="font-medium">全部文章</span>
+        <span> (共{totalCount}篇)</span>
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 md:gap-4">
