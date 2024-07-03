@@ -7,7 +7,7 @@ const articles: Article[] = [
     name: 'Js Clss 類別與繼承',
     description: '',
     tags: [CategoryKey.Js],
-    updated: '2024-07-01',
+    updated: '2024-07-01'
   },
   {
     id: 'js-prototype',
@@ -15,6 +15,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-06-25',
+    priority: 0.8
   },
   {
     id: 'js-this-methods',
@@ -106,6 +107,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.WA],
     updated: '2024-05-10',
+    priority: 0.8
   },
   {
     id: 'js-callback',
@@ -196,14 +198,16 @@ const articles: Article[] = [
     name: '用 Github Actions 在 Google Cloud Run 上部署 Next.js',
     description: '',
     tags: [CategoryKey.Gcp],
-    updated: '2024-05-10'
+    updated: '2024-05-10',
+    priority: 0.8
   },
   {
     id: 'next-notes',
     name: 'Next.js 開發筆記',
     description: '',
     tags: [CategoryKey.Next],
-    updated: '2024-05-10'
+    updated: '2024-05-10',
+    priority: 0.8
   },
   {
     id: 'freego-notes',
