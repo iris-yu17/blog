@@ -6,5 +6,5 @@ export type Article = {
   description: string,
   tags: CategoryKey[],
   updated: string;
-  priority: number;
+  priority?: number;
 };
