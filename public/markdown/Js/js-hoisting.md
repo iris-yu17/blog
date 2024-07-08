@@ -221,7 +221,7 @@ console.log(myName); // Bentley
 
 ## 補充
 
-let 跟 const 沒有提升，而是會進入暫時性死區(Temporal Dead Zone)，只要在變數宣告前，使用這個變數就會報錯。
+let 跟 const 沒有提升，而是會進入暫時性死區(Temporal Dead Zone)，只要在變數宣告前使用這個變數就會報錯。
 例如：
 
 ```javascript

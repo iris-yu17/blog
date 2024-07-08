@@ -203,9 +203,45 @@ false
 那為何 `func2` 是 `false` 呢？\
 因為即使把 `func2` 寫在 `obj` 裡，但它並不是作為 `obj` 的方法來呼叫的。因此 `func2` 裡面的 `this` 並不會自動指向 `obj`，而是預設的 window 物件。
 
+### 題目四
+
+```javascript
+const obj1 = {
+  count: 10,
+  doSomethingLater() {
+    setTimeout(function () {
+      this.count++;
+      console.log(this.count); // NaN (因為在 windonw 中沒有 count)
+    }, 300);
+  },
+};
+obj1.doSomethingLater();
+
+const obj2 = {
+  count: 10,
+  doSomethingLater() {
+    setTimeout(() => {
+      this.count++;
+      console.log(this.count);
+    }, 300);
+  },
+};
+obj2.doSomethingLater();
+```
+
+答案：
+
+```
+NaN
+11
+```
+
+- `obj1` 的 `setTimeout` 裡面的函式是一般函式，因此 `this` 指向 window，而在 windonw 中沒有 count，所以答案是 `NaN`
+- `obj2` 的 `setTimeout` 裡面的是箭頭函式，因此 `this` 是最接近的父層一般函式的 this 值，也就是 `obj2`，原本 `count` 為 10，`10++` 後變成 11
+
 ---
 
 參考資料
 
-- https://www.shubo.io/javascript-this/#什麼是-this
-- https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-上/
+- [shubo.io/javascript-this/](https://www.shubo.io/javascript-this/#什麼是-this)
+- [What's THIS in JavaScript ? [上]](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-上/)

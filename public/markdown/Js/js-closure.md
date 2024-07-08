@@ -149,5 +149,5 @@ for (let i = 0; i < 100000000; i++) {
 
 參考資料：
 
-- https://www.explainthis.io/zh-hant/swe/what-is-closure
-- https://molly1024.medium.com/javascript-閉包-closure-的介紹及應用-閉包跟-fp-的關係是什麼-d9f598c432b7
+- [什麼是閉包 (Closure)？](https://www.explainthis.io/zh-hant/swe/what-is-closure)
+- [Javascript｜閉包 Closure 的介紹及應用。閉包跟 FP 的關係是什麼？](https://molly1024.medium.com/javascript-閉包-closure-的介紹及應用-閉包跟-fp-的關係是什麼-d9f598c432b7)

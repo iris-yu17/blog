@@ -2,6 +2,13 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
+  // {
+  //   id: 'react-advance-understanding-ch2',
+  //   name: '《React 思維進化》Chapter 2 筆記',
+  //   description: '',
+  //   tags: [CategoryKey.React],
+  //   updated: '2024-07-08'
+  // },
   {
     id: 'js-class-inheritance',
     name: 'Js Clss 類別與繼承',
