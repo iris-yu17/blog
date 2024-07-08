@@ -7,6 +7,7 @@ import SideMenu from '@/components/side-menu';
 import Footer from '@/components/footer';
 import PageTab from '@/components/page-tab';
 import { ThemeProvider } from './helper/theme-provider';
+import Script from 'next/script';
 import { Theme } from '@/types/enum/theme';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -27,6 +28,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* GA */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-DVX887EQQJ"
+      ></Script>
+      <Script
+        id="gtm-script"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-DVX887EQQJ');
+        `,
+        }}
+      />
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="flex">
