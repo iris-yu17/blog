@@ -11,7 +11,7 @@ const articles: Article[] = [
   // },
   {
     id: 'js-class-inheritance',
-    name: 'Js Clss 類別與繼承',
+    name: 'Js Class 類別與繼承',
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-07-01'
