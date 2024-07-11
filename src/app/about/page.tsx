@@ -9,8 +9,8 @@ const className = {
 
 const aboutMe = {
   email: 'iris.yu0716@gmail.com',
-  skills: ['Bootstrap', 'RWD', 'JavaScript', 'React', 'Next.js'],
-  familiarWith: ['PixiJS', 'Vue', '無障礙網站開發', 'HTML 電子報開發'],
+  skills: ['React', 'Next.js', 'Bootstrap', 'RWD', 'JavaScript'],
+  others: ['PixiJS', 'Vue', '無障礙網站開發', 'HTML 電子報開發'],
   intro: '',
 };
 
@@ -86,16 +86,16 @@ export default function About() {
             <span>,</span>
           </div>
           <div className="pl-4 md:pl-10">
-            <span className="mr-2 text-quaternary">familiarWith:</span>
+            <span className="mr-2 text-quaternary">others:</span>
             <span className="text-yellow-400 dark:text-pink-400">{`[`}</span>
-            {aboutMe.familiarWith.map((item, index) => {
+            {aboutMe.others.map((item, index) => {
               return (
                 <span
                   key={item}
                   className="ml-4 block text-code-100 md:ml-0 md:inline-block dark:text-orange-300"
                 >
                   &#39;{item}&#39;
-                  {index < aboutMe.familiarWith.length - 1 && (
+                  {index < aboutMe.others.length - 1 && (
                     <span className="mr-2 text-gray-100">,</span>
                   )}
                 </span>
