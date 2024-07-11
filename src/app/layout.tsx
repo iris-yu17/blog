@@ -28,23 +28,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* GA */}
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-DVX887EQQJ"
-      ></Script>
-      <Script
-        id="gtm-script"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+      <head>
+        {/* GA */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DVX887EQQJ"
+        />
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-DVX887EQQJ');
         `,
-        }}
-      />
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="flex">
