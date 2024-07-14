@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import './../globals.css';
 import SideNav from '@/components/side-nav';
 import Header from '@/components/header';
 import SideMenu from '@/components/side-menu';
@@ -9,6 +9,7 @@ import PageTab from '@/components/page-tab';
 import { ThemeProvider } from './helper/theme-provider';
 import Script from 'next/script';
 import { Theme } from '@/types/enum/theme';
+import { getDictionary } from '@/utils/dictionaries';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,11 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { lang },
 }: {
   children: React.ReactNode;
+  params: { [key: string]: string };
 }) {
+  const dict = await getDictionary(lang, 'common');
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -50,11 +55,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="flex">
-            <SideNav />
+            <SideNav dict={dict}/>
             <div className="hidden md:block">
-              <SideMenu />
+              <SideMenu dict={dict}/>
             </div>
-            <Header />
+            <Header dict={dict}/>
             <main className="w-full border-l border-border pb-20 font-rbtm">
               <PageTab />
               <div className="h-full px-4 pt-12 md:px-6 md:pt-0">

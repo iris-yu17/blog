@@ -1,0 +1,20 @@
+{
+  "breadcrumbs": {
+    "home": "Home",
+    "about": "About",
+    "search": "Search",
+    "category": "Category"
+  },
+  "settings": {
+    "lang": "View in Mandarin",
+    "theme": "Toggle Dark/Light Mode"
+  },
+  "category": {
+    "tech": "Tech",
+    "others": "Others"
+  },
+  "sub-category": {
+    "WA": "Web Accessibility",
+    "Dev": "Development"
+  }
+}

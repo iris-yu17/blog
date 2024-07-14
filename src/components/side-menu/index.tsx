@@ -14,10 +14,11 @@ const DEFAULT_WIDTH = 256;
 type Props = {
   showMenu?: boolean;
   setShowMenu?: Dispatch<SetStateAction<boolean>>;
+  dict: Record<string, Record<string, string>>;
 };
 
 export default function SideMenu(props: Props) {
-  const { showMenu = true, setShowMenu } = props;
+  const { showMenu = true, setShowMenu, dict } = props;
   const dragging = useRef(false);
   const [menuWidth, setMenuWidth] = useState<number>(DEFAULT_WIDTH);
 
@@ -46,19 +47,24 @@ export default function SideMenu(props: Props) {
       )}
       style={{ width: menuWidth, minWidth: menuWidth }}
     >
-      <div className="flex h-full w-full overflow-auto">
+      <div className="flex h-full w-full overflow-auto bg-black-200">
         <div className="w-[calc(100%-4px)] pb-10 md:pb-0">
           <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
             <span className="text-primary">IRIS</span> Studio
           </div>
-          <Accordion title={'技術文章'} defaultExpand={true}>
+          <Accordion title={dict.category.tech} defaultExpand={true}>
             {categoryList.map((category) => {
               const { tag } = category;
               const count = articles.filter(
                 (item) => item.tags[0] === tag,
               ).length;
               return (
-                <Accordion key={tag} title={`${CategoryText[tag]} (${count})`}>
+                <Accordion
+                  key={tag}
+                  title={`${
+                    (CategoryText as any)[tag] || dict['sub-category'][tag]
+                  } (${count})`}
+                >
                   {articles.map((item) => {
                     const { tags, name, id } = item;
                     const _tag = tags[0];
