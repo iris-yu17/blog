@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
    */
   // 檢查 cookie 是否有語系了
   const cookieLocale = request.cookies.get('locale')?.value;
-  response.cookies.set('locale', locale);
+  response.cookies.set('locale', locale, { path: '/' });
 
   /**
    * 雙語功能
