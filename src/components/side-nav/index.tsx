@@ -9,6 +9,7 @@ import {
   VscVerified,
   VscAccount,
   VscGear,
+  VscGithubInverted,
   VscLayers,
 } from 'react-icons/vsc';
 import PageUrls from '@/types/enum/page-url';
@@ -108,8 +109,15 @@ function SideNav(props: Props) {
             </Tooltip>
           );
         })}
-        <button
+        <Link
           className="hover:text-white-default mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3"
+          href={'https://github.com/iris-yu17'}
+          target='_blank'
+        >
+          <VscGithubInverted size={28} />
+        </Link>
+        <button
+          className="hover:text-white-default block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3"
           onClick={() => {
             setShowSetting(!showSetting);
           }}
