@@ -18,37 +18,53 @@ import { Tooltip } from 'flowbite-react';
 import { Theme } from '@/types/enum/theme';
 import { twMerge } from 'tailwind-merge';
 import { useState } from 'react';
+import { Locales } from '@/types/enum/locales';
+import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 
 export const NAV = [
   {
     icon: VscHome,
-    text: 'Home',
+    dictionaryKey: 'home',
     link: PageUrls.Home,
     activePath: PageUrls.Article,
   },
   {
     icon: VscVerified,
-    text: 'About',
+    dictionaryKey: 'about',
     link: PageUrls.About,
     activePath: PageUrls.About,
   },
   // {
   //   icon: VscSearch,
-  //   text: 'Search',
+  //   dictionaryKey: 'search',
   //   link: PageUrls.Search,
   //   activePath: PageUrls.Search,
   // },
   {
     icon: VscLayers,
-    text: 'Category',
+    dictionaryKey: 'category',
     link: PageUrls.Category,
     activePath: PageUrls.Category,
   },
 ];
 
-function SideNav() {
+const styles = {
+  settingBtn:
+    'block w-full whitespace-nowrap text-nowrap rounded px-2 py-1 text-xs leading-3 hover:bg-primary',
+};
+
+type Props = {
+  dict: Record<string, Record<string, string>>;
+};
+
+function SideNav(props: Props) {
+  const { dict } = props;
+  const router = useRouter();
   const path = usePathname();
   const [showSetting, setShowSetting] = useState(false);
+
+  const lang = path.split('/')[1];
 
   const { theme, setTheme } = useTheme();
 
@@ -56,14 +72,20 @@ function SideNav() {
     <div className="sticky left-0 top-12 z-50 flex h-[calc(100dvh-3rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">
       <nav className="flex h-full flex-col pb-7">
         {NAV.map((item) => {
-          const { icon, link, text, activePath } = item;
-          const active = path === link || path.includes(activePath);
+          const { icon, link, dictionaryKey, activePath } = item;
+          // const active = path === link || path.includes(activePath);
+
+          const isHome =
+            link === PageUrls.Home &&
+            (path === `/${Locales.zhHant}` || path === `/${Locales.enUS}`);
+
+          const active = isHome || path.includes(activePath);
 
           return (
             <Tooltip
-              content={text}
+              content={dict.breadcrumbs[dictionaryKey]}
               placement="right"
-              key={text}
+              key={dictionaryKey}
               theme={{
                 arrow: {
                   style: {
@@ -71,7 +93,7 @@ function SideNav() {
                   },
                 },
                 style: {
-                  dark: 'border border-border bg-black-200 text-gray-100 z-20 py-1 px-2 rounded-md',
+                  dark: 'border border-border bg-black-200 text-gray-100 z-20 py-1 px-2 rounded-md text-nowrap',
                 },
               }}
             >
@@ -109,12 +131,32 @@ function SideNav() {
         <div className="absolute bottom-10 left-12 ml-1 rounded border border-border bg-black-100 p-1 md:left-14">
           <button
             onClick={() => {
+              let newPath;
+              let newLocale;
+              if (lang === Locales.zhHant) {
+                newPath = path.replace(Locales.zhHant, Locales.enUS);
+                newLocale = Locales.enUS;
+              } else {
+                newPath = path.replace(Locales.enUS, Locales.zhHant);
+                newLocale = Locales.zhHant;
+              }
+              router.push(newPath);
+
+              setCookie('locale', newLocale);
+              setShowSetting(false);
+            }}
+            className={styles.settingBtn}
+          >
+            {dict.settings.lang}
+          </button>
+          <button
+            onClick={() => {
               setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
               setShowSetting(false);
             }}
-            className="block whitespace-nowrap text-nowrap rounded px-2 py-1 text-xs leading-3 hover:bg-primary"
+            className={styles.settingBtn}
           >
-            切換亮/暗色模式
+            {dict.settings.theme}
           </button>
         </div>
       )}

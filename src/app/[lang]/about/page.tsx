@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import BreadCrumb from '@/components/breadcrumb';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+import { getDictionary } from '@/utils/dictionaries';
 import Image from 'next/image';
+import { Props } from '@/types/props';
 
 const className = {
   h1: 'mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl',
@@ -9,16 +11,25 @@ const className = {
 
 const aboutMe = {
   email: 'iris.yu0716@gmail.com',
-  skills: ['Bootstrap', 'RWD', 'JavaScript', 'React', 'Next.js'],
-  familiarWith: ['PixiJS', 'Vue', '無障礙網站開發', 'HTML 電子報開發'],
-  intro: '',
+  skills: ['React', 'Next.js', 'Bootstrap', 'RWD', 'JavaScript'],
+  others: ['PixiJS', 'Vue', 'WA', 'html-email'],
 };
 
-export const metadata: Metadata = {
-  title: '關於我 - IRIS Studio',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  const dict = await getDictionary(params.lang, 'about');
 
-export default function About() {
+  return {
+    title: `${dict.h1} - IRIS Studio`,
+  };
+}
+
+export default async function About({ params }: Props) {
+  const { lang } = params;
+  const dict = await getDictionary(lang as string, 'about');
   return (
     <>
       <BreadCrumb
@@ -31,7 +42,7 @@ export default function About() {
       <div>
         <h1 className={className.h1}>
           {`<`}
-          <span className="mx-1">關於</span>
+          <span className="mx-1">{dict.h1}</span>
           {`/>`}
         </h1>
         <div className="mb-8 flex flex-col items-center gap-5 md:flex-row">
@@ -39,14 +50,9 @@ export default function About() {
             <Image alt="avatar" src="/avatar.png" width={200} height={200} />
           </div>
           <div>
-            我是 Iris，一個前端工程師，開發上主要使用 React 及 Next.js。
-            <br />
-            教導他人是最高效的學習手段，但現實中沒有人好教，因此有了這個部落格的誕生，希望可以透過寫作紀錄的方式，幫助自己學習，若也能幫到需要的人那就太好了！
-            <br />
-            會在這裡分享技術筆記、記錄我的學習歷程，如有錯誤歡迎指教。
-            <br />
-            除了前端知識外，也會分享一些雜談、我有興趣的事。
-            <br />
+            {dict.intro.map((item: string, index: number) => {
+              return <div key={index}>{item}</div>;
+            })}
           </div>
         </div>
         <div className="overflow-wrap-anywhere text-wrap">
@@ -86,16 +92,17 @@ export default function About() {
             <span>,</span>
           </div>
           <div className="pl-4 md:pl-10">
-            <span className="mr-2 text-quaternary">familiarWith:</span>
+            <span className="mr-2 text-quaternary">others:</span>
             <span className="text-yellow-400 dark:text-pink-400">{`[`}</span>
-            {aboutMe.familiarWith.map((item, index) => {
+            {aboutMe.others.map((item, index) => {
+              const translation = dict['skills-others'][item] || item;
               return (
                 <span
                   key={item}
                   className="ml-4 block text-code-100 md:ml-0 md:inline-block dark:text-orange-300"
                 >
-                  &#39;{item}&#39;
-                  {index < aboutMe.familiarWith.length - 1 && (
+                  &#39;{translation}&#39;
+                  {index < aboutMe.others.length - 1 && (
                     <span className="mr-2 text-gray-100">,</span>
                   )}
                 </span>

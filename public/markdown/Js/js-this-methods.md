@@ -99,7 +99,7 @@ intro.apply(person);
 `apply` 跟 `call` 的差別只在於傳入參數的方法\
 
 `apply` 只接收兩個參數，第一個是要指向的物件，第二個是陣列，要傳入的參數要先放到陣列中\
-`function.call(要指向的物件, [參數1, 參數2, 參數3, ...略])`
+`function.apply(要指向的物件, [參數1, 參數2, 參數3, ...略])`
 
 ```javascript
 const person = {

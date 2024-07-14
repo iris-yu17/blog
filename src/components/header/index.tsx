@@ -6,7 +6,12 @@ import Image from 'next/image';
 import { VscListSelection, VscClose } from 'react-icons/vsc';
 import SideMenu from '../side-menu';
 
-export default function Header() {
+type Props = {
+  dict: Record<string, Record<string, string>>;
+};
+
+export default function Header(props: Props) {
+  const { dict } = props;
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -47,7 +52,7 @@ export default function Header() {
         </div>
       )}
 
-      <SideMenu setShowMenu={setShowMenu} showMenu={showMenu} />
+      <SideMenu setShowMenu={setShowMenu} showMenu={showMenu} dict={dict} />
     </div>
   );
 }

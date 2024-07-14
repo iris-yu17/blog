@@ -9,12 +9,14 @@ type PaginationProps = {
   totalPages: number;
   currentPage: number;
   mainPath: PageUrls;
+  dict: { [key: string]: string };
 };
 
 export default function Pagination({
   totalPages,
   currentPage,
   mainPath = PageUrls.Home,
+  dict,
 }: PaginationProps) {
   const router = useRouter();
 
@@ -47,8 +49,8 @@ export default function Pagination({
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={onPageChange}
-        previousLabel="上一頁"
-        nextLabel="下一頁"
+        previousLabel={dict.last}
+        nextLabel={dict.next}
       />
     </div>
   );
