@@ -1,4 +1,5 @@
 import 'server-only';
+import { Locales } from '@/types/enum/locales';
 
 interface DictionaryModule {
   default: Record<string, any>;
@@ -19,6 +20,6 @@ const dictionaries: Record<string, Record<string, () => Promise<Record<string, a
   },
 };
 
-export const getDictionary = async (locale: string, fileName: string): Promise<Record<string, any>> => {
+export const getDictionary = async (locale: string = Locales.zhHant, fileName: string): Promise<Record<string, any>> => {
   return dictionaries[locale][fileName]();
 };
