@@ -16,5 +16,9 @@
   "sub-category": {
     "WA": "Web Accessibility",
     "Dev": "Development"
+  },
+  "pagination": {
+    "last": "Last",
+    "next": "Next"
   }
 }

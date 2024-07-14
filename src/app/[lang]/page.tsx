@@ -16,6 +16,7 @@ export default async function Home({
   const { page = 1 } = searchParams;
   const currentPage = Number(page);
   const dict = await getDictionary(lang, 'article');
+  const commonDict = await getDictionary(lang, 'common');
 
   const totalCount = articles.length;
   const ARTICLE_PER_PAGE = 10;
@@ -51,6 +52,7 @@ export default async function Home({
         totalPages={TOTAL_PAGES}
         currentPage={currentPage}
         mainPath={PageUrls.Home}
+        dict={commonDict.pagination}
       />
     </>
   );

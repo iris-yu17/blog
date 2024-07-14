@@ -15,6 +15,7 @@ import { visit } from 'unist-util-visit';
 import { Props } from '@/types/props';
 
 import CodeTheme from '@/components/code-theme';
+import { getDictionary } from '@/utils/dictionaries';
 
 function addIdToH2() {
   return (tree: any) => {
@@ -72,10 +73,11 @@ const options = {
 export default async function Article({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; lang: string };
 }) {
   const pathname = params;
-  const { slug } = pathname;
+  const { slug, lang } = pathname;
+  const dict = await getDictionary(lang as string, 'common');
 
   const article: ArticleType =
     articles.find((item) => item.id === slug) || articles[0];
@@ -112,7 +114,7 @@ export default async function Article({
             {tags.map((item) => {
               return (
                 <Badge color="success" key={item}>
-                  #{CategoryText[item]}
+                  #{(CategoryText as any)[item] || dict['sub-category'][item]}
                 </Badge>
               );
             })}

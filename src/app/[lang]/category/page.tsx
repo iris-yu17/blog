@@ -6,18 +6,32 @@ import Pagination from '@/components/pagination';
 import CategoryBlock from '@/components/category-block';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
+import { getDictionary } from '@/utils/dictionaries';
 
-export const metadata: Metadata = {
-  title: '文章分類｜全部 - IRIS Studio',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  const dict = await getDictionary(params.lang, 'category');
 
-export default function Category({
+  return {
+    title: `${dict.h1}｜${dict.all} - IRIS Studio`,
+  };
+}
+
+export default async function Category({
   searchParams,
+  params,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
+  params: { lang: string };
 }) {
   const { page = 1 } = searchParams;
   const currentPage = Number(page);
+  const { lang } = params;
+  const dict = await getDictionary(lang as string, 'category');
+  const commonDict = await getDictionary(lang as string, 'common');
 
   const totalCount = articles.length;
   const ARTICLE_PER_PAGE = 10;
@@ -39,13 +53,19 @@ export default function Category({
       />
       <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
         {`<`}
-        <span className="mx-1">文章分類</span>
+        {/* 文章分類 */}
+        <span className="mx-1">{dict.h1}</span>
         {`/>`}
       </h1>
       <p className="text-md mb-5 font-light text-gray-200 md:text-lg">
-        目前顯示分類為：
-        <span className="font-medium">全部文章</span>
-        <span> (共{totalCount}篇)</span>
+        {/* 目前顯示分類為： */}
+        {dict['current-category']}
+        {/* 全部文章 */}
+        <span className="font-medium">{dict.all}</span>
+        <span>
+          {/* 共 x 篇 */}
+          &#160;({dict.total.replace('{count}', totalCount)}){' '}
+        </span>
       </p>
       <CategoryBlock />
       <div className="flex flex-col gap-2 md:gap-4">
@@ -59,6 +79,7 @@ export default function Category({
         totalPages={TOTAL_PAGES}
         currentPage={currentPage}
         mainPath={PageUrls.Category}
+        dict={commonDict.pagination}
       />
     </>
   );
