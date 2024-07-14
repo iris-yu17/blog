@@ -13,12 +13,19 @@ const aboutMe = {
   email: 'iris.yu0716@gmail.com',
   skills: ['React', 'Next.js', 'Bootstrap', 'RWD', 'JavaScript'],
   others: ['PixiJS', 'Vue', 'WA', 'html-email'],
-  intro: '',
 };
 
-export const metadata: Metadata = {
-  title: '關於我 - IRIS Studio',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  const dict = await getDictionary(params.lang, 'about');
+
+  return {
+    title: `${dict.h1} - IRIS Studio`,
+  };
+}
 
 export default async function About({ params }: Props) {
   const { lang } = params;
