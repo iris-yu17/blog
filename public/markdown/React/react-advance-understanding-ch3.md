@@ -9,7 +9,7 @@
 
 當我們使用 setState 來更新 state 時，會觸發 re-render 使畫面更新。\
 然而 re-render 的觸發並不是立即的。當我們在一個事件裡，連續多次呼叫 setState 方法，其實最後 re-render 只發生一次。\
-React 會將 setState 動作依序紀錄到佇列，在**正在執行的事件內的所有程式都執行完**後，才開始進行 re-render。
+React 會將 setState 動作依序紀錄到佇列，等**正在執行的事件內的所有程式都執行完**後，才開始進行 re-render。
 
 範例：
 
@@ -42,9 +42,9 @@ React 會依序試算 count state 的佇列執行結果：\
 `原值` => `把舊值取代為1` => `把舊值取代為2` => `把舊值取代為3`\
 因此最後會直接將 count 的值更新為 3。
 
-> 「一個事件中多次呼叫 setState 方法時，會自動依序合併試算 state 的目標更新結果，最後只執行一次 re-render 來統一更新畫面」，這就是 **barch update**。
+> 「一個事件中多次呼叫 setState 方法時，會自動依序合併試算 state 的更新結果，最後只執行一次 re-render 來統一更新畫面」，這就是 **barch update**。
 
-## 如果不想要 barch update：使用 flushSync()
+### 如果不想要 barch update：使用 flushSync()
 
 使用方法：將 setState 放在 flushSync 的 callback 函式中，React 就會立即觸發 component re-render。
 
@@ -73,7 +73,7 @@ export default function Counter() {
     // 執行到這裡時，state 已更新，實際 DOM 也已更新完畢
 
     console.log(count);
-    // 會到 0，因為此次事件是基於 count 為 0 的那次 render 所建立的
+    // 會得到 0，因為此次事件是基於 count 為 0 的那次 render 所建立的
   };
 }
 ```
@@ -129,4 +129,86 @@ export default function Counter() {
 最後計算佇列，執行內容會下：\
 `舊值` => `(val) => val + 1` => `(val) => val + 1` => `(val) => val + 1`\
 也就是\
-`0` => `(0) => 0 + 1` => `(1) => 1 + 1` => `(2) => 2 + 1`
+`0` => `(0) => 0 + 1` => `(1) => 1 + 1` => `(2) => 2 + 1`\
+最後得到 `3`。
+
+## 3-3 維持 React 資料流可靠性的重要關鍵：immutable state
+
+首先看個例子：\
+我們用以下的方式，直接去改變 position x 的值。當點擊按鈕時會發生什麼事呢？
+
+```javascript
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMove = () => {
+    // 錯誤方式：直接 mutate state
+    position.x = 10;
+  };
+
+  return (
+    <>
+      <div>
+        Position: {position.x}, {position.y}
+      </div>
+      <button onClick={handleMove}>Move</button>
+    </>
+  );
+}
+```
+
+答案是：什麼事都沒發生。\
+這很正常，因為前面提到，想改變 state，要使用 setState 方法來觸發 component re-render。
+
+不過，即使我們改成使用 `setPosition`，仍不會有效果，為什麼呢？
+
+```javascript
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMove = () => {
+    // 錯誤方式：直接 mutate state
+    position.x = 10;
+
+    // 即使使用了 setState 仍不會觸發 re-render
+    setPosition(position);
+  };
+
+  return (
+    <>
+      <div>
+        Position: {position.x}, {position.y}
+      </div>
+      <button onClick={handleMove}>Move</button>
+    </>
+  );
+}
+```
+
+因為 [前面](./react-advance-understanding-ch2.md) 有說過，React 會執行 `Object.is()` 來檢查新舊的 state 值，若是不同，才會 re-render。\
+我們知道，在 JavaScript 中，物件跟陣列是可變的（mutable），並且是傳參考。我們用 `position.x` 來改變（mutate）物件，但它的參考並沒有變。當 React 以 `Object.is()` 來檢查 state 是否有改變時，由於新值和舊值的物件是同一個參考，所以會被判定為相同。
+
+換句話說，**當 React 要判定物件或陣列是否有改變時，它看的是資料的參考**，並不會去檢查內部細節是否有改變。\
+因此我們呼叫 setPosition 時，應該傳入一個全新的物件，這樣它們的參考才不會一樣，才能順利觸發 re-render。
+
+```javascript
+export default function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMove = () => {
+    const newPosition = { x: 10, y: 0 };
+
+    // 傳入新物件
+    setPosition(newPosition);
+  };
+
+  return (
+    <>
+      <div>
+        Position: {position.x}, {position.y}
+      </div>
+      <button onClick={handleMove}>Move</button>
+    </>
+  );
+}
+```
