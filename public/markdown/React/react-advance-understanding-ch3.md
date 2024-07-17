@@ -185,7 +185,7 @@ export default function App() {
 }
 ```
 
-因為 [前面](./react-advance-understanding-ch2.md) 有說過，React 會執行 `Object.is()` 來檢查新舊的 state 值，若是不同，才會 re-render。\
+因為[前面](./react-advance-understanding-ch2.md)有說過，React 會執行 `Object.is()` 來檢查新舊的 state 值，若是不同，才會 re-render。\
 我們知道，在 JavaScript 中，物件跟陣列是可變的（mutable），並且是傳參考。我們用 `position.x` 來改變（mutate）物件，但它的參考並沒有變。當 React 以 `Object.is()` 來檢查 state 是否有改變時，由於新值和舊值的物件是同一個參考，所以會被判定為相同。
 
 換句話說，**當 React 要判定物件或陣列是否有改變時，它看的是資料的參考**，並不會去檢查內部細節是否有改變。\
@@ -212,3 +212,145 @@ export default function App() {
   );
 }
 ```
+
+## Immutable Update
+
+這個章節主要會說明如何用 immutable 的方式，從現有資料產生出新資料。
+
+### 物件
+
+- 使用 spread 語法來複製物件，並加上或更新屬性
+
+單層物件
+
+```javascript
+const oldObj = { a: 1, b: 2, c: 3 };
+
+const newObj = { ...oldObj, c: 100, d: 500 };
+
+console.log(oldObj); // { a: 1, b: 2, c: 3 }
+
+console.log(newObj); // { a: 1, b: 2, c: 100, d: 500 };
+```
+
+巢狀物件
+
+```javascript
+const oldObj = {
+  a: 1,
+  b: 2,
+  innerObj: {
+    c: 3,
+  },
+};
+
+const newObj = {
+  ...oldObj,
+  innerObj: { ...oldObj.innerObj, c: 300 },
+};
+
+console.log(oldObj); // { a: 1, b: 2, innerObj: { c: 3 } }
+console.log(newObj); // { a: 1, b: 2, innerObj: { c: 300 } }
+```
+
+- 使用解構賦值與 rest 語法來剔除物件屬性
+
+```javascript
+const oldObj = { a: 1, b: 2, c: 3 };
+
+const { a, ...newObj } = oldObj;
+
+console.log(oldObj); //  { a: 1, b: 2, c: 3 }
+console.log(newObj); // { b: 2, c: 3 }
+```
+
+### 陣列
+
+- 在陣列的開頭/結尾插入：使用 spread 語法
+
+```javascript
+const oldArr = [1, 2, 3];
+const newArr = [0, ...oldArr, 4];
+
+console.log(oldArr); // [1, 2, 3]
+console.log(newArr); // [0, 1, 2, 3, 4]
+```
+
+- 在陣列的中間插入：使用 slice
+
+```javascript
+const oldArr = [1, 2, 3, 4];
+
+const insertTargetIndex = 2;
+const newArr = [
+  // 使用 slice 方法，slice 會回傳切分後的新陣列，不會 mutate 舊有陣列
+  ...oldArr.slice(0, insertTargetIndex),
+  'ABC',
+  ...oldArr.slice(insertTargetIndex),
+];
+
+console.log(oldArr); // [1, 2, 3, 4]
+console.log(newArr); // [1, 2, 'ABC', 3, 4]
+```
+
+- 剔除陣列項目：使用 filter
+
+```javascript
+const oldArr = [1, 2, 3, 4];
+
+const insertTargetIndex = 2;
+const newArr = oldArr.filter((item) => item !== 2);
+
+console.log(oldArr); // [1, 2, 3, 4]
+console.log(newArr); // [1, 3, 4]
+```
+
+- 更新或取代項目：使用 map
+
+```javascript
+const oldArr = [1, 2, 3, 4];
+
+const insertTargetIndex = 2;
+const newArr = oldArr.map((item) => {
+  return item === 2 ? 'ABC' : item;
+});
+
+console.log(oldArr); // [1, 2, 3, 4]
+console.log(newArr); // [1, 'ABC', 3, 4]
+```
+
+- 排序陣列項目
+
+`sort` 及 `reverse` 方法會 mutate 既有陣列
+
+```javascript
+// 錯誤方法
+const oldArr = [16, 1, 7, 1000];
+
+const newArr = oldArr.sort((a, b) => a - b);
+
+console.log(oldArr); // [1, 7, 16, 1000]
+console.log(newArr); // [1, 7, 16, 1000]
+```
+
+要先複製出一個新陣列，再對新陣列使用 sort
+
+```javascript
+// 正確方法
+const oldArr = [16, 1, 7, 1000];
+
+const newArr = [...oldArr];
+newArr.sort((a, b) => a - b);
+
+console.log(oldArr); // [1, 7, 16, 1000]
+console.log(newArr); // [1, 7, 16, 1000]
+```
+
+### Immutable update 不需要且不應該使用 deep clone
+
+可能有人會想，既然 React 判定物件或陣列是否有改變時，看的是資料的參考，那麼直接 deep clone 一個物件或陣列就好了，不過這種方法是不推薦、甚至是有害的。
+
+- deep clone 需遍歷整個物件或陣列的每一層，當結構很深時可能耗效能。且許多情況下，我們的需求只是要更新物件的某個部分，其他部分大都不需要變化，使用 deep clone 會造成記憶體與效能的浪費。
+- React 中有許多效能優化機制會判斷物件與陣列資料的參考。使用 deep clone 會讓物件、陣列內層沒發生更新的地方也都產生新的參考，這可能讓 React 誤以為這部分的資料也有發生更新，進而導致優化機制失效。
+
+> 總之，最好的方法是逐層在需要更新的地方進行 shallow clone，這樣可以只更新那些真正需要修改的部分。
