@@ -5,13 +5,14 @@ import Image from 'next/image';
 
 import { VscListSelection, VscClose } from 'react-icons/vsc';
 import SideMenu from '../side-menu';
+import { Locales } from '@/types/enum/locales';
 
 type Props = {
-  dict: Record<string, Record<string, string>>;
+  lang: Locales;
 };
 
 export default function Header(props: Props) {
-  const { dict } = props;
+  const { lang } = props;
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -52,7 +53,7 @@ export default function Header(props: Props) {
         </div>
       )}
 
-      <SideMenu setShowMenu={setShowMenu} showMenu={showMenu} dict={dict} />
+      <SideMenu setShowMenu={setShowMenu} showMenu={showMenu} lang={lang} />
     </div>
   );
 }

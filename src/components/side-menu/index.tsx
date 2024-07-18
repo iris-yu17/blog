@@ -8,19 +8,22 @@ import { CategoryText } from '@/types/enum/category';
 import PageUrls from '@/types/enum/page-url';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
+import { useTranslation } from '@/i18n/client';
+import { Locales } from '@/types/enum/locales';
 
 const DEFAULT_WIDTH = 256;
 
 type Props = {
   showMenu?: boolean;
   setShowMenu?: Dispatch<SetStateAction<boolean>>;
-  dict: Record<string, Record<string, string>>;
+  lang: Locales;
 };
 
 export default function SideMenu(props: Props) {
-  const { showMenu = true, setShowMenu, dict } = props;
+  const { showMenu = true, setShowMenu, lang } = props;
   const dragging = useRef(false);
   const [menuWidth, setMenuWidth] = useState<number>(DEFAULT_WIDTH);
+  const { t } = useTranslation(lang, 'common');
 
   useEffect(() => {
     window.addEventListener('mousemove', (e) => {
@@ -52,7 +55,7 @@ export default function SideMenu(props: Props) {
           <div className="text-md sticky left-0 top-0 hidden bg-black-200 p-4 font-press md:block">
             <span className="text-primary">IRIS</span> Studio
           </div>
-          <Accordion title={dict.category.tech} defaultExpand={true}>
+          <Accordion title={t('category.tech')} defaultExpand={true}>
             {categoryList.map((category) => {
               const { tag } = category;
               const count = articles.filter(
@@ -62,7 +65,7 @@ export default function SideMenu(props: Props) {
                 <Accordion
                   key={tag}
                   title={`${
-                    (CategoryText as any)[tag] || dict['sub-category'][tag]
+                    (CategoryText as any)[tag] || t(`sub-category.${tag}`)
                   } (${count})`}
                 >
                   {articles.map((item) => {

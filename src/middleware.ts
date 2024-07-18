@@ -1,40 +1,9 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from 'next/server';
-import { Locales } from "./types/enum/locales";
+import { NextRequest, NextResponse } from "next/server";
+import acceptLanguage from "accept-language";
+import { fallbackLng, languages, cookieName } from "@/i18n/settings";
+import { i18nRouter } from 'next-i18n-router';
 
-let locales = [Locales.enUS, Locales.zhHant];
-
-export function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname;
-  const locale = path.split('/')[1];
-  const response = NextResponse.next();
-
-  /**
-   * 設置 cookie
-   */
-  // 檢查 cookie 是否有語系了
-  const cookieLocale = request.cookies.get('locale')?.value;
-  response.cookies.set('locale', locale, { path: '/' });
-
-  /**
-   * 雙語功能
-   */
-  // 檢查 pathname 是否有語系了
-  const { pathname } = request.nextUrl;
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
-
-  // 若沒有語系就 redirect
-  if (!pathnameHasLocale) {
-    const defaultLocale = cookieLocale || Locales.zhHant;
-    request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(request.nextUrl);
-  };
-
-
-  return response;
-}
+acceptLanguage.languages(languages);
 
 export const config = {
   matcher: [
@@ -42,3 +11,12 @@ export const config = {
     '/((?!markdown|manifest.json|_next|.*\\.svg$|.*\\.png$).*)',
   ],
 };
+
+const i18nConfig = {
+  locales: languages,
+  defaultLocale: fallbackLng
+};
+
+export function middleware(request: NextRequest) {
+  return i18nRouter(request, i18nConfig);
+}
