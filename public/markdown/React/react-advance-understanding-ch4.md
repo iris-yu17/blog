@@ -10,8 +10,7 @@
 
 ### - Mount
 
-就是「新畫面區塊的產生」\
-當 component 以 React element 形式在畫面中首次出現時，就會發起 mount 流程。
+當 component 以 React element 形式在畫面中首次出現時，就會發起 mount 流程，意味著「新畫面區塊的產生」。
 
 流程如下：
 
@@ -50,3 +49,78 @@
 1. 執行 component 最後一次副作用處理所對應的 cleanup 函式
 2. 將 componet 所對應的實際 DOM element 從瀏覽器移除
 3. 在 React 內部移除對應的 component 實例，也就是移除該 fiber node，同時 component 實例內的所有 state 等狀態資料都會被丟棄
+
+## 4-3 每次 render 都有自己的 props, state 與 event handler 函式
+
+首先看看以下範例，當點擊 `Alert` 按鈕，三秒後會跳出 alert。
+
+```javascript
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const handleAlertButtonClick = () => {
+    setTimeout(() => {
+      alert(`count = ${count}`);
+    }, 3000);
+  };
+
+  return (
+    <>
+      <span>Count: {count}</span>
+      <button onClick={increment}>+1</button>
+      <button onClick={handleAlertButtonClick}>Alert</button>
+    </>
+  );
+}
+```
+
+若我們先點擊 `+1` 把數字加到 2，再點擊 `Alert` 按鈕，並在三秒內趕快再點擊 `+1` 將數字加到 4，三秒後跳出的 alert 訊息會顯示 `count = 2` 還是 `count = 4` 呢？
+
+答案是：`count = 2`，為什麼呢？
+
+這與以下這幾個特性有關：
+
+### 1. JavaScript 閉包：
+
+詳細說明可以看[這篇](./js-closure)
+
+### 2. 每次 render 都有其自己版本的 props 與 state：
+
+如前面章節所說，當我們呼叫 setCount 方法時，React 會 re-render，重新執行一次 component function 來產生新的 React element 畫面以作新舊比對。
+
+以這邊的 Counter 例子來說，我們可以這樣理解：
+
+```javascript
+// 首次 render
+export default function Counter() {
+   // 從 useState 取出的值，把它放到新宣告的 count 變數，並且它是一個"常數"，值永遠不會改變
+  const count = 0
+  ...
+}
+
+// 呼叫 setState，component function 重新執行
+export default function Counter() {
+   // 這個 count 變數與前一次宣告的 count 是不同的變數
+  const count = 1
+  ...
+}
+
+// 又一次呼叫 setState，component function 再次重新執行
+export default function Counter() {
+  const count = 2
+  ...
+}
+```
+
+初始 render 版本的 count 是 0，點擊兩次 `+1` 後的 render 版本的 count 則是 2，他們都有自己版本的 state。
+
+在每次 render 之間的 props 與 state 都是獨立、不互相影響的快照，其值永遠保值不變，像是該次 component function 執行時的區域常數。
+
+### 3. 每次 render 都有其自己版本的 event handler 函式：
+
+每次 render 都會產生全新的 event handler 函式，這些函式在每次 render 間都是獨立、不相關的。\
+ 所以在這個範例中，每次 render 都會重新產生新的 `handleAlertButtonClick` 函式，而他們會因為閉包特性而記住自己該次版本的 props, state 資料
