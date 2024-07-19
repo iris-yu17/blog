@@ -8,22 +8,20 @@ import { CategoryText } from '@/types/enum/category';
 import PageUrls from '@/types/enum/page-url';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-import { useTranslation } from '@/i18n/client';
-import { Locales } from '@/types/enum/locales';
+import { useTranslation } from 'react-i18next';
 
 const DEFAULT_WIDTH = 256;
 
 type Props = {
   showMenu?: boolean;
   setShowMenu?: Dispatch<SetStateAction<boolean>>;
-  lang: Locales;
 };
 
 export default function SideMenu(props: Props) {
-  const { showMenu = true, setShowMenu, lang } = props;
+  const { showMenu = true, setShowMenu } = props;
   const dragging = useRef(false);
   const [menuWidth, setMenuWidth] = useState<number>(DEFAULT_WIDTH);
-  const { t } = useTranslation(lang, 'common');
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     window.addEventListener('mousemove', (e) => {

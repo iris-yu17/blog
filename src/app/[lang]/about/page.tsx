@@ -3,7 +3,7 @@ import BreadCrumb from '@/components/breadcrumb';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import Image from 'next/image';
 import { Props } from '@/types/props';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 
 const className = {
@@ -19,9 +19,9 @@ const aboutMe = {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: { lang: Locales };
 }): Promise<Metadata> {
-  const { t } = await useTranslation(params.lang, 'about');
+  const { t } = await initTranslations(params.lang, ['about']);
 
   return {
     title: `${t('h1')} - IRIS Studio`,
@@ -30,13 +30,14 @@ export async function generateMetadata({
 
 export default async function About({ params }: Props) {
   const { lang } = params;
-  const { t } = await useTranslation(lang as Locales, 'about');
+  const { t } = await initTranslations(lang, ['about']);
 
   const intro: string[] = t('intro', { returnObjects: true });
 
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.About,
@@ -54,11 +55,9 @@ export default async function About({ params }: Props) {
             <Image alt="avatar" src="/avatar.png" width={200} height={200} />
           </div>
           <div>
-            {intro.map(
-              (item: string, index: number) => {
-                return <div key={index}>{item}</div>;
-              },
-            )}
+            {intro.map((item: string, index: number) => {
+              return <div key={index}>{item}</div>;
+            })}
           </div>
         </div>
         <div className="overflow-wrap-anywhere text-wrap">

@@ -2,13 +2,12 @@ import { categoryList } from '@/data/category';
 import { Badge } from 'flowbite-react';
 import PageUrls from '@/types/enum/page-url';
 import { CategoryText } from '@/types/enum/category';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { cookies } from 'next/headers';
 import { Locales } from '@/types/enum/locales';
 
-export default async function CategoryBlock() {
-  const lang = cookies().get('locale')?.value;
-  const { t } = await useTranslation(lang as Locales, 'common');
+export default async function CategoryBlock({ lang }: { lang: Locales }) {
+  const { t } = await initTranslations(lang, ['common']);
 
   return (
     <div className="flex flex-wrap gap-2 pb-5 md:mb-5">

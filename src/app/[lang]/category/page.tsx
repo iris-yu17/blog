@@ -6,15 +6,15 @@ import Pagination from '@/components/pagination';
 import CategoryBlock from '@/components/category-block';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: { lang: Locales };
 }): Promise<Metadata> {
-  const { t } = await useTranslation(params.lang, 'category');
+  const { t } = await initTranslations(params.lang, ['category']);
 
   return {
     title: `${t('h1')}｜${t('all')} - IRIS Studio`,
@@ -31,8 +31,9 @@ export default async function Category({
   const { page = 1 } = searchParams;
   const currentPage = Number(page);
   const { lang } = params;
-  const { t } = await useTranslation(lang as Locales, 'category');
-  const { t: tCommon } = await useTranslation(lang as Locales, 'common');
+
+  const { t } = await initTranslations(params.lang, ['category']);
+  const { t: tCommon } = await initTranslations(lang, ['common']);
 
   const totalCount = articles.length;
   const ARTICLE_PER_PAGE = 10;
@@ -46,6 +47,7 @@ export default async function Category({
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.Category,
@@ -68,7 +70,7 @@ export default async function Category({
           &#160;({t('total', { count: totalCount })})
         </span>
       </p>
-      <CategoryBlock />
+      <CategoryBlock lang={lang}/>
       <div className="flex flex-col gap-2 md:gap-4">
         {slicedArticles.map((item) => {
           const { id } = item;

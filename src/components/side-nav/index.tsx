@@ -21,7 +21,7 @@ import { useState } from 'react';
 import { Locales } from '@/types/enum/locales';
 import { useRouter } from 'next/navigation';
 import { setCookie } from 'cookies-next';
-import { useTranslation } from '@/i18n/client';
+import { useTranslation } from 'react-i18next';
 import { fallbackLng } from '@/i18n/settings';
 
 export const NAV = [
@@ -67,7 +67,7 @@ function SideNav(props: Props) {
   const [showSetting, setShowSetting] = useState(false);
 
   const { theme, setTheme } = useTheme();
-  const { t } = useTranslation(lang, 'common');
+  const { t } = useTranslation('common');
 
   return (
     <div className="sticky left-0 top-12 z-50 flex h-[calc(100dvh-3rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">

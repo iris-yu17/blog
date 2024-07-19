@@ -4,6 +4,7 @@ export const fallbackLng = Locales.zhHant;
 export const languages = [fallbackLng, Locales.enUS];
 export const cookieName = 'i18next';
 export const defaultNS = "translation";
+export const i18nNamespaces = ['about', 'article', 'common', 'category'];
 
 // lng = 採用的語言, ns = 採用的 name space
 export function getOptions(lng = fallbackLng, ns = defaultNS) {

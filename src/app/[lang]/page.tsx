@@ -4,7 +4,7 @@ import Pagination from '@/components/pagination';
 import articles from '@/data/article';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 
 export default async function Home({
@@ -17,8 +17,8 @@ export default async function Home({
   const { page = 1 } = searchParams;
   const currentPage = Number(page);
 
-  const { t } = await useTranslation(lang, 'article');
-  const { t: tCommon } = await useTranslation(lang, 'common');
+  const { t } = await initTranslations(lang, ['article']);
+  const { t: tCommon } = await initTranslations(lang, ['common']);
 
   const totalCount = articles.length;
   const ARTICLE_PER_PAGE = 10;
@@ -32,6 +32,7 @@ export default async function Home({
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.Home,

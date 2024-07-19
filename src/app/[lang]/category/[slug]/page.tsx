@@ -8,7 +8,7 @@ import articles from '@/data/article';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import { Props } from '@/types/props';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -17,8 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     paht: '',
   };
   const { tag } = category;
-  const { t } = await useTranslation(params.lang as string, 'category');
-  const { t: tCommon } = await useTranslation(params.lang as string, 'common');
+  const { t } = await initTranslations(params.lang as Locales, ['category']);
+  const { t: tCommon } = await initTranslations(params.lang as Locales, [
+    'common',
+  ]);
 
   return {
     title: `${t('h1')}｜${
@@ -38,8 +40,8 @@ export default async function Category({
   };
   const { tag } = category;
   const { lang } = params;
-  const { t } = await useTranslation(lang as Locales, 'category');
-  const { t: tCommon } = await useTranslation(lang as Locales, 'common');
+  const { t } = await initTranslations(lang, ['category']);
+  const { t: tCommon } = await initTranslations(lang, ['common']);
 
   const filteredArticles = articles.filter((item) => {
     return item.tags.find((_tag) => {
@@ -50,6 +52,7 @@ export default async function Category({
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.Category,
@@ -78,7 +81,7 @@ export default async function Category({
           &#160;({t('total', { count: filteredArticles.length })})
         </span>
       </p>
-      <CategoryBlock />
+      <CategoryBlock lang={lang} />
       <div className="flex flex-col gap-2 md:gap-4">
         {filteredArticles.map((item) => {
           const { id } = item;

@@ -1,26 +1,42 @@
-import { createInstance } from "i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { initReactI18next } from "react-i18next/initReactI18next";
-import { getOptions } from "./settings";
-import { Locales } from "@/types/enum/locales";
+import { Resource, createInstance, i18n } from 'i18next';
+import { initReactI18next } from 'react-i18next/initReactI18next';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { fallbackLng, languages, cookieName, defaultNS } from './settings';
+import { Locales } from '@/types/enum/locales';
 
-const initI18next = async (lng: Locales, ns: string) => {
-  const i18nInstance = createInstance();
-  await i18nInstance
-    .use(initReactI18next)
-    .use(
+export default async function initTranslations(
+  locale: Locales,
+  namespaces: string[],
+  i18nInstance?: i18n,
+  resources?: Resource
+) {
+  i18nInstance = i18nInstance || createInstance();
+
+  i18nInstance.use(initReactI18next);
+
+  if (!resources) {
+    i18nInstance.use(
       resourcesToBackend(
-        (lng: string, ns: string) => import(`./locales/${lng}/${ns}.json`)
+        (language: string, namespace: string) =>
+          import(`./locales/${language}/${namespace}.json`)
       )
-    )
-    .init(getOptions(lng, ns));
-  return i18nInstance;
-};
+    );
+  }
 
-export async function useTranslation(lng: Locales, ns: string, options = {}) {
-  const i18nextInstance = await initI18next(lng, ns);
+  await i18nInstance.init({
+    lng: locale,
+    resources,
+    fallbackLng: fallbackLng,
+    supportedLngs: languages,
+    defaultNS: namespaces[0],
+    fallbackNS: namespaces[0],
+    ns: namespaces,
+    preload: resources ? [] : languages
+  });
+
   return {
-    t: i18nextInstance.getFixedT(lng, Array.isArray(ns) ? ns[0] : ns),
-    i18n: i18nextInstance,
+    i18n: i18nInstance,
+    resources: i18nInstance.services.resourceStore.data,
+    t: i18nInstance.t
   };
 }

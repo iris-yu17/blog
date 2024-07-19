@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Badge } from 'flowbite-react';
 import { Article } from '@/types/article';
 import { CategoryText } from '@/types/enum/category';
-import { useTranslation } from '@/i18n';
+import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 
 export default async function ArticleCard({
@@ -18,8 +18,8 @@ export default async function ArticleCard({
 }) {
   const { name, updated, description, id, tags } = data;
   const tag = tags[0];
-  const { t } = await useTranslation(lang, 'article');
-  const { t: tCommon } = await useTranslation(lang, 'common');
+  const { t } = await initTranslations(lang, ['article']);
+  const { t: tCommon } = await initTranslations(lang, ['common']);
 
   return (
     <Link
