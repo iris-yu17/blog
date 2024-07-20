@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Pluggable } from 'unified';
 import rehypeHighlight from 'rehype-highlight';
@@ -15,7 +15,8 @@ import { visit } from 'unist-util-visit';
 import { Props } from '@/types/props';
 
 import CodeTheme from '@/components/code-theme';
-import { getDictionary } from '@/utils/dictionaries';
+import initTranslations from '@/i18n';
+import { Locales } from '@/types/enum/locales';
 
 function addIdToH2() {
   return (tree: any) => {
@@ -48,6 +49,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export const generateStaticParams = async () => {
+  return articles.map((item) => ({
+    slug: item.id,
+  }));
+};
+
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
@@ -73,11 +80,11 @@ const options = {
 export default async function Article({
   params,
 }: {
-  params: { slug: string; lang: string };
+  params: { slug: string; lang: Locales };
 }) {
   const pathname = params;
   const { slug, lang } = pathname;
-  const dict = await getDictionary(lang as string, 'common');
+  const { t } = await initTranslations(lang, ['common']);
 
   const article: ArticleType =
     articles.find((item) => item.id === slug) || articles[0];
@@ -97,6 +104,7 @@ export default async function Article({
     <>
       <CodeTheme />
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.Home,
@@ -114,7 +122,7 @@ export default async function Article({
             {tags.map((item) => {
               return (
                 <Badge color="success" key={item}>
-                  #{(CategoryText as any)[item] || dict['sub-category'][item]}
+                  #{(CategoryText as any)[item] || t(`sub-category.${item}`)}
                 </Badge>
               );
             })}
