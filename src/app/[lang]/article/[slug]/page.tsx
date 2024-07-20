@@ -49,6 +49,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export const generateStaticParams = async () => {
+  return articles.map((item) => ({
+    slug: item.id,
+  }));
+};
+
 const options = {
   mdxOptions: {
     remarkPlugins: [remarkGfm],
