@@ -1,0 +1,26 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://iris-studio.cc</loc>
+    <lastmod>2024-07-20T13:23:13.218Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://iris-studio.cc/about</loc>
+    <lastmod>2024-07-20T13:23:13.218Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://iris-studio.cc/category</loc>
+    <lastmod>2024-07-20T13:23:13.218Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://iris-studio.cc/article/sitemap.xml</loc>
+    <lastmod>2024-07-20T13:23:13.218Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
