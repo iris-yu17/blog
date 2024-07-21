@@ -9,7 +9,11 @@ import PageTab from '@/components/page-tab';
 import { ThemeProvider } from './helper/theme-provider';
 import Script from 'next/script';
 import { Theme } from '@/types/enum/theme';
-import { getDictionary } from '@/utils/dictionaries';
+import { languages } from '@/i18n/settings';
+import TranslationsProvider from '@/components/translations-provider';
+import initTranslations from '@/i18n';
+import { Locales } from '@/types/enum/locales';
+import { i18nNamespaces } from '@/i18n/settings';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,17 +26,21 @@ export const metadata: Metadata = {
   },
 };
 
+export async function generateStaticParams() {
+  return languages.map((lang) => ({ lang }));
+}
+
 export default async function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode;
-  params: { [key: string]: string };
+  params: { [key: string]: string; lang: Locales };
 }) {
-  const dict = await getDictionary(lang, 'common');
+  const { t, resources } = await initTranslations(lang, i18nNamespaces);
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         {/* GA */}
         <Script
@@ -53,22 +61,28 @@ export default async function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="flex">
-            <SideNav dict={dict}/>
-            <div className="hidden md:block">
-              <SideMenu dict={dict}/>
-            </div>
-            <Header dict={dict}/>
-            <main className="w-full border-l border-border pb-20 font-rbtm">
-              <PageTab />
-              <div className="h-full px-4 pt-12 md:px-6 md:pt-0">
-                {children}
+        <TranslationsProvider
+          namespaces={i18nNamespaces}
+          locale={lang}
+          resources={resources}
+        >
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <div className="flex">
+              <SideNav lang={lang} />
+              <div className="hidden md:block">
+                <SideMenu />
               </div>
-            </main>
-          </div>
-          <Footer />
-        </ThemeProvider>
+              <Header />
+              <main className="w-full border-l border-border pb-20 font-rbtm">
+                <PageTab />
+                <div className="h-full px-4 pt-12 md:px-6 md:pt-0">
+                  {children}
+                </div>
+              </main>
+            </div>
+            <Footer />
+          </ThemeProvider>
+        </TranslationsProvider>
       </body>
     </html>
   );

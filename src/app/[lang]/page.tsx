@@ -4,19 +4,21 @@ import Pagination from '@/components/pagination';
 import articles from '@/data/article';
 import PageUrls from '@/types/enum/page-url';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
-import { getDictionary } from '@/utils/dictionaries';
+import initTranslations from '@/i18n';
+import { Locales } from '@/types/enum/locales';
 
 export default async function Home({
   searchParams,
   params: { lang },
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
-  params: { [key: string]: string };
+  params: { [key: string]: string; lang: Locales };
 }) {
   const { page = 1 } = searchParams;
   const currentPage = Number(page);
-  const dict = await getDictionary(lang, 'article');
-  const commonDict = await getDictionary(lang, 'common');
+
+  const { t } = await initTranslations(lang, ['article']);
+  const { t: tCommon } = await initTranslations(lang, ['common']);
 
   const totalCount = articles.length;
   const ARTICLE_PER_PAGE = 10;
@@ -30,6 +32,7 @@ export default async function Home({
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.Home,
@@ -38,21 +41,21 @@ export default async function Home({
       />
       <h1 className="mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl">
         {`<`}
-        <span className="mx-1">{dict.h1}</span>
+        <span className="mx-1">{t('h1')}</span>
         {`/>`}
       </h1>
       <div className="flex flex-col gap-2 md:gap-4">
         {slicedArticles.map((item) => {
           const { id } = item;
           const href = `${PageUrls.Article}/${id}`;
-          return <ArticleCard key={id} data={item} href={href} />;
+          return <ArticleCard key={id} data={item} href={href} lang={lang} />;
         })}
       </div>
       <Pagination
         totalPages={TOTAL_PAGES}
         currentPage={currentPage}
         mainPath={PageUrls.Home}
-        dict={commonDict.pagination}
+        dict={tCommon('pagination', { returnObjects: true })}
       />
     </>
   );

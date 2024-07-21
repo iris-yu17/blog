@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import BreadCrumb from '@/components/breadcrumb';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
-import { getDictionary } from '@/utils/dictionaries';
 import Image from 'next/image';
 import { Props } from '@/types/props';
+import initTranslations from '@/i18n';
+import { Locales } from '@/types/enum/locales';
 
 const className = {
   h1: 'mb-3 text-2xl font-semibold leading-normal text-quaternary md:mb-5 md:text-3xl',
@@ -18,21 +19,25 @@ const aboutMe = {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: { lang: Locales };
 }): Promise<Metadata> {
-  const dict = await getDictionary(params.lang, 'about');
+  const { t } = await initTranslations(params.lang, ['about']);
 
   return {
-    title: `${dict.h1} - IRIS Studio`,
+    title: `${t('h1')} - IRIS Studio`,
   };
 }
 
 export default async function About({ params }: Props) {
   const { lang } = params;
-  const dict = await getDictionary(lang as string, 'about');
+  const { t } = await initTranslations(lang, ['about']);
+
+  const intro: string[] = t('intro', { returnObjects: true });
+
   return (
     <>
       <BreadCrumb
+        lang={lang}
         items={[
           {
             key: BreadcrumbKey.About,
@@ -42,7 +47,7 @@ export default async function About({ params }: Props) {
       <div>
         <h1 className={className.h1}>
           {`<`}
-          <span className="mx-1">{dict.h1}</span>
+          <span className="mx-1">{t('h1')}</span>
           {`/>`}
         </h1>
         <div className="mb-8 flex flex-col items-center gap-5 md:flex-row">
@@ -50,7 +55,7 @@ export default async function About({ params }: Props) {
             <Image alt="avatar" src="/avatar.png" width={200} height={200} />
           </div>
           <div>
-            {dict.intro.map((item: string, index: number) => {
+            {intro.map((item: string, index: number) => {
               return <div key={index}>{item}</div>;
             })}
           </div>
@@ -95,7 +100,7 @@ export default async function About({ params }: Props) {
             <span className="mr-2 text-quaternary">others:</span>
             <span className="text-yellow-400 dark:text-pink-400">{`[`}</span>
             {aboutMe.others.map((item, index) => {
-              const translation = dict['skills-others'][item] || item;
+              const translation = t(`skills-others.${item}`) || item;
               return (
                 <span
                   key={item}

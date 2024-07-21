@@ -21,6 +21,8 @@ import { useState } from 'react';
 import { Locales } from '@/types/enum/locales';
 import { useRouter } from 'next/navigation';
 import { setCookie } from 'cookies-next';
+import { useTranslation } from 'react-i18next';
+import { fallbackLng } from '@/i18n/settings';
 
 export const NAV = [
   {
@@ -55,18 +57,17 @@ const styles = {
 };
 
 type Props = {
-  dict: Record<string, Record<string, string>>;
+  lang: Locales;
 };
 
 function SideNav(props: Props) {
-  const { dict } = props;
+  const { lang } = props;
   const router = useRouter();
   const path = usePathname();
   const [showSetting, setShowSetting] = useState(false);
 
-  const lang = path.split('/')[1];
-
   const { theme, setTheme } = useTheme();
+  const { t } = useTranslation('common');
 
   return (
     <div className="sticky left-0 top-12 z-50 flex h-[calc(100dvh-3rem)] flex-col justify-between border-r border-border bg-black-300 md:top-0 md:h-dvh">
@@ -83,7 +84,7 @@ function SideNav(props: Props) {
 
           return (
             <Tooltip
-              content={dict.breadcrumbs[dictionaryKey]}
+              content={t(`breadcrumbs.${dictionaryKey}`)}
               placement="right"
               key={dictionaryKey}
               theme={{
@@ -112,7 +113,7 @@ function SideNav(props: Props) {
         <Link
           className="hover:text-white-default mt-auto block border-l-2 border-black-300 px-2 py-2.5 text-gray md:p-3"
           href={'https://github.com/iris-yu17'}
-          target='_blank'
+          target="_blank"
         >
           <VscGithubInverted size={28} />
         </Link>
@@ -131,23 +132,27 @@ function SideNav(props: Props) {
         <div className="absolute bottom-10 left-12 ml-1 rounded border border-border bg-black-100 p-1 md:left-14">
           <button
             onClick={() => {
-              let newPath;
-              let newLocale;
-              if (lang === Locales.zhHant) {
-                newPath = path.replace(Locales.zhHant, Locales.enUS);
-                newLocale = Locales.enUS;
-              } else {
-                newPath = path.replace(Locales.enUS, Locales.zhHant);
-                newLocale = Locales.zhHant;
-              }
-              router.push(newPath);
+              const newLocale =
+                lang === Locales.zhHant ? Locales.enUS : Locales.zhHant;
 
-              setCookie('locale', newLocale);
-              setShowSetting(false);
+              // set cookie for next-i18n-router
+              const days = 30;
+              const date = new Date();
+              date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+              const expires = date.toUTCString();
+              document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
+
+              if (lang === fallbackLng) {
+                router.push('/' + newLocale + path);
+              } else {
+                router.push(path.replace(`/${lang}`, `/${newLocale}`));
+              }
+
+              router.refresh();
             }}
             className={styles.settingBtn}
           >
-            {dict.settings.lang}
+            {t('settings.lang')}
           </button>
           <button
             onClick={() => {
@@ -156,7 +161,7 @@ function SideNav(props: Props) {
             }}
             className={styles.settingBtn}
           >
-            {dict.settings.theme}
+            {t('settings.theme')}
           </button>
         </div>
       )}

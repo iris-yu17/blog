@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { VscChevronRight } from 'react-icons/vsc';
 import { BreadcrumbKey, BreadcrumbText } from '@/types/enum/breadcrumb';
 import PageUrls from '@/types/enum/page-url';
-import { getDictionary } from '@/utils/dictionaries';
+import initTranslations from '@/i18n';
 import { cookies } from 'next/headers';
+import { Locales } from '@/types/enum/locales';
 
 type BreadCrumbItem = {
   key?: BreadcrumbKey;
@@ -13,11 +14,12 @@ type BreadCrumbItem = {
 
 export default async function BreadCrumb({
   items,
+  lang,
 }: {
   items: BreadCrumbItem[];
+  lang: Locales;
 }) {
-  const lang = cookies().get('locale')?.value;
-  const dict = await getDictionary(lang as string, 'common');
+  const { t } = await initTranslations(lang as Locales, ['common']);
 
   return (
     <div className="sticky left-0 top-12 -ms-4 mb-4 flex w-[calc(100%+2rem)] flex-wrap items-center gap-1 bg-black-200 px-2 py-1 text-sm text-gray-100 shadow-lg shadow-[#dddddd] md:top-10 md:-ms-6 md:w-[calc(100%+3rem)] dark:font-light dark:shadow-[#131313]">
@@ -28,7 +30,7 @@ export default async function BreadCrumb({
       {items.map((item, index) => {
         const { key = BreadcrumbKey.Home, text, href } = item;
 
-        const breadcrumbText = dict.breadcrumbs[key.toLowerCase()];
+        const breadcrumbText = t(`breadcrumbs.${key.toLowerCase()}`);
 
         return (
           <div key={index} className="flex items-center gap-1">
