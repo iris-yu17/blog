@@ -152,18 +152,19 @@ useEffect 讓我們能夠根據 render 中的 props 和 state 資料來同步化
 因此 useEffect 並不是 function component 的生命週期 API，雖然它的執行時機確實跟 class component 的一些生命週期類似，但這不是 useEffect 的用途。
 它的目標是「同步化」而非「控制執行時機」，**這也是為什麼 effect 函式要在每次 render 後都執行的原因，為了確保「副作用會隨著資料變化而不斷執行對應的同步化」**。
 
-## 5-3 dependencies 是一種效能優化手段，而非邏輯控制
+### dependencies 是一種效能優化手段，而非邏輯控制
 
 這是非常重要的觀念，一般我們知道，當 dependencies 陣列裡的值沒有改變時，就會跳過 effect 函式。\
 然而這個行為雖然在大多數情況下會如期發生，但**並不是保證的**。如果我們將它用於效能優化以外的用途，例如模擬生命週期、或是依賴於「因 dependencies 沒更新因此這段副作用會被跳過」的邏輯控制，這可能會讓我們設計出來的副作用處理不可靠、不安全。\
 由於 dependencies 是一種效能優化手段，我們應該以效能優化的原則去思考：「即使沒有做這個效能優化的時候，程式也應該要能正常運作。」
 
 因此，想要確認副作用處理是否安全可靠，最好的辦法就是：\
-讓你的副作用處理即使根本沒提供 dependencies 參數（以至於每次都會執行），仍然可以正確運行。
+
+> 讓你的副作用處理即使根本沒提供 dependencies 參數（以至於每次都會執行），仍然可以正確運行。
 
 所以當我們在設計 effect 函式的邏輯時，不該考慮這個 effect 函式會在什麼時候被執行，而是即使每次 render 都執行，程式仍能正常運作。副作用處理的重點應是「能夠完整的同步化原始資料到副作用」。
 
-## 5-4 維護資料的流動：不要欺騙 hooks 的 dependencies
+## 5-3 維護資料的流動：不要欺騙 hooks 的 dependencies
 
 ### 欺騙 dependencies 會造成什麼問題
 
@@ -207,7 +208,7 @@ export default function SearchResults() {
 第二次 render：
 
 1. count 值為 1，渲染出畫面
-2. React 會逐一比較 dependencies 陣列所有項目與上一版本是否相同來決定是否跳過而因為 dependencies 是 `[]`，React 會認為沒有依賴資料而直接跳過。setInterval 裡面的 `setCount(count + 1)` 會是 `setCount(1 + 1)`，但由於 effect 函式直接被跳過，不會重新設定 `setInterval`，它執行的永遠都是 `setCount(0 + 1)`。
+2. React 會逐一比較 dependencies 陣列所有項目與上一版本是否，而因為 dependencies 是 `[]`，React 會認為沒有依賴資料而直接跳過。此次 render 的 setInterval 裡面的 `setCount(count + 1)` 會是 `setCount(1 + 1)`，但由於 effect 函式直接被跳過，不會重新設定 `setInterval`，它執行的永遠都是 `setCount(0 + 1)`。
 
 這就是欺騙 dependencies 所連帶導致的問題。\
 我們應該永遠誠實地依據 effect 函式實際的資料依賴來填寫 dependencies。
@@ -264,7 +265,7 @@ export default function SearchResults() {
 我們可以先想想，為何上面那個範例需要依賴 count 變數？\
 因為我們需要得到它當前的值。
 
-在[前面章節](.react-advance-understanding-ch3)有介紹到，當我們想要根據既有的 state 來做計算時，可以使用 **updater function**。\
+在[前面章節](./react-advance-understanding-ch3)有介紹到，當我們想要根據既有的 state 來做計算時，可以使用 **updater function**。\
 因此範例可以再改寫成：
 
 ```javascript
@@ -566,7 +567,7 @@ export default function App() {
 有兩個 state 資料：count 跟 todos。\
 我們想要做到當首次 render 以及在 re-render 發現 todos 資料改變時，count 就要加一。
 
-在這個錯誤示範中，我們欺騙 dependencies 這個 effect 函式有依賴 todos 變數，想藉此達成「只要當 todos 更新才執行這段副作用」的效果。
+在這個錯誤示範中，我們欺騙 dependencies 這個 effect 函式有依賴 todos 變數，想藉此達成「只有當 todos 更新才執行這段副作用」的效果。
 
 ```javascript
 export default function App() {
@@ -592,7 +593,7 @@ export default function App() {
   const prevTodosRef = useRef();
 
   useEffect(() => {
-    // 比較前一次跟這一次 rener 的 todos
+    // 比較前一次跟這一次 render 的 todos
     if (prevTodosRef.current !== todos) {
       setCount((prev) => prev + 1);
     }
@@ -607,3 +608,17 @@ export default function App() {
   // ...
 }
 ```
+
+## 5-4 React 18 的 effect 函式在 mount 時為何會執行兩次？
+
+在前面提過的[這個](https://codesandbox.io/p/sandbox/react-advance-ch5-3-2-n7mtqh)範例，我們知道在 React 18 中，effect 函式可能會被執行兩次。
+
+這是在開發環境使用嚴格模式才會發生，主要是為了幫助開發者檢查到不夠安全、可靠的副作用處理。因為在 React 未來版本中，加入了一個新的概念：Reusable State。
+
+Reusable State 是指：從畫面中移除 component 後，仍能保留其 state 狀態，以便需要時重新 mount 後再次還原。
+
+而當然，在每次 mount 時，component 就會再次執行副作用的處理。這意味著，在未來版本的 React 中，即使 dependencies 沒有變化，effect 函式仍有可能再次被執行。
+
+所以為了確保 component 支援上述的特性，副作用的處理就必須滿足「無論被重複多少次也不會壞掉」的目標。
+
+React 18 的嚴格模式，就是添加了模擬 `mount` => `unmount` => `mount` 的行為。所以我們才會在 component 在 mount 時自動發起 `執行 effect 函式` => `執行 cleanup 函式` => `執行 effect 函式` 的動作。

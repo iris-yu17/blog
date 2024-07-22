@@ -3,7 +3,7 @@
 這系列文章是一邊閱讀 《React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者》，一邊做的筆記摘要。\
 從 Chapter 2 ～ Chapter 5，總共會有四篇文章。
 
-## 3-2 深入理解 batch update 語 updater function
+## 3-2 深入理解 batch update 與 updater function
 
 ### Batch Update
 
