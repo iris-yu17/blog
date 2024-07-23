@@ -158,7 +158,7 @@ useEffect 讓我們能夠根據 render 中的 props 和 state 資料來同步化
 然而這個行為雖然在大多數情況下會如期發生，但**並不是保證的**。如果我們將它用於效能優化以外的用途，例如模擬生命週期、或是依賴於「因 dependencies 沒更新因此這段副作用會被跳過」的邏輯控制，這可能會讓我們設計出來的副作用處理不可靠、不安全。\
 由於 dependencies 是一種效能優化手段，我們應該以效能優化的原則去思考：「即使沒有做這個效能優化的時候，程式也應該要能正常運作。」
 
-因此，想要確認副作用處理是否安全可靠，最好的辦法就是：\
+因此，想要確認副作用處理是否安全可靠，最好的辦法就是：
 
 > 讓你的副作用處理即使根本沒提供 dependencies 參數（以至於每次都會執行），仍然可以正確運行。
 
@@ -258,7 +258,7 @@ export default function SearchResults() {
 
 ### 讓 effect 函式對於依賴的資料自給自足
 
-接續前面的範例情況，`count` 會在不同 render 間頻繁更新，因此會不斷地清除又重新設定 `setInterval`，我們可以再調整寫法，讓它不再需要依賴一個會在不同 render 間頻繁更新的值。\
+接續前面的範例情況，`count` 會在不同 render 間頻繁更新，因此會不斷地清除又重新設定 `setInterval`，這顯然不是最好的做法。我們可以再調整寫法，讓它不再需要依賴一個會在不同 render 間頻繁更新的值。\
 我們仍然要保持對 dependencies 誠實，但可以透過一些安全的手段盡量**減少依賴項目**，讓 effect 函式對於依賴的資料自給自足。\
 白話來說就是可以透過一些安全方法，就不用再把 count 放到 dependencies 了。
 
@@ -530,7 +530,7 @@ export default function App() {
 ```
 
 畫面上出現的是 `2`。\
-因為 React 18 開始，在嚴格模式下，effect 函式有可衡會在 mount 時被執行兩次。\
+因為 React 18 開始，在嚴格模式下，effect 函式有可能會在 mount 時被執行兩次。\
 如前面所說，dependecies 是用來優化效能的，不是保證在某情況後會跳過。而在未來，React 也有可能在 dependecies 沒有更新的情況下，仍重新執行副作用的處理。
 
 那當我們真的需要在副作用在 component 的生命週期中只執行一次時要怎麼辦呢？\
@@ -622,3 +622,85 @@ Reusable State 是指：從畫面中移除 component 後，仍能保留其 state
 所以為了確保 component 支援上述的特性，副作用的處理就必須滿足「無論被重複多少次也不會壞掉」的目標。
 
 React 18 的嚴格模式，就是添加了模擬 `mount` => `unmount` => `mount` 的行為。所以我們才會在 component 在 mount 時自動發起 `執行 effect 函式` => `執行 cleanup 函式` => `執行 effect 函式` 的動作。
+
+## 5-5 副作用處理常見的情境設計技巧
+
+理想的副作用處理是：「**其造成的影響是可逆的，且無論執行多少次都不會壞掉**」\
+
+### 常見的副作用設計問題
+
+1. 疊加性質而非覆蓋性質的操作
+2. Race condition（競態條件）
+3. Memory Leak
+
+### Fetch 請求伺服器端 API
+
+以下程式碼中，fetchUserData 是非同步的，它會進行一次後端 API 的網路請求，並回傳一個 promise。\
+因此當這個 effect 短時間內被連續執行時，可能會有 Race condition（競態條件）問題。\
+白話來說就是說假設短時間內打同一支 API 兩次，先打的那次不一定會比後打的那次早得到結果，因為 API 回傳的時間是由當時的網路狀態或伺服器端的處理速度決定的。
+
+```javascript
+export default function UserProfile(props) {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    async function startFetching() {
+      const data = await fetchUserData(props.userId);
+      setUserData(data);
+    }
+
+    startFetching();
+  }, [props.userId]);
+
+  // ...
+}
+```
+
+解決方法：\
+建立一個簡單的 flag，讓每次 render 的 effect 函式本身都記得自己「是否該忽略 fetch 結果」的 flag。\
+這個 flag 變數 `ignoreResult` 預設會是 `false`，當 re-render 時，由於會執行前一次 render 版本的 cleanup 函式，所以會把前一次 effect 函式中的 `ignoreResult` 改為 true。
+
+```javascript
+export default function UserProfile(props) {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    let ignoreResult = false;
+
+    async function startFetching() {
+      const data = await fetchUserData(props.userId);
+
+      if (!ignoreResult) {
+        setUserData(data);
+      }
+    }
+
+    startFetching();
+
+    return () => {
+      ignoreResult = true;
+    };
+  }, [props.userId]);
+
+  // ...
+}
+```
+
+### 控制外部套件
+
+一般來說，若想要串接第三方套件，通常需要先間其功能初始化：
+
+```javascript
+export default function App() {
+  const thirdPartyPackageRef = useRef(null);
+
+  useEffect(() => {
+    // 自己寫的條件式邏輯，來確保初始化動作不會重複執行
+    // 即使這個 effect 函式 重複多次，這個效果也不會壞掉
+    if (!thirdPartyPackageRef.current) {
+      thirdPartyPackageRef.current = initPackage();
+    }
+    // 這裡是因為真的沒有依賴才填[]，不是因為想讓它只執行一次
+  }, []);
+}
+```
