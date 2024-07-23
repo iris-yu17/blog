@@ -1,6 +1,6 @@
-> 以下內容為 PIXI.js 版本為 v7
+> 以下內容為 PixiJS 版本為 v7
 
-## 載入Pixi.js
+## 載入 PixiJS
 
 1. 安裝 pixi.js
    https://www.npmjs.com/package/pixi.js?activeTab=readme

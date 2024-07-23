@@ -132,6 +132,10 @@ blockquote p::after {
   text-decoration: none !important;
 }
 
+.prose li li {
+  list-style-type: circle;
+}
+
 .fill-mode-forwards {
   animation-fill-mode: forwards;
 }

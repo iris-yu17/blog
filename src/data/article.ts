@@ -295,7 +295,7 @@ const articles: Article[] = [
   },
   {
     id: 'pixi-notes',
-    name: 'PIXI.js v7 基礎筆記',
+    name: 'PixiJS v7 基礎筆記',
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2023-03-22',
