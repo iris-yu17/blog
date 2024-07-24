@@ -1,23 +1,23 @@
 ### 題目
 
-> 紅燈三秒亮一次，綠燈兩秒亮一次，黃燈一秒亮一次；如何讓三個燈不斷交替重複亮燈？
->
-> 如下面這樣：
-> 過三秒 [紅] 過兩秒 [綠] 過一秒 [黃] 過三秒 [紅] 過兩秒 [綠] .....
+紅燈三秒亮一次，綠燈兩秒亮一次，黃燈一秒亮一次；如何讓三個燈不斷交替重複亮燈？
+
+如下面這樣：\
+過三秒 `紅` 過兩秒 `綠` 過一秒 `黃` 過三秒 `紅` 過兩秒 `綠` .....
 
 三個亮燈函數已經存在：
 
 ```javascript
 function red() {
-  console.log("red    - ", new Date());
+  console.log('red    - ', new Date());
 }
 
 function green() {
-  console.log("green  - ", new Date());
+  console.log('green  - ', new Date());
 }
 
 function yellow() {
-  console.log("yellow - ", new Date());
+  console.log('yellow - ', new Date());
 }
 ```
 
@@ -37,7 +37,7 @@ function callbackLoop() {
   }, 3000);
 }
 
-callbackLoop()
+callbackLoop();
 ```
 
 ### - Promise 寫法
@@ -49,8 +49,8 @@ const ticker = (second, func) => {
       func();
       resolve();
     }, second * 1000);
-  })
-}
+  });
+};
 
 function promiseLoop() {
   const redPromise = ticker(3, red);
@@ -65,7 +65,7 @@ function promiseLoop() {
     })
     .then(() => {
       promiseLoop();
-    })
+    });
 }
 
 promiseLoop();

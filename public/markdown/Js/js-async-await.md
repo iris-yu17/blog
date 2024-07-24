@@ -1,8 +1,7 @@
-## (1) 什麼是 async/await
+## 什麼是 async/await
 
-> async/await 是 promise 的語法糖，讓程式變得更好理解與閱讀。
-
-如以下範例，都是獲取資料，把它轉為json格式，並印出來。
+async/await 是 promise 的語法糖，讓程式變得更好理解與閱讀。\
+如以下範例，都是獲取資料，把它轉為 json 格式，並印出來。\
 相較於 promise，async/await 的寫法直觀、好理解許多。
 
 ### promise寫法
@@ -29,16 +28,16 @@ async function getData() {
 }
 ```
 
-## (2) 說明
+## 說明
 
 - 用 async 關鍵字來定義這個函式是非同步的
 - 只有在 async function 裡才可以使用 await 關鍵字。
 - 在非同步函式前面加上 await，代表要等待這個非同步行為完成，才繼續往下執行。
 - 如上面範例中的 `sendRequest()` 和 `rawData.json()` 這兩個都是非同步函式。所以我們要在前面加上 await，等 `sendRequest()` 完成，得到 rawData 後，再執行 `rawData.json()` 把 rawData 轉為 json 格式。
 
-## (3) async/await怎麼寫
+## async/await怎麼寫
 
-範例：先創建一個 `sendRequest` 函式，模擬向伺服器發送請求，取得user name。
+範例：先創建一個 `sendRequest` 函式，模擬向伺服器發送請求，取得 user name。
 
 ```javascript
 function sendRequest() {
@@ -101,4 +100,4 @@ async function getUserData() {
 ---
 
 參考資料
-- https://www.youtube.com/watch?v=zoZiQJ38bXk
+- [JavaScript教程】#15 轻松入门 JavaScript Async Await | Async Await 比 Promise 更好用？让你快速掌握 async await 异步执行概念](https://www.youtube.com/watch?v=zoZiQJ38bXk)
