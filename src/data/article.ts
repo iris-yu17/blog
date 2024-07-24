@@ -3,8 +3,15 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   // {
-  //   id: 'react-advance-understanding-ch5',
-  //   name: '《React 思維進化》Chapter 5 筆記',
+  //   id: 'react-advance-understanding-ch5-II',
+  //   name: '《React 思維進化》Chapter 5 筆記（下）',
+  //   description: '',
+  //   tags: [CategoryKey.React],
+  //   updated: '2024-07-24'
+  // },
+  // {
+  //   id: 'react-advance-understanding-ch5-I',
+  //   name: '《React 思維進化》Chapter 5 筆記（上）',
   //   description: '',
   //   tags: [CategoryKey.React],
   //   updated: '2024-07-18'
