@@ -7,8 +7,8 @@ acceptLanguage.languages(languages);
 
 export const config = {
   matcher: [
-    // skip if: markdown, manifest.json, svg, png
-    '/((?!sitemap.xml|robots.txt|markdown|manifest.json|_next|.*\\.svg$|.*\\.png$).*)',
+    // skip if match below
+    '/((?!sitemap.xml|robots.txt|markdown|manifest.json|favicon.ico|_next|.*\\.svg$|.*\\.png$).*)',
   ],
 };
 
