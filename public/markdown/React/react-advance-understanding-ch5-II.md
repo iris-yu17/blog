@@ -68,7 +68,8 @@ export default function UserProfile(props) {
 
 ### 控制外部套件
 
-一般來說，若想要串接第三方套件，通常需要先間其功能初始化：
+一般來說，若想要串接第三方套件，通常需要先間其功能初始化：\
+使用以下方法來確保初始化只執行一次
 
 ```javascript
 export default function App() {
@@ -113,7 +114,7 @@ const cachedFn = useCallback(fn, dependencies);
 
 #### - 為什麼其實本身不能提供優化效果
 
-我們可以發現，使用了 useCallback，其實每次 render 時，函式都還是會被重新建立，所以並不會因為使用了它而避免不必要的函式產生，而且 dependencies 的比較動作、記憶函式，這些也都是需要花費效能成本的。
+我們可以發現，使用了 useCallback，其實每次 render 時，函式都還是會被重新建立，所以並不會因為使用了它而避免不必要的函式產生，而且 dependencies 的比較動作、記憶函式，這些也都造成效能與記憶體的額外消耗。
 
 useCallback 會對函式進行快取（也就是會記住函式），而既然本身反而會使效能變慢，它真正的用途是什麼呢？
 
@@ -339,3 +340,162 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > 1. 當 component render 時才產生的物件或陣列資料有被 effect 函式所依賴
 > 2. 物件或陣列資料會透過 props 傳給一個 memo 過的子元件
 > 3. 記住耗時複雜的計算結果
+
+## 5-7 Hooks 的運作思維與設計理念
+
+### Fiber Node
+
+- 相較於 React element 是「描述某個歷史時刻的畫面結構」，會隨著畫面的 re-render 而不斷產生好幾份；Fiber node 是負責「保存並維護 React 應用程式的最新狀態資料」，整個應用程式中只會存在一份。
+- 由於 React element 是描述某個歷史時刻的畫面，因次建立後就不會再修改；而 fiber node 是保存**最新的狀態**，所以會隨著資料更新而不斷被修改。
+
+### hooks 的運作是依賴於固定的呼叫順序
+
+假設我們呼叫多次 useState
+
+```javascript
+export default function App() {
+  const [name, setName] = useState('Iris');
+  const [number, setNumber] = useState(100);
+  const [flag, setFlag] = useState(false);
+
+  // ...
+}
+```
+
+我們可以發現：我們只提供了 state 的初始值，並沒有提供 React 這三個 state 分別的命名。
+
+可能有人會疑惑：「不是有用 `name`, `number`, `flag` 來命名了嗎？」但 useState 的回傳值是一個陣列，所以 `name`, `number`, `flag` 這些名稱是 useState 回傳後，我們才以陣列解構的方式重新命名的。
+
+既然沒有告知 React 每個 state 自定義名稱或 key 之類的資訊，那麼 React 內部是如何區分這些資料的存放的？
+
+其實在 fiber node 內部，它存放這些 state 資料是以 linked list 的方式「一個 state 連著下一個 state」來存放的。
+
+```
+memoizedState:
+  baseState: 'Iris'
+  memoizedState: 'Iris'
+  next:
+    baseState: 100
+    memoizedState: 100
+    next:
+      baseState: false
+      memoizedState: false
+```
+
+它會依照呼叫順序，一層一層地存放，而這種結構意味著：如果在某次 render 跳過某個 hook 的呼叫，就可能導致後面的呼叫的所有 hook 與前一次 render 無法對應。
+
+如這個[範例](https://codesandbox.io/p/sandbox/react-advance-ch5-7-1-qdnvlx)，點擊按鈕時會使一個 hook 呼叫被跳過。導致兩次 render 之間的 hooks 呼叫順序無法對應：
+
+```
+首次 render 時            re-render 時
+  [ flag ]                 [ flag ]
+  [ foo  ]  <--對應錯誤-->  [ bar  ]
+  [ bar  ]  <--對應錯誤-->  [ fizz ]
+  [ fizz ]
+```
+
+這時 React 會發現 hook 呼叫總量不一致的問題並報錯。
+
+這就是為什麼 React 規定只能在 function component 的頂層作用域呼叫 hook，不能在條件式迴圈中使用它們。**所有 hook 都必須保證在每次 render 都會被呼叫到**，因為一旦有某個 hook 被跳過，後面所有 hook 順序都會跳號，導致 React 內部在存取狀態資料時會有錯置的問題。
+
+### 那要怎麼安全地讓 hook 不再被執行到？
+
+唯一個方法是：unmount 包含了這些 hook 的 component
+
+```javascript
+function Foo() {
+  useEffect(() => {...});
+  // ...
+}
+
+function App() {
+  const [isFoo, setIsFoo] = useState(true);
+
+  return isFoo ? <Foo/>: <Bar/>
+}
+```
+
+### 為什麼要將 hook 設計成以順序性的方式來儲存資料呢？
+
+若要儲存、區別資料，大多數人直覺想到的方法應該會是以一個唯一的 key 值。例如：
+
+```javascript
+// ❌ 這只是個假想的 API 設計，實際上並沒有這個寫法
+const [name, setName] = useState('name', 'Iris');
+const [number, setNumber] = useState('number', 100);
+const [flag, setFlag] = useState('flag', false);
+```
+
+然而這種自定義 key 的設計會有個難以避免的問題 —— **命名衝突**
+
+### 命名衝突
+
+例如以下程式碼，我們自定義了一個 custom hook，裡面使用了 useState 並給了它 `name` 這個 key；而在 MyComponent 我們也使用了 useState 並同樣也給了它 `name` 這個 key。
+
+這就導致兩者之間的命名衝突，因為它們在同一個 component 中使用了相同的 key。這種情況下，useName 和 MyComponent 內的狀態會互相干擾，導致預期之外的行為。
+
+```javascript
+// Custom hook
+function useName() {
+  const [name, setName] = useState('name', 'Alice');
+  return [name, setName];
+}
+
+// Component 使用 custom hook
+function MyComponent() {
+  const [name, setName] = useName();
+  const [anotherName, setAnotherName] = useState('name', 'Bob');
+
+  // ...
+}
+```
+
+### 鑽石問題
+
+基於 key 來命名的 hooks 設計也會導致鑽石問題，又稱多重繼承問題，這是命名衝突的進階延伸版。
+
+範例：\
+假設我們想在遊戲資料定義「玩家」跟「怪物」兩種類型，而他們都有「位置座標」這個相同的資料概念，我們想要重用這部分：
+
+```javascript
+function usePosition() {
+  // ❌ 這只是個假想的 API 設計
+  const [x, setX] = useState('positionX', 0);
+  const [y, setY] = useState('positionY', 0);
+
+  return { x, setX, y, setY };
+}
+
+export function usePlayer() {
+  const posotion = usePosition();
+  // ...
+  return { ....., posotion };
+}
+
+export function useMonster() {
+  const posotion = usePosition();
+  // ...
+  return { ....., posotion };
+}
+```
+
+在 `usePlayer` 和 `useMonster` 這兩個 custom hook 中都使用了 `usePosition` 這個 custom hook，而 `usePosition` 裡用 key 的方式來定義 state。
+
+此時當我們的 `GameApp` component 中同時呼叫 `usePlayer` 和 `useMonster` 時，鑽石問題就產生了:
+
+```javascript
+import { usePlayer, useMonster } from './hooks';
+
+export default function GameApp() {
+  const player = usePlayer();
+  const monster = useMonster();
+
+  // ...
+}
+```
+在一個 component 中呼叫 `usePosition` 兩次，它們會在 component 中都嘗試著註冊名為 `positionX` 和 `positionY` 的 hook，導致命名衝突，如下圖：
+![Imgur](https://i.imgur.com/YXn1yGD.jpg)
+
+
+如果是以順序性的方式，基於 hooks 在 component 裡的固定呼叫順序，如：`第一個呼叫的 hook` -> `第二個呼叫的 hook` -> `第三個呼叫的 hook` -> `第四個呼叫的 hook`，它們會自然地形成樹狀結構，不會有鑽石問題：
+![Imgur](https://i.imgur.com/59kB5rc.jpg)
