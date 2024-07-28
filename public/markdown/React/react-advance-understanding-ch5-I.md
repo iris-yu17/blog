@@ -1,7 +1,13 @@
 ## 前言
 
 這系列文章是一邊閱讀 《React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者》，一邊做的筆記摘要。\
-從 Chapter 2 ～ Chapter 5，總共會有四篇文章。
+由於主要是寫給自己看的筆記，所以會比較精簡，也會省略一些細節說明。從 Chapter 2 ～ Chapter 5，總共會有五篇文章。
+
+- [《React 思維進化》Chapter 2 筆記](./react-advance-understanding-ch2)
+- [《React 思維進化》Chapter 3 筆記](./react-advance-understanding-ch3)
+- [《React 思維進化》Chapter 4 筆記](./react-advance-understanding-ch4)
+- [《React 思維進化》Chapter 5 筆記（上）](./react-advance-understanding-ch5-I)
+- [《React 思維進化》Chapter 5 筆記（下）](./react-advance-understanding-ch5-II)
 
 ## 5-1 React 中的副作用處理：useEffect 初探
 

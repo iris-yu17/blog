@@ -1,7 +1,13 @@
 ## 前言
 
 這系列文章是一邊閱讀 《React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者》，一邊做的筆記摘要。\
-從 Chapter 2 ～ Chapter 5，總共會有四篇文章。
+由於主要是寫給自己看的筆記，所以會比較精簡，也會省略一些細節說明。從 Chapter 2 ～ Chapter 5，總共會有五篇文章。
+
+- [《React 思維進化》Chapter 2 筆記](./react-advance-understanding-ch2)
+- [《React 思維進化》Chapter 3 筆記](./react-advance-understanding-ch3)
+- [《React 思維進化》Chapter 4 筆記](./react-advance-understanding-ch4)
+- [《React 思維進化》Chapter 5 筆記（上）](./react-advance-understanding-ch5-I)
+- [《React 思維進化》Chapter 5 筆記（下）](./react-advance-understanding-ch5-II)
 
 ## 5-5 副作用處理常見的情境設計技巧
 
@@ -493,9 +499,9 @@ export default function GameApp() {
   // ...
 }
 ```
+
 在一個 component 中呼叫 `usePosition` 兩次，它們會在 component 中都嘗試著註冊名為 `positionX` 和 `positionY` 的 hook，導致命名衝突，如下圖：
 ![Imgur](https://i.imgur.com/YXn1yGD.jpg)
-
 
 如果是以順序性的方式，基於 hooks 在 component 裡的固定呼叫順序，如：`第一個呼叫的 hook` -> `第二個呼叫的 hook` -> `第三個呼叫的 hook` -> `第四個呼叫的 hook`，它們會自然地形成樹狀結構，不會有鑽石問題：
 ![Imgur](https://i.imgur.com/59kB5rc.jpg)

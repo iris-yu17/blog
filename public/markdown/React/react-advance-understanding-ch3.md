@@ -1,7 +1,13 @@
 ## 前言
 
 這系列文章是一邊閱讀 《React 思維進化：一次打破常見的觀念誤解，躍升專業前端開發者》，一邊做的筆記摘要。\
-從 Chapter 2 ～ Chapter 5，總共會有四篇文章。
+由於主要是寫給自己看的筆記，所以會比較精簡，也會省略一些細節說明。從 Chapter 2 ～ Chapter 5，總共會有五篇文章。
+
+- [《React 思維進化》Chapter 2 筆記](./react-advance-understanding-ch2)
+- [《React 思維進化》Chapter 3 筆記](./react-advance-understanding-ch3)
+- [《React 思維進化》Chapter 4 筆記](./react-advance-understanding-ch4)
+- [《React 思維進化》Chapter 5 筆記（上）](./react-advance-understanding-ch5-I)
+- [《React 思維進化》Chapter 5 筆記（下）](./react-advance-understanding-ch5-II)
 
 ## 3-2 深入理解 batch update 與 updater function
 
@@ -42,9 +48,9 @@ React 會依序試算 count state 的佇列執行結果：\
 `原值` => `把舊值取代為1` => `把舊值取代為2` => `把舊值取代為3`\
 因此最後會直接將 count 的值更新為 3。
 
-> 「一個事件中多次呼叫 setState 方法時，會自動依序合併試算 state 的更新結果，最後只執行一次 re-render 來統一更新畫面」，這就是 **barch update**。
+> 「一個事件中多次呼叫 setState 方法時，會自動依序合併試算 state 的更新結果，最後只執行一次 re-render 來統一更新畫面」，這就是 **batch update**。
 
-### 如果不想要 barch update：使用 flushSync()
+### 如果不想要 batch update：使用 flushSync()
 
 使用方法：將 setState 放在 flushSync 的 callback 函式中，React 就會立即觸發 component re-render。
 
