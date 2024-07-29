@@ -20,7 +20,8 @@ fn(); // 10
 ```
 
 根據 [MND](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Closures#%E8%AA%9E%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88lexical_scoping%EF%BC%89) 定義：
-閉包（Closure）是函式以及該函式被宣告時所在的作用域環境（lexical environment）的組合。
+閉包（Closure）是函式以及該函式被宣告時所在的語法作用域（lexical environment）的組合。\
+（語法作用域指的是變數的可見性和可訪問性是語法解析時就決定的，而不是由呼叫它們的位置決定。）
 
 在這個例子中，閉包就是函式 `inner` 以及它被宣告時所在的作用域（也就是 `outer` 內部）的組合。
 
