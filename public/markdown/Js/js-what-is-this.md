@@ -57,10 +57,10 @@ obj.printName(); // Iris
 以下程式碼會印出什麼呢？
 
 ```javascript
-const name = 'Global name';
+var myName = 'Global name';
 
 function print() {
-  console.log(this.name);
+  console.log(this.myName);
 }
 
 const obj = {
@@ -71,7 +71,7 @@ obj.printName();
 ```
 
 答案是：`undefined`\
-前面有說了，`this` 代表的是函式執行時所屬的物件，`printName` 執行時所屬的物件是 `obj`，而 `obj` 並沒有 `name` 屬性。
+前面有說了，`this` 代表的是函式執行時所屬的物件，`printName` 執行時所屬的物件是 `obj`，而 `obj` 並沒有 `myName` 屬性。
 
 ## 4. 箭頭函式
 
@@ -80,10 +80,10 @@ obj.printName();
 我們把前一個範例稍微改寫一下，將 print 改成箭頭函式寫法，結果會如何呢？
 
 ```javascript
-const name = 'Global name';
+var myName = 'Global name';
 
 const print = () => {
-  console.log(this.name);
+  console.log(this.myName);
 };
 
 const obj = {
@@ -127,8 +127,6 @@ Person {
 }
 ```
 
----
-
 ## 練習
 
 接下來是幾個判斷 this 值的練習題：
@@ -171,8 +169,9 @@ foo();
 `foo` 的 `this` 是指向 window，因此 `this.bar` 實際上是 `window.bar`，而 window 並沒有 a 數性，因此會印出 `undefined`。
 
 補充：\
-這跟 `this` 無關，但還是稍微補充一下，在 Javascript 中，當我們在全域範圍內定義一個 var 或 function，它會自動成為全域物件（也就是 window）的屬性，所以可以用 `window.bar` 來做調用。\
-如果把上面範例的 function bar 改成用 `const` 或 `let` 來定義，就無法使用 `window.bar` 了。
+在 Javascript 中，當我們在全域範圍內定義一個 var 或 function，它會自動成為全域物件（也就是 window）的屬性，所以可以用 `window.bar` 來做調用。\
+如果把上面範例的 function bar 改成用 `const` 或 `let` 來定義，就無法使用 `window.bar` 了。\
+在前面 [3.使用物件來調用](#3.-使用物件來調用) 跟 [4.箭頭函式](#4.-箭頭函式) 兩個例子中，是使用 `var` 來宣告變數，也是同樣的原因。
 
 ### 題目三
 
@@ -211,7 +210,7 @@ const obj1 = {
   doSomethingLater() {
     setTimeout(function () {
       this.count++;
-      console.log(this.count); // NaN (因為在 windonw 中沒有 count)
+      console.log(this.count);
     }, 300);
   },
 };
@@ -237,7 +236,7 @@ NaN
 ```
 
 - `obj1` 的 `setTimeout` 裡面的函式是一般函式，因此 `this` 指向 window，而在 windonw 中沒有 count，所以答案是 `NaN`
-- `obj2` 的 `setTimeout` 裡面的是箭頭函式，因此 `this` 是最接近的父層一般函式的 this 值，也就是 `obj2`，原本 `count` 為 10，`10++` 後變成 11
+- `obj2` 的 `setTimeout` 裡面的是箭頭函式，它的 this 值是被宣告當下作用域的 `this`，因此會是最接近的父層一般函式的 this 值，也就是 `obj2`，原本 `count` 為 10，`10++` 後變成 11
 
 ---
 
