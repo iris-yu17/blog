@@ -78,7 +78,7 @@ function SideNav(props: Props) {
 
           const isHome =
             link === PageUrls.Home &&
-            (path === `/${Locales.zhHant}` || path === `/${Locales.enUS}`);
+            (path === '/' || path === `/${Locales.enUS}`);
 
           const active = isHome || path.includes(activePath);
 
@@ -96,6 +96,7 @@ function SideNav(props: Props) {
                 style: {
                   dark: 'border border-border bg-black-200 text-gray-100 z-20 py-1 px-2 rounded-md text-nowrap',
                 },
+                content: 'relative z-20 text-nowrap'
               }}
             >
               <Link

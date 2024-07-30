@@ -50,10 +50,7 @@ export default async function About({ params }: Props) {
           <span className="mx-1">{t('h1')}</span>
           {`/>`}
         </h1>
-        <div className="mb-8 flex flex-col items-center gap-5 md:flex-row">
-          <div className="block h-40 w-40 min-w-40 overflow-hidden rounded-full">
-            <Image alt="avatar" src="/avatar.png" width={200} height={200} />
-          </div>
+        <div className="mb-3 flex flex-col items-center gap-5 md:mb-5 md:flex-row">
           <div>
             {intro.map((item: string, index: number) => {
               return <div key={index}>{item}</div>;

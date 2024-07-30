@@ -1,6 +1,6 @@
 ## 前言
 
-關於 `this` 的基本概念，可以去看[這篇文章](./js-this)
+關於 `this` 的基本概念，可以去看[這篇文章](./js-what-is-this)
 
 在大多數的情況，`this` 會指向呼叫此函式的物件。但有些時候，我們可能會想要指定 `this` 的指向，這時就需要 `call`, `apply`, `bind` 這三個方法。
 
@@ -9,7 +9,7 @@
 ```javascript
 const person = {
   nickname: 'Benny',
-  price: 5,
+  age: 5,
 };
 
 function intro() {
@@ -34,7 +34,7 @@ intro();
 ```javascript
 const person = {
   nickname: 'Benny',
-  price: 5,
+  age: 5,
 };
 
 function intro() {
@@ -82,7 +82,7 @@ He likes to sing
 ```javascript
 const person = {
   nickname: 'Benny',
-  price: 5,
+  age: 5,
 };
 
 function intro() {
@@ -97,7 +97,6 @@ intro.apply(person);
 ### 傳入參數
 
 `apply` 跟 `call` 的差別只在於傳入參數的方法\
-
 `apply` 只接收兩個參數，第一個是要指向的物件，第二個是陣列，要傳入的參數要先放到陣列中\
 `function.apply(要指向的物件, [參數1, 參數2, 參數3, ...略])`
 
