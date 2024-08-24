@@ -132,6 +132,10 @@ blockquote p::after {
   text-decoration: none !important;
 }
 
+.prose ol {
+  padding-left: 2em;
+}
+
 .prose li li {
   list-style-type: circle;
 }

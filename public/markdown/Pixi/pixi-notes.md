@@ -355,7 +355,7 @@ texturePromise.then((texture) => {
 
 ## (10) JSON Sprite Sheet
 
-我們可以用一些工具(https://www.piskelapp.com/p/create/sprite)來產生 JSON sprite sheet，它會把好幾個圖片集合起來，產出一張 png，和一個 json 檔，這個 json 檔會包含各圖片的大小位置等資訊。
+我們可以用一些[工具](https://www.piskelapp.com/p/create/sprite)來產生 JSON sprite sheet，它會把好幾個圖片集合起來，產出一張 png，和一個 json 檔，這個 json 檔會包含各圖片的大小位置等資訊。
 
 以下的壽司圖片和 json 就是線上工具產生出來的。
 

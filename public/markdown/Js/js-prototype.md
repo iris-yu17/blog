@@ -45,7 +45,7 @@ console.log('iris:', iris);
 console.log('iris 的原型:', Object.getPrototypeOf(iris));
 ```
 
-結果：
+結果：\
 可以看到 iris 的 `[[prototype]]` 屬性跟 `Object.getPrototypeOf(iris)` 的結果是一樣的。
 ![Imgur](https://i.imgur.com/rtlG22n.png)
 
@@ -129,7 +129,7 @@ Object.getPrototypeOf(Object.prototype); // null
 > 原型繼承是 JavaScript 的一種繼承機制。\
 > 基於原型鏈的概念，子層物件的原型會指向父層物件，當子層物件找不到某屬性或方法時，就會往上向父層查找，從而實現屬性和方法的共享和繼承。
 
-舉個很簡單的例子：
+舉個很簡單的例子：\
 定義一個 nameList 陣列，並且再 push 一個字串 'Angela' 進去。
 
 ```javascript
@@ -164,8 +164,8 @@ nameList 的原型是陣列原型\
 
 參考資料：
 
-- https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
-- https://ithelp.ithome.com.tw/articles/10326931
-- https://www.explainthis.io/zh-hant/swe/most-common-js-prototype-questions
-- https://www.casper.tw/javascript/2017/12/17/javascript-prototype/
-- https://maxlee.me/posts/prototype
+- [繼承與原型鏈](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+- [Day 11 - 理解 JavaScript，為什麼要知道原型、原型鏈與原型繼承？](https://ithelp.ithome.com.tw/articles/10326931)
+- [最常見的 JavaScript 原型 (prototype) 面試題 ：原型 (prototype)、原型鏈 (prototype chain) 、原型繼承 (prototypal inheritance)](https://www.explainthis.io/zh-hant/swe/most-common-js-prototype-questions)
+- [鐵人賽：JavaScript 的原型繼承](https://www.casper.tw/javascript/2017/12/17/javascript-prototype/)
+- [面試官最愛考的 JS 原型鏈](https://maxlee.me/posts/prototype)

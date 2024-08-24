@@ -86,13 +86,17 @@ class Family {
 // 創建實例 smith
 const smith = new Family('Smith', 'England');
 
-/* 會得到 smith.changeOrigin is not a function
-   因為靜態方法只能被 class 使用 */
+/**
+ * 會得到 smith.changeOrigin is not a function
+ * 因為靜態方法只能被 class 使用
+ */
 smith.changeOrigin();
 
-/* 因為靜態方法裡的 this 會指向 class，
-   所以使用 call 將 this 的指向改為 smith，
-   並傳入 `Scotland` 來改變 smith 的 origin */
+/**
+ * 因為靜態方法裡的 this 會指向 class，
+ * 所以使用 call 將 this 的指向改為 smith，
+ * 並傳入 `Scotland` 來改變 smith 的 origin
+ */
 Family.changeOrigin.call(smith, 'Scotland');
 
 // 會得到 Scotland
@@ -172,7 +176,7 @@ Family.prototype.printFamilyName = function () {
 // 2. 定義子函式
 function FamilyMember(firstName, familyname, origin) {
   // 3. 繼承屬性
-  // 這樣做的效果是將 Family 建構函數的屬性，賦值給當前的 FamilyMember 實例
+  // 在這邊執行 Family 函式的內容，並把 this 指向 FamilyMember
   Family.call(this, familyname, origin);
 
   this.firstName = firstName;
@@ -184,6 +188,8 @@ function FamilyMember(firstName, familyname, origin) {
 FamilyMember.prototype = Object.create(Family.prototype);
 
 // 5. 將 constructor 指回子函式
+// 每個函式的 prototype 都有一個 constructor 屬性，指回函式本身
+// 在上一步驟，FamilyMember.prototype 完全被替換了，這邊要再把 constructor 指回來
 FamilyMember.prototype.constructor = FamilyMember;
 
 // 子函式加上共用方法
@@ -198,7 +204,7 @@ will.printFamilyName(); // 印出 Family name: Smith
 will.printFullName(); // 印出 Hi, I'm Sam Smith.
 ```
 
-補充：
+補充：\
 範例中，將 constructor 指回子函式、子函式加上共用方法這兩個動作，必須在寫第 4 步（繼承方法）之後，否則會被覆蓋。
 
 ## Class 繼承
@@ -207,8 +213,7 @@ will.printFullName(); // 印出 Hi, I'm Sam Smith.
 
 `class` 繼承會用到兩個關鍵字：
 
-1. extends：代表 extends from，繼承自...的意思，語法為：
-   `class 子類別 extends 父類別 { ... }`
+1. extends：代表 extends from，繼承自...的意思，語法為 `class 子類別 extends 父類別 { ... }`
 2. super：有兩個作用
    1. 用來調用父類別的建構函式（跟前面建構函式繼承的第 3 步是一樣的意思）
    2. 用來調用父類別的方法
@@ -250,9 +255,11 @@ class FamilyMember extends Family {
 
 const will = new FamilyMember('Sam', 'Smith', 'England');
 
-/* 印出：
-Family name: Smith
-Family name from child: Smith */
+/**
+ * 印出：
+ * Family name: Smith
+ * Family name from child: Smith
+ */
 will.printFamilyName();
 
 will.printFullName(); // 印出 Hi, I'm Sam Smith.
