@@ -1,0 +1,8 @@
+# Ignore all files in the `dist` directory
+dist/
+.next/
+node_modules/
+markdown/
+
+# Ignore all `.md` files
+*.md
