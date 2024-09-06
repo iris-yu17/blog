@@ -65,14 +65,14 @@ docker run -i -p 3000:3000 <專案名稱>
 
 ### 1. 創建一個專案
 
-到這個連結 [https://console.cloud.google.com/projectcreate](https://console.cloud.google.com/projectcreate)
+到這個連結 [https://console.cloud.google.com/projectcreate](https://console.cloud.google.com/projectcreate)\
 輸入專案名稱，這邊使用 `cloud-run-demo`
 
 ![Imgur](https://i.imgur.com/T9MCi4e.png)
 
 ### 2. 創建一個服務帳戶
 
-這是要用在 `Github Actions` 的
+這是要用在 `Github Actions` 的\
 IAM 管理 > 服務帳戶 > 建立服務帳戶
 
 ![Imgur](https://i.imgur.com/f1XoPBl.png)
@@ -85,11 +85,11 @@ IAM 管理 > 服務帳戶 > 建立服務帳戶
 
 ### 4.再來要創建一個金鑰
 
-這個金鑰是用於跑 `Github Actions` 時認證身分的
+這個金鑰是用於跑 `Github Actions` 時認證身分的\
 點擊管理金鑰
 ![Imgur](https://i.imgur.com/xEidy9a.png)
 
-點擊建立新的金鑰，會跳出一個彈窗，選擇 `JSON` ，會下載一個金鑰的 `JSON` 檔
+點擊建立新的金鑰，會跳出一個彈窗，選擇 `JSON`，會下載一個金鑰的 `JSON` 檔
 ![Imgur](https://i.imgur.com/eMkquGA.png)
 
 ## - step3. 更新 `package.json` 的 `Scripts`
@@ -192,9 +192,8 @@ jobs:
 Secrets:
 
 - `CLOUD_RUN_PROJECT_NAME`: 專案的 ID
-- `CLOUD_RUN_SERVICE_ACCOUNT` — 這是 base64 編碼的私鑰。我們要把剛剛下載的 `JSON` 檔轉為 base64 編碼並貼上。
-  在 `macOS` ，可以直接這樣：
-  `    base64 <存放JSON檔的路徑>`
+- `CLOUD_RUN_SERVICE_ACCOUNT` — 這是 base64 編碼的私鑰。我們要把剛剛下載的 `JSON` 檔轉為 base64 編碼並貼上。\
+  在 `macOS`，可以直接這樣：`base64 <存放JSON檔的路徑>`
 - `CLOUD_RUN_SERVICE_ACCOUNT_EMAIL`：服務帳戶的 EMAIL
   ![Imgur](https://i.imgur.com/7os5XPw.png)
 
