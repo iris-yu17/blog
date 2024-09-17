@@ -43,7 +43,7 @@ const calculate = (num) => {
 1. 清除或逆轉副作用造成的影響：\
    useEffect 讓開發者能夠定義副作用、也可以透過 cleanup 函式來指定如何消除副作用造成的影響。
 2. 隔離副作用的執行時機：\
-   當我們在 component function 直接執行副作用，有可能會阻塞產生 React element 的過程，造成畫面更新的效能問題。使用 useEffect 能夠將副作用的處理隔離到 render 完之後才執行，避免它影響到畫面的產生及更新。
+   副作用（如 API 請求、操作 DOM 等）通常是較耗時的操作，如果在渲染過程中進行這些操作，有可能會阻塞產生 React element 的過程，造成畫面更新的效能問題。使用 useEffect 能夠將副作用的處理隔離到 render 完之後才執行，避免它影響到畫面的產生及更新。
 
 ### useEffect 初探
 
