@@ -24,7 +24,7 @@ export default function SideMenu(props: Props) {
   const { t } = useTranslation('common');
 
   useEffect(() => {
-    window.addEventListener('mousemove', (e) => {
+    const onMouseMove = (e: MouseEvent) => {
       if (!dragging.current) {
         return;
       }
@@ -32,11 +32,20 @@ export default function SideMenu(props: Props) {
         const newWidth = previousWidth + e.movementX / 2;
         return newWidth < DEFAULT_WIDTH ? previousWidth : newWidth;
       });
-    });
+    };
 
-    window.addEventListener('mouseup', () => {
+    const onMouseUp = () => {
       dragging.current = false;
-    });
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    window.addEventListener('mouseup', onMouseUp);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
   }, []);
 
   return (
