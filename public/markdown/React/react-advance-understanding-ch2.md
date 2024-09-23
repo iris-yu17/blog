@@ -107,6 +107,20 @@ const element = (
 - re-render 指的就是 Virtual DOM 的重繪，而**不是實際 DOM**
 - React 會以 component 作為一律重繪的切分單位，重繪該 state 所屬的 component 以及它底下的所有子孫 components。
 
+### 補充：雙向資料流的例子
+
+如 Vue 的 `v-model`
+
+```javascript
+<input v-model="message" />
+<p>{{ message }}</p>
+```
+
+- 從資料到畫面：初始狀態下，`v-model` 會將資料（`message`）傳遞到畫面，顯示在 input 及 p 裡面。\
+  這是單向資料流，資料的狀態會反映在畫面上。
+- 從畫面到資料：當使用者在輸入框中輸入新值時，`v-model` 自動將這個值更新回資料 `message`，使資料與使用者輸入保持同步。\
+  這是反向資料流，畫面中的變化會即時反映到資料中。
+
 ## 2-7 Component 初探
 
 ### Component 的 render 順序
@@ -204,14 +218,9 @@ const { state: name, setState: setName } = useState('Iris');
 React component 的管理機制分為兩個階段：
 
 1. Render phase:
-
-   - 代表 component 正在渲染，並且產生 React element 的階段。
-   - 在這階段，Reconciler 會負責：調用 component function、產生 React element、計算新舊改變。
-
+   代表 component 正在渲染，並且產生 React element 的階段。
 2. Commit phase:
-
-   - 代表 component 正在將 React element 的畫面「提交」並處理到實際的 DOM 當中。
-   - 在這階段 Renderer 會負責將虛擬 DOM 繪製成實際 DOM。
+   代表 component 正在將 React element 的畫面「提交」並處理到實際的 DOM 當中。
 
 ### Reconciliation
 
