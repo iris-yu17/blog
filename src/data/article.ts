@@ -3,6 +3,13 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'goodbye-hi-group',
+    name: '從好事互動畢業了 - 我的第一份前端工作',
+    description: '',
+    tags: [CategoryKey.Journal],
+    updated: '2024-09-23'
+  },
+  {
     id: 'react-advance-understanding-ch5-II',
     name: '《React 思維進化》Chapter 5 筆記（下）',
     description: '',
