@@ -10,6 +10,7 @@ export enum CategoryKey {
   TypeScript = 'TypeScript',
   Dev = 'Dev',
   Css = 'Css',
+  Journal = 'Journal'
 }
 
 export enum CategoryText {

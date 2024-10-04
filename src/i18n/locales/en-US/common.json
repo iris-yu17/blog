@@ -15,7 +15,8 @@
   },
   "sub-category": {
     "WA": "Web Accessibility",
-    "Dev": "Development"
+    "Dev": "Development",
+    "Journal": "Journal"
   },
   "pagination": {
     "last": "Last",
