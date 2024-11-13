@@ -45,7 +45,7 @@ export default async function RootLayout({
         {/* GA */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DVX887EQQJ"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
         />
         <Script
           id="gtm-script"
@@ -55,9 +55,15 @@ export default async function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-DVX887EQQJ');
+          gtag('config', ${process.env.NEXT_PUBLIC_GA_ID});
         `,
           }}
+        />
+        {/* Google AdSense */}
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}`}
+          crossOrigin="anonymous"
         />
       </head>
       <body className={inter.className}>
