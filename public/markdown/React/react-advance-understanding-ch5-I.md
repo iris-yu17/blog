@@ -156,7 +156,7 @@ export function SearchResults() {
 回到 useEffect，它是宣告式的設計，我們該以類似的想法來思考 React 中的副作用處理：\
 useEffect 讓我們能夠根據 render 中的 props 和 state 資料來同步化那些跟畫面無關的東西，也就是副作用的處理。白話來說，就是**使用 useEffect，能夠讓副作用的處理所使用的 props, state 資料跟 render 的原始資料一致。**\
 因此 useEffect 並不是 function component 的生命週期 API，雖然它的執行時機確實跟 class component 的一些生命週期類似，但這不是 useEffect 的用途。
-它的目標是「同步化」而非「控制執行時機」，**這也是為什麼 effect 函式要在每次 render 後都執行的原因，為了確保「副作用會隨著資料變化而不斷執行對應的同步化」**。
+它的目標是「同步化」而非「控制執行時機」，**這也是為什麼 effect 函式要在每次 render 後都執行，為了確保「副作用會隨著資料變化而不斷執行對應的同步化」**。
 
 ### dependencies 是一種效能優化手段，而非邏輯控制
 

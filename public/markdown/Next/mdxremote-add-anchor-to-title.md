@@ -76,8 +76,8 @@ yarn add rehype-autolink-headings
 使用方法及參數詳見[這邊](https://www.npmjs.com/package/rehype-autolink-headings)。  
 稍微說明幾個參數：
 
-1. `behavior` : 可以是 `'after' | 'append' | 'before' | 'prepend' | 'wrap'`，代表連結要放在哪邊，例如 `wrap`，代表要包住標題；使用 `before` 則會把連結放在標題元素前。
-2. `content` ：連結元素的內容，預設會是 `<span class="icon icon-link"></span>`。我們也可以自訂，如下面程式碼，就是自訂為 `<span class="text-tertiary text-3xl"></span>` 。
+1. `behavior`：可以是 `'after' | 'append' | 'before' | 'prepend' | 'wrap'`，代表連結要放在哪邊，例如 `wrap`，代表要包住標題；使用 `before` 則會把連結放在標題元素前。
+2. `content`：連結元素的內容，預設會是 `<span class="icon icon-link"></span>`。我們也可以自訂，如下面程式碼，就是自訂為 `<span class="text-tertiary text-3xl"></span>` 。
 
 ```javascript
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';

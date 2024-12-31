@@ -4,7 +4,7 @@
 
 ### 用 `NEXT_PUBLIC_` 前綴
 
-- `Next.js` 中，我們的環境變數可以用 `NEXT_PUBLIC_` 作為前綴，在build 的時候，這變數的值就會直接注入程式碼裡面。
+- `Next.js` 中，我們的環境變數可以用 `NEXT_PUBLIC_` 作為前綴，在 build 的時候，這變數的值就會直接注入程式碼裡面。
 - 由於這個值是可以在客戶端被看到的，所以通常是用來儲存比較不敏感的配置信息。
 
 例如：
@@ -36,9 +36,9 @@ build 完之後查看 `.next` 裡的內容，會發現原本的 `process.env.NEX
 
 ### 發現問題：
 
-情境：
+情境：\
 我們在一個 `getData` function 裡打 api 得到資料，若過程出錯，就 throw error。這時運作如預期，出現錯誤時會顯示 `error.tsx` 的畫面。
-但在`generateMetadata` 中，若 throw error，會顯示 next 預設的錯誤畫面。
+但在 `generateMetadata` 中，若 throw error，會顯示 next 預設的錯誤畫面。
 
 ![Imgur](https://i.imgur.com/yJY3AqB.png)
 

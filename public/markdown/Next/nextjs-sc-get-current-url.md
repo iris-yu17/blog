@@ -1,11 +1,11 @@
 ## 使用 usePathname ?
 
-若 google 如何取得當前 url，會得到很多回答說可以用 `usePathname` 來做到 ，但 `usePathname` 只能在 `Client components` 中使用。
-最簡單的方法就是把那個元件改為 `Client components` ，但如果我一定要用 `Server Components` 來做呢？
+若 google 搜尋"如何取得當前 url"，會得到很多回答說可以用 `usePathname` 來做到，但 `usePathname` 只能在 `Client components` 中使用。\
+最簡單的方法就是把那個元件改為 `Client components`，但如果我一定要用 `Server Components` 來做呢？
 
 ## 利用 middleware
 
-我們可以建立一個 `middleware.ts` ，在 `middleware` 中得到當前 `pathname` ，內容如下：
+我們可以建立一個 `middleware.ts`，在 `middleware` 中得到當前 `pathname`，內容如下：
 
 ```javascript
 import { NextResponse } from "next/server";

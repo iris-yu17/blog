@@ -17,11 +17,11 @@ import * as PIXI from 'pixi.js';
 
 ## (1) 創建Pixi application
 
-1. 要使用Pixi，我們要先創建一個`Pixi Application`的實例。
+1. 要使用Pixi，我們要先創建一個 `Pixi Application` 的實例。
 2. Pixi會產生canvas元素，我們要再把它放到DOM裡。
 
 - `new PIXI.Application` 的 arguments 可參考官方文件
-  （範例中使用 `antialias: true` 可讓畫面不會有鋸齒狀、寬高設為`window.innerWidth`和`window.innerHeight` 來填滿畫面）
+  （範例中使用 `antialias: true` 可讓畫面不會有鋸齒狀、寬高設為 `window.innerWidth` 和 `window.innerHeight` 來填滿畫面）
 
 ```javascript
 // 創建 pixi app
@@ -38,9 +38,9 @@ document.body.appendChild(app.view);
 
 ## (2) 用`Graphics`畫各種形狀
 
-- Pixi的各種形狀都在`Grahpics`這個Class底下，我們創建的形狀無論是方形、圓型、線條...等，都是`Grahpics`的實例。
+- Pixi的各種形狀都在 `Grahpics` 這個 Class 底下，我們創建的形狀無論是方形、圓型、線條...等，都是 `Grahpics` 的實例。
 - 畫好形狀後，要把這個形狀放到舞台(stage)上面。
-  可把stage想像成是`HTML`的`<body>`，所有要顯示的東西都要放到這邊。
+  可把stage想像成是 `HTML` 的 `<body>`，所有要顯示的東西都要放到這邊。
 
 ### - 線條
 
@@ -79,8 +79,8 @@ app.stage.addChild(rectangle)
 
 ### - 圓型
 
-> drawCircle的三個參數如下：
-> drawCircle(圓心的x座標, 圓心的y座標, 半徑長度)
+> drawCircle 的三個參數如下：
+> drawCircle (圓心的 x 座標, 圓心的 y 座標, 半徑長度)
 
 ```javascript
 // 有外框線的圓型
@@ -105,8 +105,8 @@ app.stage.addChild(circleWithStroke, circle)
 
 ## (3) 文字
 
-- 要創建文字，使用`Text` Class
-- 若要給文字加上樣式，使用`TextStyle`這個Class
+- 要創建文字，使用 `Text` Class
+- 若要給文字加上樣式，使用 `TextStyle` 這個Class
 
 ```javascript
 // 樣式
@@ -125,7 +125,7 @@ const myText = new PIXI.Text('Hello World!!', myStyle);
 app.stage.addChild(myText);
 ```
 
-- 若要改變文字內容，使用`text`這個property
+- 若要改變文字內容，使用 `text` 這個property
 
 ```javascript
 myText.text = 'Text changed！'
