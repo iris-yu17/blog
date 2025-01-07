@@ -6,19 +6,18 @@
    - [語系對照表](https://www.w3schools.com/tags/ref_language_codes.asp)
 2. Landmark
    使用語意化標籤定義網頁主要結構，例如：
-   `header, nav, main, aside, section, footer` 這些稱為landmark, 能讓螢幕閱讀器的使用者跳到特定的區塊進行閱覽
+   `header, nav, main, aside, section, footer` 這些稱為 landmark, 能讓螢幕閱讀器的使用者跳到特定的區塊進行閱覽
    ![Imgur](https://i.imgur.com/lgBtx3r.jpg)
 3. 標題
    - 每個頁面要有一個 `<h1>`
    - `<h1> - <h6>` 照順序寫，不可跳層
-4. 標籤
-   要使用正確的標籤，避免用 `<div>` `<span>` 來做 table, list, button 等等。
+4. 標籤\
+   要使用正確的標籤，避免用 `<div>` `<span>` 來做 table, list, button 等等。\
    若一定要用，需額外：
 
    - 加上 `role` 屬性，讓使用者知道這是什麼
    - 若為可互動向元素，加上 `tabindex=”0”` 讓鍵盤能focus
-
-   用 `<div>` 來做按鈕的[範例](https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/fake-div-buttons.html)
+   - 用 `<div>` 來做按鈕的[範例](https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/fake-div-buttons.html)
 
 5. 表格
 
@@ -74,12 +73,12 @@
 
    使用 `display:none` `visibility:hidden` 螢幕閱讀器會讀不到
 
-   若想要視覺上隱藏，但須提供資訊給螢幕閱讀器，可使用 `Bootstrap` class `.sr-only` (v4) 或 `.visually-hidden`(v5)
+   若想要視覺上隱藏，但須提供資訊給螢幕閱讀器，可使用 `Bootstrap` class `.sr-only` (v4) 或 `.visually-hidden` (v5)
 
 ## Javascript相關
 
 1. `<noscript>`\
-   若使用 `javascript` ，需使用 `<noscript>` 標籤，以文字告知使用者，請他打開 JavaScript 的選項，或是提供相關超連結作適當的指引。
+   若使用 `javascript`，需使用 `<noscript>` 標籤，以文字告知使用者，請他打開 JavaScript 的選項，或是提供相關超連結作適當的指引。
 
 ```jsx
 <noscript>
@@ -104,7 +103,7 @@ function showModal() {
 
 3. 事件觸發
 
-   情境[範例](http://demo.hi-interactive.tw/inhouse/web-accessibility/div-button.html)：用 div 做按鈕時，即使用 `tabindex=”0”` 讓 div 可 focus，並加了 `role=”button”` ，div 按鈕仍不會有 `button` 的特性。如範例中，三個按鈕都加上 click 事件，但只有第一個**一般按鈕**能用鍵盤控制。
+   情境[範例](http://demo.hi-interactive.tw/inhouse/web-accessibility/div-button.html)：用 div 做按鈕時，即使用 `tabindex=”0”` 讓 div 可 focus，並加了 `role=”button”`，div 按鈕仍不會有 `button` 的特性。如範例中，三個按鈕都加上 click 事件，但只有第一個**一般按鈕**能用鍵盤控制。
 
    解決：自行為 div 按鈕加上 keypress 事件，按下 enter 或 空白鍵時觸發。
 
@@ -119,7 +118,7 @@ divButton.addEventListener('keypress', function (e) {
 ## WAI-ARIA
 
 用於html元素上，提供額外的語意、改善無障礙問題\
-主要有三類：`Role`, `Property`, `State` ，可互相搭配使用\
+主要有三類：`Role`, `Property`, `State`，可互相搭配使用\
 [Role總覽](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)\
 [Property和State總覽](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)
 
@@ -180,8 +179,8 @@ divButton.addEventListener('keypress', function (e) {
   <button class="navbar-toggler" aria-label="關閉">Ｘ</button>
   ```
 - `aria-labelledby`
-  > 作用和 `aria-label` 相同，但是用在可見元素上。
-  > 範例：用 `span` 來做 checkbox， 缺少 `label` ，輔助工具無法知道此 checkbox 是做什麼的，用 `I agree to the Terms and Conditions.` 這段來當作 label。
+  > 作用和 `aria-label` 相同，但是用在可見元素上。\
+  > 範例：用 `span` 來做 checkbox， 缺少 `label`，輔助工具無法知道此 checkbox 是做什麼的，用 `I agree to the Terms and Conditions.` 這段來當作 label。
   ```html
   <span role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="tac">
   </span>
@@ -191,11 +190,12 @@ divButton.addEventListener('keypress', function (e) {
   可與 `role="alert"` 搭配或替代使用。
   **[demo](http://demo.hi-interactive.tw/inhouse/web-accessibility/toast.html)**
 
-  > 表示這個元素會被更新，當內容更新時，輔助工具就會知道，並唸出內容。
+  > 表示這個元素會被更新，當內容更新時，輔助工具就會知道，並唸出內容。\
   > 參數有三個選擇：
-  > `off` 不做處理
-  > `polite` 用戶當前行為結束後，螢幕閱讀器才讀出內容
-  > `assertive` 打斷當前行為，直接先讀出內容
+  > 1. `off` 不做處理
+  > 2. `polite` 用戶當前行為結束後，螢幕閱讀器才讀出內容
+  > 3. `assertive` 打斷當前行為，直接先讀出內容
+  >
   > 範例：點擊按鈕時顯示並更新 toast 內容
 
   ```html
@@ -228,7 +228,7 @@ divButton.addEventListener('keypress', function (e) {
   ```
 - `aira-checked`
   > 表示這個元素是否為勾選狀態。
-  > 例：手刻 checkbox，設定狀態 `aria-checked` ，使用者勾選時，再用 javascript 將值改成 `true` ，讓輔助工具知道。
+  > 例：手刻 checkbox，設定狀態 `aria-checked`，使用者勾選時，再用 javascript 將值改成 `true`，讓輔助工具知道。
   ```html
   <span role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="tac">
   </span>
