@@ -13,6 +13,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import { visit } from 'unist-util-visit';
 import { Props } from '@/types/props';
+import Link from 'next/link';
 
 import CodeTheme from '@/components/code-theme';
 import initTranslations from '@/i18n';
@@ -132,7 +133,26 @@ export default async function Article({
       </div>
       <div className="flex flex-col gap-16">
         <Prose>
-          <MDXRemote source={data} options={options} />
+          <MDXRemote
+            source={data}
+            options={options}
+            components={{
+              a: ({ href, children }: any) => {
+                if (href.startsWith('./') || href.startsWith('#')) {
+                  return (
+                    <Link href={href}>
+                      <span>{children}</span>
+                    </Link>
+                  );
+                }
+                return (
+                  <a href={href} target="_blank" rel="noreferrer">
+                    {children}
+                  </a>
+                );
+              },
+            }}
+          />
         </Prose>
       </div>
     </>
