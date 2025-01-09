@@ -26,12 +26,12 @@ console.log(iris);
 ```
 
 印出結果如下圖：\
-可以看到有個 `[[prototype]]` 屬性，在 JavaScript 中，每個物件都有一個隱藏的 `[[Prototype]]` 屬性，**這個屬性對應到的就是該物件的原型（Prototype）**。
+可以看到有個 `[[Prototype]]` 屬性，在 JavaScript 中，每個物件都有一個隱藏的 `[[Prototype]]` 屬性，**這個屬性對應到的就是該物件的原型（Prototype）**。
 ![Imgur](https://i.imgur.com/vx90cFG.png)
 
-## `[[prototype]]` 與 `__proto__` 屬性
+## `[[Prototype]]` 與 `__proto__` 屬性
 
-要如何訪問 `[[prototype]]` 這個隱藏屬性呢？\
+要如何訪問 `[[Prototype]]` 這個隱藏屬性呢？\
 可以用 `__proto__` 屬性，不過這已是過時的方法，在某些瀏覽器已不再使用。\
 現在比較鼓勵使用 `Object.getPrototypeOf()`，我們可以用這個方法來查看物件的原型。
 
@@ -41,12 +41,12 @@ console.log(iris);
 // 印出 iris
 console.log('iris:', iris);
 
-// 印出 iris 的 [[prototype]]
+// 印出 iris 的 [[Prototype]]
 console.log('iris 的原型:', Object.getPrototypeOf(iris));
 ```
 
 結果：\
-可以看到 iris 的 `[[prototype]]` 屬性跟 `Object.getPrototypeOf(iris)` 的結果是一樣的。
+可以看到 iris 的 `[[Prototype]]` 屬性跟 `Object.getPrototypeOf(iris)` 的結果是一樣的。
 ![Imgur](https://i.imgur.com/rtlG22n.png)
 
 ## prototype 屬性
@@ -80,7 +80,7 @@ console.log(User.prototype === Object.getPrototypeOf(iris));
 在 JavaScript 中，我們可以使用 `Array()`, `Object()`, `String()` 等內建的建構函式，來創建陣列、物件...等。
 
 前面說了函式都會有 prototype 屬性，因此他們當然也有，例如 `Array.prototype`（陣列原型）、`Object.prototype`（物件原型）、`Function.prototype`（函式原型）...等。像我們常用的 `push`, `pop`, `forEach` 這些列方法，就是陣列原型提供的。\
-如果我們創建一個陣列，這個陣列的 `[[prototype]]` 就會指向 `Array.prototype`。
+如果我們創建一個陣列，這個陣列的 `[[Prototype]]` 就會指向 `Array.prototype`。
 
 ## 原型鏈（prototype chain）
 
@@ -154,9 +154,9 @@ nameList 的原型是陣列原型\
 ## 總結
 
 - 原型（prototype）：在 JavaScript 中，每個物件都有一個原型。當物件被初始化時，它會從其原型物件繼承屬性和方法。
-- `[[prototype]]`：是物件中一個隱藏的屬性，它會對應到此物件的原型。
+- `[[Prototype]]`：是物件中一個隱藏的屬性，它會對應到此物件的原型。
 - `__proto__`：物件的一個屬性，用來讀取或設置原型，但現在已不推薦使用。
-- prototype 屬性：是**函式**的屬性。當通過建構函數創建一個實例時，該實例的原型（即 `[[prototype]]` 屬性）指向這個建構函數的 prototype 屬性。
+- prototype 屬性：是**函式**的屬性。當通過建構函數創建一個實例時，該實例的原型（即 `[[Prototype]]` 屬性）指向這個建構函數的 prototype 屬性。
 - 原型鏈：JavaScript 中所有的物件都有一個原型，而這個原型也可能有自己的原型，形成一條鏈，這就是原型練。
 - 原型繼承：是 JavaScript 的繼承機制，當子層物件找不到某屬性或方法時，就會往上向父層查找，讓子層物件能夠使用父層物件的屬性或方法。
 
