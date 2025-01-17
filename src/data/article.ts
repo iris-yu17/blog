@@ -3,46 +3,53 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'ga-gtm',
+    name: 'GA 及 GTM 設定筆記',
+    description: '',
+    tags: [CategoryKey.Gcp],
+    updated: '2025-01-16',
+  },
+  {
     id: 'react-advance-understanding-ch5-II',
     name: '《React 思維進化》Chapter 5 筆記（下）',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2024-07-24'
+    updated: '2024-07-24',
   },
   {
     id: 'react-advance-understanding-ch5-I',
     name: '《React 思維進化》Chapter 5 筆記（上）',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2024-07-18'
+    updated: '2024-07-18',
   },
   {
     id: 'react-advance-understanding-ch4',
     name: '《React 思維進化》Chapter 4 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2024-07-17'
+    updated: '2024-07-17',
   },
   {
     id: 'react-advance-understanding-ch3',
     name: '《React 思維進化》Chapter 3 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2024-07-15'
+    updated: '2024-07-15',
   },
   {
     id: 'react-advance-understanding-ch2',
     name: '《React 思維進化》Chapter 2 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2024-07-08'
+    updated: '2024-07-08',
   },
   {
     id: 'js-class-inheritance',
     name: 'Js Class 類別與繼承',
     description: '',
     tags: [CategoryKey.Js],
-    updated: '2024-07-01'
+    updated: '2024-07-01',
   },
   {
     id: 'js-prototype',
@@ -50,7 +57,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-06-25',
-    priority: 0.8
+    priority: 0.8,
   },
   {
     id: 'js-this-methods',
@@ -142,7 +149,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.WA],
     updated: '2024-05-10',
-    priority: 0.8
+    priority: 0.8,
   },
   {
     id: 'js-callback',
@@ -234,7 +241,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Gcp],
     updated: '2024-05-10',
-    priority: 0.8
+    priority: 0.8,
   },
   {
     id: 'next-notes',
@@ -242,56 +249,56 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Next],
     updated: '2024-05-10',
-    priority: 0.8
+    priority: 0.8,
   },
   {
     id: 'freego-notes',
     name: '無障礙 Freego 檢測錯誤排查筆記',
     description: '',
     tags: [CategoryKey.WA],
-    updated: '2024-05-10'
+    updated: '2024-05-10',
   },
   {
     id: 'react-usecallback',
     name: 'React useCallback 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2023-05-22'
+    updated: '2023-05-22',
   },
   {
     id: 'react-usecontext',
     name: 'React useContext 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2023-06-03'
+    updated: '2023-06-03',
   },
   {
     id: 'react-usememo',
     name: 'React useMemo 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2023-05-17'
+    updated: '2023-05-17',
   },
   {
     id: 'react-usereducer',
     name: 'React useReducer 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2023-06-04'
+    updated: '2023-06-04',
   },
   {
     id: 'react-memo',
     name: 'React.memo 筆記',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2023-06-10'
+    updated: '2023-06-10',
   },
   {
     id: 'mdxremote-add-anchor-to-title',
     name: 'MDXRemote 為標題加上錨點',
     description: '',
     tags: [CategoryKey.Next],
-    updated: '2024-05-10'
+    updated: '2024-05-10',
   },
   {
     id: 'gcp-get-bucket-obj',
