@@ -70,7 +70,7 @@ export default async function Category({
           &#160;({t('total', { count: totalCount })})
         </span>
       </p>
-      <CategoryBlock lang={lang}/>
+      <CategoryBlock lang={lang} />
       <div className="flex flex-col gap-2 md:gap-4">
         {slicedArticles.map((item) => {
           const { id } = item;
@@ -82,7 +82,11 @@ export default async function Category({
         totalPages={TOTAL_PAGES}
         currentPage={currentPage}
         mainPath={PageUrls.Category}
-        dict={tCommon('pagination', { returnObjects: true })}
+        dict={
+          tCommon('pagination', { returnObjects: true }) as {
+            [key: string]: string;
+          }
+        }
       />
     </>
   );

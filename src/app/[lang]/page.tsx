@@ -55,7 +55,11 @@ export default async function Home({
         totalPages={TOTAL_PAGES}
         currentPage={currentPage}
         mainPath={PageUrls.Home}
-        dict={tCommon('pagination', { returnObjects: true })}
+        dict={
+          tCommon('pagination', { returnObjects: true }) as {
+            [key: string]: string;
+          }
+        }
       />
     </>
   );

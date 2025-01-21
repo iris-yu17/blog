@@ -32,7 +32,7 @@ export default async function About({ params }: Props) {
   const { lang } = params;
   const { t } = await initTranslations(lang, ['about']);
 
-  const intro: string[] = t('intro', { returnObjects: true });
+  const intro: string[] = t('intro', { returnObjects: true }) as string[];
 
   return (
     <>
