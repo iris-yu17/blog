@@ -96,7 +96,7 @@ function SideNav(props: Props) {
                 style: {
                   dark: 'border border-border bg-black-200 text-gray-100 z-20 py-1 px-2 rounded-md text-nowrap',
                 },
-                content: 'relative z-20 text-nowrap'
+                content: 'relative z-20 text-nowrap',
               }}
             >
               <Link
@@ -164,6 +164,8 @@ function SideNav(props: Props) {
           >
             {t('settings.theme')}
           </button>
+
+          <button>123</button>
         </div>
       )}
     </div>

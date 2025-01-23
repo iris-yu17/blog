@@ -136,6 +136,11 @@ blockquote p::after {
   padding-left: 2em;
 }
 
+.prose table {
+  width: auto;
+  min-width: 50%;
+}
+
 .prose li li {
   list-style-type: circle;
 }
