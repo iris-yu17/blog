@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.10.2",
+    "@next/third-parties": "^15.1.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "accept-language": "^3.0.18",
     "classnames": "^2.5.1",

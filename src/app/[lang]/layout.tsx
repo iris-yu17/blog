@@ -14,6 +14,7 @@ import TranslationsProvider from '@/components/translations-provider';
 import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 import { i18nNamespaces } from '@/i18n/settings';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,23 +43,6 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
-        {/* GA */}
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-        />
-        <Script
-          id="gtm-script"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', ${process.env.NEXT_PUBLIC_GA_ID});
-        `,
-          }}
-        />
         {/* Google AdSense */}
         <Script
           async
@@ -66,6 +50,8 @@ export default async function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
+      {/* GA */}
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
       <body className={inter.className}>
         <TranslationsProvider
           namespaces={i18nNamespaces}
