@@ -2,20 +2,20 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
-  // {
-  //   id: 'ga4-basic',
-  //   name: '使用 GA4 追蹤網站資料',
-  //   description: '',
-  //   tags: [CategoryKey.Gcp],
-  //   updated: '2025-01-21',
-  // },
-  // {
-  //   id: 'ga-gtm',
-  //   name: 'GTM 設定筆記',
-  //   description: '',
-  //   tags: [CategoryKey.Gcp],
-  //   updated: '2025-01-16',
-  // },
+  {
+    id: 'ga4-basic',
+    name: '使用 GA4 追蹤網站資料',
+    description: '',
+    tags: [CategoryKey.Gcp],
+    updated: '2025-01-21',
+  },
+  {
+    id: 'ga-gtm',
+    name: 'GTM 設定筆記',
+    description: '',
+    tags: [CategoryKey.Gcp],
+    updated: '2025-01-16',
+  },
   {
     id: 'react-advance-understanding-ch5-II',
     name: '《React 思維進化》Chapter 5 筆記（下）',

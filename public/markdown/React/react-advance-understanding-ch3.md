@@ -191,7 +191,7 @@ export default function App() {
 }
 ```
 
-因為[前面](./react-advance-understanding-ch2.md)有說過，React 會執行 `Object.is()` 來檢查新舊的 state 值，若是不同，才會 re-render。\
+因為[前面](./react-advance-understanding-ch2)有說過，React 會執行 `Object.is()` 來檢查新舊的 state 值，若是不同，才會 re-render。\
 我們知道，在 JavaScript 中，物件跟陣列是可變的（mutable），並且是傳參考。我們用 `position.x` 來改變（mutate）物件，但它的參考並沒有變。當 React 以 `Object.is()` 來檢查 state 是否有改變時，由於新值和舊值的物件是同一個參考，所以會被判定為相同。
 
 換句話說，**當 React 要判定物件或陣列是否有改變時，它看的是資料的參考**，並不會去檢查內部細節是否有改變。\

@@ -8,12 +8,17 @@
 
 點擊「取得標記操作說明」，依照操作說明，將代碼貼入網站程式碼的 `<head>` 之後：
 
-```javascript
+```html
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-12345ABCDE"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-12345ABCDE"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
 
   gtag('config', 'G-12345ABCDE');
