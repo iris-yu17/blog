@@ -2,13 +2,13 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
-  // {
-  //   id: 'ga4-setup',
-  //   name: '使用 GA4 追蹤網站資料',
-  //   description: '',
-  //   tags: [CategoryKey.Gcp],
-  //   updated: '2025-01-21',
-  // },
+  {
+    id: 'ga4-basic',
+    name: '使用 GA4 追蹤網站資料',
+    description: '',
+    tags: [CategoryKey.Gcp],
+    updated: '2025-01-21',
+  },
   {
     id: 'ga-gtm',
     name: 'GTM 設定筆記',

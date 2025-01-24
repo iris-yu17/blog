@@ -157,6 +157,9 @@ function SideNav(props: Props) {
           </button>
           <button
             onClick={() => {
+              window.gtag('event', 'toggle_theme', {
+                theme: theme,
+              });
               setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
               setShowSetting(false);
             }}
@@ -164,8 +167,6 @@ function SideNav(props: Props) {
           >
             {t('settings.theme')}
           </button>
-
-          <button>123</button>
         </div>
       )}
     </div>
