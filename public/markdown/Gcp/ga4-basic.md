@@ -73,7 +73,7 @@ gtag('event', '事件名稱', {
 
 1. 打開 DevTools > 選擇 Network 頁籤 > 在篩選欄位輸入 collect
 2. 接著在網頁中點擊埋了事件的按鈕，若有觸發事件，就會出現事件收集的 request，如下圖：
-   [圖片i6]
+   ![Imgur](https://i.imgur.com/K5f9H4J.png)
 
 ### - step3. 檢查是否成功追蹤
 

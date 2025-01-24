@@ -25,7 +25,7 @@ export default async function ArticleCard({
     <Link
       href={href}
       key={id}
-      className="group/link py-2 font-rbtm hover:bg-black-100"
+      className="group/link d-flex block py-2 font-rbtm hover:bg-black-100"
       // scroll={false}
     >
       <div className="flex flex-col gap-1 md:gap-2">
