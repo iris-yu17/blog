@@ -9,6 +9,7 @@ import PageUrls from '@/types/enum/page-url';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'react-i18next';
+import { otherCategoryList } from '@/data/otherCategory';
 
 const DEFAULT_WIDTH = 256;
 
@@ -97,7 +98,41 @@ export default function SideMenu(props: Props) {
               );
             })}
           </Accordion>
-          {/* <Accordion title={'其他文章'} defaultExpand={true}></Accordion> */}
+          <Accordion title={t('category.others')} defaultExpand={true}>
+            {otherCategoryList.map((category) => {
+              const { tag } = category;
+              const count = articles.filter(
+                (item) => item.tags[0] === tag,
+              ).length;
+              return (
+                <Accordion
+                  key={tag}
+                  title={`${
+                    (CategoryText as any)[tag] || t(`sub-category.${tag}`)
+                  } (${count})`}
+                >
+                  {articles.map((item) => {
+                    const { tags, name, id } = item;
+                    const _tag = tags[0];
+                    if (tag === _tag)
+                      return (
+                        <Link
+                          href={`${PageUrls.Article}/${id}`}
+                          key={id}
+                          className="block overflow-hidden text-ellipsis whitespace-nowrap py-0.5 hover:bg-black-100"
+                          onClick={() => {
+                            setShowMenu && setShowMenu(false);
+                          }}
+                          // scroll={false}
+                        >
+                          {name}
+                        </Link>
+                      );
+                  })}
+                </Accordion>
+              );
+            })}
+          </Accordion>
         </div>
         <div
           className="relative z-10 h-full cursor-ew-resize border-l border-transparent hover:border-l-4 hover:border-secondary"
