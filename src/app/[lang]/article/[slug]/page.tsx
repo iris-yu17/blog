@@ -43,10 +43,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const article: ArticleType =
     articles.find((item) => item.id === slug) || articles[0];
-  const title = article.name;
+  const { name, description } = article;
 
   return {
-    title: `${title} - IRIS Studio`,
+    title: `${name} - IRIS Studio`,
+    description: description || name,
   };
 }
 
@@ -93,13 +94,24 @@ export default async function Article({
   const { id, name, tags, updated } = article;
 
   // const encodedFileName = encodeURIComponent(name);
-
+  let data;
   const file = tags[0];
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${id}.md`,
-  );
 
-  const data = await res.text();
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${id}.md`,
+    );
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    data = await res.text();
+  } catch (error) {
+    console.log('Error:', error);
+  }
+
+  if (!data) {
+    return null;
+  }
 
   return (
     <>

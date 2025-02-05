@@ -38,7 +38,7 @@ export default async function ArticleCard({
           </div>
         </div>
         <div className="text-lg text-secondary md:text-xl">{name}</div>
-        <div className="line-clamp-2 text-wrap text-gray-200">
+        <div className="line-clamp-2 text-wrap text-sm text-gray-300">
           {description}
         </div>
       </div>
