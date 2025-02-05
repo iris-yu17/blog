@@ -3,9 +3,17 @@ import { Article } from '@/types/article';
 
 const articles: Article[] = [
   {
+    id: 'js-fetch-myth',
+    name: 'Fetch 常見誤解',
+    description:
+      '釐清 "HTTP 錯誤" 與 "網路錯誤"，說明 fetch 要如何做錯誤處理。',
+    tags: [CategoryKey.Js],
+    updated: '2025-02-04',
+  },
+  {
     id: 'ga4-basic',
     name: '使用 GA4 追蹤網站資料',
-    description: '',
+    description: '介紹 GA4 如何啟用，事件追蹤教學，說明如何設定自訂維度。',
     tags: [CategoryKey.Gcp],
     updated: '2025-01-21',
   },
@@ -21,7 +29,7 @@ const articles: Article[] = [
     name: '從好事互動畢業了 - 我的第一份前端工作',
     description: '',
     tags: [CategoryKey.Journal],
-    updated: '2024-09-23'
+    updated: '2024-09-23',
   },
   {
     id: 'react-advance-understanding-ch5-II',
