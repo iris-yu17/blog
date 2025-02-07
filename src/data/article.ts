@@ -2,6 +2,20 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
+  // {
+  //   id: 'pixi-platformer-2',
+  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #2',
+  //   description: '',
+  //   tags: [CategoryKey.Pixi],
+  //   updated: '2025-02-07',
+  // },
+  // {
+  //   id: 'pixi-platformer-1',
+  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #1',
+  //   description: '',
+  //   tags: [CategoryKey.Pixi],
+  //   updated: '2025-02-06',
+  // },
   {
     id: 'js-fetch-myth',
     name: 'Fetch 常見誤解',
