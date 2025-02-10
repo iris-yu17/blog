@@ -168,3 +168,5 @@ class Background {
   }
 }
 ```
+
+閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #3 道具動畫](./pixi-platformer-3)

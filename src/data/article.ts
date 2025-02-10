@@ -2,27 +2,41 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
-  // {
-  //   id: 'pixi-platformer-3',
-  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #3 道具動畫',
-  //   description: '',
-  //   tags: [CategoryKey.Pixi],
-  //   updated: '2025-02-07',
-  // },
-  // {
-  //   id: 'pixi-platformer-2',
-  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #2 製作背景',
-  //   description: '',
-  //   tags: [CategoryKey.Pixi],
-  //   updated: '2025-02-07',
-  // },
-  // {
-  //   id: 'pixi-platformer-1',
-  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #1 基本配置',
-  //   description: '',
-  //   tags: [CategoryKey.Pixi],
-  //   updated: '2025-02-06',
-  // },
+  {
+    id: 'pixi-platformer-5',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #5 創建地形場景',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-10',
+  },
+  {
+    id: 'pixi-platformer-4',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #4 創建角色',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-08',
+  },
+  {
+    id: 'pixi-platformer-3',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #3 道具動畫',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-07',
+  },
+  {
+    id: 'pixi-platformer-2',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #2 製作背景',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-07',
+  },
+  {
+    id: 'pixi-platformer-1',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #1 基本配置',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-06',
+  },
   {
     id: 'js-fetch-myth',
     name: 'Fetch 常見誤解',
