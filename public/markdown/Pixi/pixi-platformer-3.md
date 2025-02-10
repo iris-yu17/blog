@@ -1,5 +1,5 @@
-在許多遊戲中，玩家可收集的金幣、果實、寶石等道具，這章節要來製作道具的動畫。\
-會使用到 PixiJS 的 `AnimatedSprite`，以及 `public/fruits` 資料夾裡的水果 png, JSON 素材。
+> 在許多遊戲中，玩家可收集的金幣、果實、寶石等道具，這章節要來製作道具的動畫。\
+> 會使用到 PixiJS 的 `AnimatedSprite`，以及 `public/fruits` 資料夾裡的水果 png, JSON 素材。
 
 ## - step1. 創建水果元件
 

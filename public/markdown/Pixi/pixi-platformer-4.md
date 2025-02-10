@@ -1,3 +1,5 @@
+> 這章節會教學如何創建角色，並使角色跳躍、左右移動。
+
 ## - step1. 創建角色元件
 
 1. 在 `src/component` 下新增 `Character.ts` 的檔案，在裡面創建一個 Character class
@@ -142,7 +144,7 @@ class Character {
   };
 
   // 5. 監聽 key press 事件
-  addListener() {
+  addListener = () => {
     window.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("keyup", this.onKeyUp);
   }
@@ -324,4 +326,4 @@ class Character {
 
 ---
 
-閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #5 創建地形場景](./pixi-platformer-5)
+閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #5 角色細節](./pixi-platformer-5)
