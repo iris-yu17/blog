@@ -2,13 +2,13 @@ import { CategoryKey } from '@/types/enum/category';
 import { Article } from '@/types/article';
 
 const articles: Article[] = [
-  {
-    id: 'pixi-platformer-5',
-    name: '手把手教你用 PixiJS 做一個平台遊戲 #5 創建地形場景',
-    description: '',
-    tags: [CategoryKey.Pixi],
-    updated: '2025-02-10',
-  },
+  // {
+  //   id: 'pixi-platformer-5',
+  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #5 創建地形場景',
+  //   description: '',
+  //   tags: [CategoryKey.Pixi],
+  //   updated: '2025-02-10',
+  // },
   {
     id: 'pixi-platformer-4',
     name: '手把手教你用 PixiJS 做一個平台遊戲 #4 創建角色',
