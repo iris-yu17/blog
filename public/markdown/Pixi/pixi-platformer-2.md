@@ -128,7 +128,7 @@ class Background {
     this.animate();
   }
 
-  animate = () => {
+  animate() {
     this.ticker = new Ticker();
     this.ticker.add(({ deltaTime }) => {
       this.tilingSprite.tilePosition.y += 0.5 * deltaTime;
@@ -158,11 +158,11 @@ class Background {
     // ...
   }
 
-  animate = () => {
+  animate() {
     // ...
   }
 
-  destroy = () => {
+  destroy() {
     this.ticker.destroy();
     this.tilingSprite.destroy();
   }

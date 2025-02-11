@@ -102,6 +102,8 @@ initGame();
 4. 建立 onKeyUp 方法，當放開按鍵時，從 pressedKeys 移除
 5. 監聽 keypress 事件
 
+備註：因為 onKeyDown, onKeyUp 會被當作 callback 傳入 addEventListener, 若使用一般函式，當它們被調用時，this 的指向會變成 window，而不是 `Character` 實例本身。需使用箭頭函式 this 的指向才會正確，因箭頭函示的 this 會是函式宣告當下作用域的 this。
+
 ```javascript
 // 1. 定義 KEY enum
 enum KEY {
@@ -123,7 +125,6 @@ class Character {
   }
 
   // 3. 建立 onKeyDown 方法
-  // 這邊使用箭頭函式 this 的指向才會正確，因箭頭函示的 this 會是函式宣告當下作用域的 this
   onKeyDown = (e: KeyboardEvent) => {
     const { code } = e;
 
@@ -144,7 +145,7 @@ class Character {
   };
 
   // 5. 監聽 key press 事件
-  addListener = () => {
+  addListener()  {
     window.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("keyup", this.onKeyUp);
   }
@@ -178,7 +179,7 @@ export { SPEED };
 class Character {
   // ...略
 
-  run = (deltaTime) => {
+  run(deltaTime) {
     // 依據 pressedKeys 內容，更新 x 座標
     if (this.pressedKeys.has(KEY.ArrowRight)) {
       this.x += SPEED.CHARACTER_RUN * deltaTime;
@@ -186,11 +187,13 @@ class Character {
     if (this.pressedKeys.has(KEY.ArrowLeft)) {
       this.x -= SPEED.CHARACTER_RUN * deltaTime;
     }
-  };
+  }
 }
 ```
 
 ### 建立 `tick` 方法、啟用 `ticker`
+
+`tick` 要用箭頭函式，因為它會被當作 callback 傳入 `Ticker`，若使用一般函式，this 會指向 PixiJS 本身的 `Ticker`，而不是 `Character` 實例。
 
 ```javascript
 class Character {
@@ -295,7 +298,7 @@ export { SPEED, PHYSICS };
 class Character {
   // ...略
 
-  jump = (deltaTime) => {
+  jump(deltaTime) {
     // 當 pressedKeys 記錄有 ArrowUp && 非跳躍中時
     if (this.pressedKeys.has(KEY.ArrowUp) && !this.isJumping) {
       this.isJumping = true; // 將狀態改為跳躍中
@@ -317,7 +320,7 @@ class Character {
         this.jumpVelocity = 0;
       }
     }
-  };
+  }
 }
 ```
 

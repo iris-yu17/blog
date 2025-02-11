@@ -17,7 +17,7 @@ class Character {
 
   // ...略
 
-  run = (deltaTime) => {
+  run(deltaTime) {
     if (this.pressedKeys.has(KEY.ArrowRight)) {
       // 更新 facingRight
       this.facingRight = true;
@@ -31,7 +31,7 @@ class Character {
   };
 
   // 新增 turnFace 方法
-  turnFace = () => {
+  turnFace() {
     const scaleX = this.facingRight ? 1 : -1;
     this.avatar.scale.x = scaleX;
   }
@@ -93,7 +93,7 @@ class Character {
     // ...略
   }
 
-  createTexture = async (action: Action, frame: number) => {
+  async createTexture(action: Action, frame: number) {
     await Assets.load(`/public/character/${action}.json`);
 
     const textureArray = [];
@@ -136,7 +136,7 @@ class Character{
   }
 
 
-  createTexture = async (action: Action, frame: number) => {
+  async createTexture (action: Action, frame: number) {
     // ...略
 
     // 2. 在最後將 textureArray 存入 textures 屬性
