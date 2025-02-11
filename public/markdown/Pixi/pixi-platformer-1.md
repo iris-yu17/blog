@@ -4,7 +4,7 @@
 
 - 這系列文章會一步步教學如何使用 PixiJS v8 來製作平台遊戲，範例程式碼可以參考[這邊](https://codesandbox.io/p/sandbox/pixi-tutorial-gm6gjv)。
 - 可以先閱讀 [PixiJS v7 基礎筆記](./pixi-notes)，但由於那篇的版本是 `v7`，寫法會稍有不同，不過還是建議先看完那篇，來了解 PixiJS 的基本知識與運作，在實作時會更得心應手。
-- 此專案使用的圖檔等素材都是網路上的免費素材，可以在[這邊](https://pixelfrog-assets.itch.io/pixel-adventure-1)找到。
+- 此專案使用的圖檔都是網路上的免費素材，可以在[這邊](https://pixelfrog-assets.itch.io/pixel-adventure-1)找到。
 
 ## 準備
 

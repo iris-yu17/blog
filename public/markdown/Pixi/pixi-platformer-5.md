@@ -12,7 +12,7 @@
 
 ```javascript
 class Character {
-  // 加上 `facingRight` 屬性，預設為 1，也就是 true
+  // 加上 `facingRight` 屬性，預設為 true
   facingRight: number = 1;
 
   // ...略
@@ -129,7 +129,7 @@ class Character{
     await this.createTexture(Action.Run, 12);
     await this.createTexture(Action.Jump, 6);
 
-    //
+    // 3. 使用閒置狀態的 texture
     this.avatar = new AnimatedSprite(this.actionTextures[Action.Idle]);
 
     // ...略
@@ -145,4 +145,68 @@ class Character{
 }
 ```
 
-###
+### 切換 texture
+
+為了依據動作切換 texture，我們要：
+
+1. 新增一個 `currentAction` 屬性，記錄下當前的狀態
+2. 新增一個 `handleTextureChange` 方法，在裡面判斷目前有什麼鍵被按著，來決定要切換成什麼 texture
+3. 在 `tick` 裡呼叫 `handleTextureChange`
+
+```javascript
+class Character {
+  // 新增屬性
+  currentAction: Action = Action.Idle;
+
+  // ...略
+
+  tick = (ticker) => {
+    const { deltaTime } = ticker;
+
+    // ...
+    // 3. 呼叫方法
+    this.handleTextureChange();
+
+    this.avatar?.position?.set(this.x, this.y);
+  };
+
+  // 2. 新增方法
+  handleTextureChange() {
+    let action;
+    switch (true) {
+      // 若"上"鍵被按著，判斷為"跳躍"狀態
+      case this.pressedKeys.has(KEY.ArrowUp):
+        action = Action.Jump;
+        break;
+      // 若"左右"鍵被按著，判斷為"跑步"狀態
+      case this.pressedKeys.has(KEY.ArrowLeft) ||
+        this.pressedKeys.has(KEY.ArrowRight):
+        action = Action.Run;
+        break;
+      default:
+      // 預設為"閒置"狀態
+        action = Action.Idle;
+        break;
+    }
+
+    // 若紀錄的狀態與當前狀態一致，就不需往下執行
+    if (this.currentAction === action) return;
+
+    // 更新狀態記錄
+    this.currentAction = action;
+
+    // 抽換 texture
+    this.avatar.textures = this.actionTextures[action];
+
+    // 播放動畫
+    this.avatar.play();
+  }
+}
+```
+
+結果如下：
+![GIF](https://i.imgur.com/LVQGeQt.gif)
+
+---
+
+閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #6 創建地形場景](./pixi-platformer-6)
