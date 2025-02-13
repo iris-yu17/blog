@@ -15,6 +15,7 @@ import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
 import { i18nNamespaces } from '@/i18n/settings';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import ToTopButton from '@/components/to-top-button';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -73,6 +74,7 @@ export default async function RootLayout({
               </main>
             </div>
             <Footer />
+            <ToTopButton />
           </ThemeProvider>
         </TranslationsProvider>
       </body>
