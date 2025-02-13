@@ -7,17 +7,18 @@
 
 1. 加上一個 `facingRight` 屬性
 2. 改變方向時，更新 `facingRight`
-3. 新增 `turnFace` 方法，在這邊改變角色的 scaleX
-4. tick
+3. 新增 `turnFace` 方法，在這邊改變角色的 scale.x（scale.x 是用來調整物件在 X 軸方向的縮放比例，若為負數就會水平翻轉）
+4. 在 `tick` 裡呼叫 `turnFace`
 
 ```javascript
 class Character {
-  // 加上 `facingRight` 屬性，預設為 true
+  // 1. 加上 `facingRight` 屬性，預設為 true
   facingRight: number = 1;
 
   // ...略
 
   run(deltaTime) {
+    // 2. 依據方向更新 facingRight
     if (this.pressedKeys.has(KEY.ArrowRight)) {
       // 更新 facingRight
       this.facingRight = true;
@@ -30,16 +31,22 @@ class Character {
     }
   };
 
-  // 新增 turnFace 方法
-  turnFace() {
-    const scaleX = this.facingRight ? 1 : -1;
-    this.avatar.scale.x = scaleX;
-  }
+  // 3. 新增 turnFace 方法
+  turnFace = (() => {
+    let lastFacingRight = null; // 用閉包變數記住先前的方向
+
+    return () => {
+      if (lastFacingRight === this.facingRight) return; // 方向沒變，不做任何事
+
+      lastFacingRight = this.facingRight; // 更新記錄的方向
+      this.avatar.scale.x = this.facingRight ? 1 : -1;
+    };
+  })();
 
   tick = (ticker) => {
     // ...略
 
-    // 換方向
+    // 4. 在 tick 中呼叫 turnFace 方法
     this.turnFace();
 
     this.avatar?.position?.set(this.x, this.y);
@@ -88,8 +95,6 @@ class Character {
     await this.createTexture(Action.Run, 12);
     await this.createTexture(Action.Jump, 6);
 
-    // 這行要再改寫⬇️
-    this.avatar = new AnimatedSprite(textureArray);
     // ...略
   }
 
