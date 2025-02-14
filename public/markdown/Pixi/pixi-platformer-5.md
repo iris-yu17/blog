@@ -211,7 +211,3 @@ class Character {
 
 結果如下：
 ![GIF](https://i.imgur.com/LVQGeQt.gif)
-
----
-
-閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #6 創建地形場景](./pixi-platformer-6)

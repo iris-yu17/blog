@@ -326,7 +326,3 @@ class Character {
 
 操作畫面如下：
 ![GIF](https://i.imgur.com/oQuMEwK.gif)
-
----
-
-閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #5 角色細節](./pixi-platformer-5)

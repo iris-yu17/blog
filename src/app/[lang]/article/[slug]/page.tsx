@@ -18,6 +18,7 @@ import Link from 'next/link';
 import CodeTheme from '@/components/code-theme';
 import initTranslations from '@/i18n';
 import { Locales } from '@/types/enum/locales';
+import PageUrls from '@/types/enum/page-url';
 
 function addIdToH2() {
   return (tree: any) => {
@@ -88,8 +89,12 @@ export default async function Article({
   const { slug, lang } = pathname;
   const { t } = await initTranslations(lang, ['common']);
 
-  const article: ArticleType =
-    articles.find((item) => item.id === slug) || articles[0];
+  const index: number = articles.findIndex((item) => item.id === slug);
+  const article: ArticleType = articles[index];
+
+  // 下一篇，若已是第一篇了就用拿最後一篇
+  const nextArticle: ArticleType =
+    articles[index - 1] || articles[articles.length - 1];
 
   const { id, name, tags, updated } = article;
 
@@ -166,6 +171,15 @@ export default async function Article({
             }}
           />
         </Prose>
+      </div>
+      <div className="mt-12 rounded border-dotted border-tertiary bg-black-300 px-4 py-8 md:px-6">
+        閱讀下一篇：
+        <Link
+          href={`${PageUrls.Article}/${nextArticle.id}`}
+          className="undeline text-secondary hover:underline"
+        >
+          {nextArticle.name}
+        </Link>
       </div>
     </>
   );

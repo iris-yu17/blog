@@ -138,7 +138,3 @@ initGame();
 
 結果如下
 ![GIF](https://i.imgur.com/6Eik7qR.gif)
-
----
-
-閱讀下一章：[手把手教你用 PixiJS 做一個平台遊戲 #4 創建角色](./pixi-platformer-4)

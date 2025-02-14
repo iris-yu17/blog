@@ -1,4 +1,4 @@
-這章節會教學如創建遊戲地形場景
+這章節會教學如創建遊戲地形場景，首先會創建 `Tile` 元件，它是地形的基本組成單位，代表了一個個的小方塊；接著再使用 `Tile` 組合成 `Terrain`（地形）。
 
 ## 素材說明
 
@@ -7,7 +7,7 @@
 我已用線上工具產生了 sprite sheet，在 `public/tile` 中，有 tile 的 png 及 JSON 檔。：
 
 - `tile.png` 中，有一格一格的 tile，總共 114 個，每個 tile 的尺寸都是 16x16，我們會像積木一樣把這些 tile 拼湊起來，成為遊戲場景。
-- `tile.JSON` 中，可以看到 `frames` 中，有 `1.png`, `2.png`, `3.png`... 直到 `114.png`，他們對應的就是 `tile.png` 中的每個 tile，其對應的 tile 如下圖。
+- `tile.json` 中，可以看到 `frames` 中有 `1.png`, `2.png`, `3.png`... 直到 `114.png`，他們對應的就是 `tile.png` 中的每個 tile，其對應的 tile 如下圖。
 
 ![GIF](https://i.imgur.com/RQGr2S5.png)
 
@@ -52,14 +52,15 @@ class Tile {
     // 1. 載入 tile.json
     await Assets.load('/public/tile/tile.json');
 
-    // 將圖片轉為 texture，再將 texture 轉為 sprite
+    // 2. 將圖片轉為 texture
+    // 3. 再將 texture 轉為 sprite
     this.tile = Sprite.from(Texture.from(`${this.frameNo}.png`));
 
-    // 設定位置、錨點
+    // 4. 設定位置、錨點
     this.tile.position.set(this.x, this.y);
     this.tile.anchor.set(0.5, 0.5);
 
-    // 加到舞台
+    // 4. 加到舞台
     app.stage.addChild(this.tile);
   }
 }
@@ -100,3 +101,5 @@ initGame();
 
 結果如下：
 ![GIF](https://i.imgur.com/6l7hIKn.gif)
+
+## - step4. 創建 Terrain 元件
