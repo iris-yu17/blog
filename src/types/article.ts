@@ -7,4 +7,5 @@ export type Article = {
   tags: CategoryKey[],
   updated: string;
   priority?: number;
+  recommend?: string[];
 };

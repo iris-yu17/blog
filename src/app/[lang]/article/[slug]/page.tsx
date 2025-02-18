@@ -14,6 +14,7 @@ import { BreadcrumbKey } from '@/types/enum/breadcrumb';
 import { visit } from 'unist-util-visit';
 import { Props } from '@/types/props';
 import Link from 'next/link';
+import { PiCheckBold } from 'react-icons/pi';
 
 import CodeTheme from '@/components/code-theme';
 import initTranslations from '@/i18n';
@@ -89,14 +90,17 @@ export default async function Article({
   const { slug, lang } = pathname;
   const { t } = await initTranslations(lang, ['common']);
 
-  const index: number = articles.findIndex((item) => item.id === slug);
-  const article: ArticleType = articles[index];
+  const article: ArticleType | undefined = articles.find(
+    (item) => item.id === slug,
+  );
 
-  // 下一篇，若已是第一篇了就用拿最後一篇
-  const nextArticle: ArticleType =
-    articles[index - 1] || articles[articles.length - 1];
+  if (!article) throw new Error("Can't find article.");
 
   const { id, name, tags, updated } = article;
+  const recommend = article.recommend || [articles[0].id];
+
+  // const nextArticle = articles.find((item) => item.id === nextId);
+  // console.log('nextIdA', nextArticle);
 
   // const encodedFileName = encodeURIComponent(name);
   let data;
@@ -172,14 +176,23 @@ export default async function Article({
           />
         </Prose>
       </div>
-      <div className="mt-12 rounded border-dotted border-tertiary bg-black-300 px-4 py-8 md:px-6">
-        閱讀下一篇：
-        <Link
-          href={`${PageUrls.Article}/${nextArticle.id}`}
-          className="undeline text-secondary hover:underline"
-        >
-          {nextArticle.name}
-        </Link>
+      <div className="mt-12 rounded border-dotted border-tertiary bg-black-300 px-4 py-4 md:px-6">
+        <div className="my-1">閱讀推薦：</div>
+        {recommend?.map((item) => {
+          const article =
+            articles.find((_article) => _article.id === item) || articles[0];
+          return (
+            <div key={item} className="my-2 flex items-center gap-2">
+              <PiCheckBold className="min-w-4 text-base text-quaternary" />
+              <Link
+                href={`${PageUrls.Article}/${article.id}`}
+                className="undeline block text-secondary hover:underline"
+              >
+                {article.name}
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </>
   );

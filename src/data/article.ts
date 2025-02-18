@@ -9,19 +9,21 @@ const articles: Article[] = [
   //   tags: [CategoryKey.React],
   //   updated: '2025-02-17',
   // },
-  // {
-  //   id: 'pixi-platformer-6',
-  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #6 創建地形場景',
-  //   description: '',
-  //   tags: [CategoryKey.Pixi],
-  //   updated: '2025-02-10',
-  // },
+  {
+    id: 'pixi-platformer-6',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #6 創建地形場景',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-02-10',
+    recommend: ['pixi-notes'],
+  },
   {
     id: 'pixi-platformer-5',
     name: '手把手教你用 PixiJS 做一個平台遊戲 #5 角色細節',
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-02-10',
+    recommend: ['pixi-platformer-6', 'pixi-notes'],
   },
   {
     id: 'pixi-platformer-4',
@@ -29,6 +31,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-02-08',
+    recommend: ['pixi-platformer-5', 'pixi-notes'],
   },
   {
     id: 'pixi-platformer-3',
@@ -36,6 +39,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-02-07',
+    recommend: ['pixi-platformer-4', 'pixi-notes'],
   },
   {
     id: 'pixi-platformer-2',
@@ -43,6 +47,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-02-07',
+    recommend: ['pixi-platformer-3', 'pixi-notes'],
   },
   {
     id: 'pixi-platformer-1',
@@ -50,6 +55,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-02-06',
+    recommend: ['pixi-platformer-2', 'pixi-notes'],
   },
   {
     id: 'js-fetch-myth',
@@ -65,6 +71,7 @@ const articles: Article[] = [
     description: '介紹 GA4 如何啟用，事件追蹤教學，說明如何設定自訂維度。',
     tags: [CategoryKey.Gcp],
     updated: '2025-01-21',
+    recommend: ['ga-gtm']
   },
   {
     id: 'ga-gtm',
@@ -72,6 +79,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Gcp],
     updated: '2025-01-16',
+    recommend: ['ga4-basic']
   },
   {
     id: 'goodbye-hi-group',
@@ -93,6 +101,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.React],
     updated: '2024-07-18',
+    recommend: ['react-advance-understanding-ch5-II']
   },
   {
     id: 'react-advance-understanding-ch4',
@@ -100,6 +109,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.React],
     updated: '2024-07-17',
+    recommend: ['react-advance-understanding-ch5-I']
   },
   {
     id: 'react-advance-understanding-ch3',
@@ -107,6 +117,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.React],
     updated: '2024-07-15',
+    recommend: ['react-advance-understanding-ch4']
   },
   {
     id: 'react-advance-understanding-ch2',
@@ -114,6 +125,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.React],
     updated: '2024-07-08',
+    recommend: ['react-advance-understanding-ch3']
   },
   {
     id: 'js-class-inheritance',
@@ -121,6 +133,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-07-01',
+    recommend: ['js-prototype']
   },
   {
     id: 'js-prototype',
@@ -129,6 +142,7 @@ const articles: Article[] = [
     tags: [CategoryKey.Js],
     updated: '2024-06-25',
     priority: 0.8,
+    recommend: ['js-class-inheritance']
   },
   {
     id: 'js-this-methods',
@@ -136,6 +150,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-06-21',
+    recommend: ['js-white-is-this']
   },
   {
     id: 'js-what-is-this',
@@ -143,6 +158,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2024-06-18',
+    recommend: ['js-this-methods']
   },
   {
     id: 'js-closure',
@@ -221,6 +237,7 @@ const articles: Article[] = [
     tags: [CategoryKey.WA],
     updated: '2024-05-10',
     priority: 0.8,
+    recommend: ['freego-notes']
   },
   {
     id: 'js-callback',
@@ -228,6 +245,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2023-03-29',
+    recommend: ['js-promise', 'js-async-await', 'js-async-sum']
   },
   {
     id: 'js-promise',
@@ -235,6 +253,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2023-04-05',
+    recommend: ['js-callback', 'js-async-await', 'js-async-sum']
   },
   {
     id: 'js-async-await',
@@ -242,6 +261,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2023-04-09',
+    recommend: ['js-callback', 'js-promise', 'js-async-sum']
   },
   {
     id: 'js-async-sum',
@@ -249,6 +269,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Js],
     updated: '2023-04-16',
+    recommend: ['js-callback', 'js-promise', 'js-async-await']
   },
   {
     id: 'js-event-loop',
@@ -328,6 +349,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.WA],
     updated: '2024-05-10',
+    recommend: ['accessibile-web-development']
   },
   {
     id: 'react-usecallback',
@@ -384,6 +406,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2023-03-22',
+    recommend: ['pixi-platformer-1', 'pixi-platformer-2', 'pixi-platformer-3']
   },
 ];
 
