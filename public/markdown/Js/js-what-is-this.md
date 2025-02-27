@@ -240,9 +240,36 @@ NaN
 - `obj1` 的 `setTimeout` 裡面的函式是一般函式，因此 `this` 指向 window，而在 windonw 中沒有 count，所以答案是 `NaN`
 - `obj2` 的 `setTimeout` 裡面的是箭頭函式，它的 this 值是被宣告當下作用域的 `this`，因此會是最接近的父層一般函式的 this 值，也就是 `obj2`，原本 `count` 為 10，`10++` 後變成 11
 
+### 題目五
+
+```javascript
+const obj = {
+  name: 'Alice',
+  sayHello() {
+    console.log(this.name);
+  },
+};
+
+setTimeout(obj.sayHello, 1000);
+```
+
+答案：
+
+```
+undefined
+```
+
+因為 `setTimeout(obj.sayHello, 1000)` 其實等同於：
+
+```javascript
+const fn = obj.sayHello;
+setTimeout(fn, 1000); // `fn()` 被當作一般函式執行
+```
+
 ---
 
 參考資料
 
 - [shubo.io/javascript-this/](https://www.shubo.io/javascript-this/#什麼是-this)
 - [What's THIS in JavaScript ? [上]](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-上/)
+
