@@ -42,8 +42,8 @@
 
 ### 常見的宏任務與微任務
 
-- 宏任務：`Script` (整體程式碼)、 `setTimeout` 、`setInterval`、UI渲染、事件
-- 微任務：`Promise` 的 `then` 方法、`MutationObserver`、`await` 後的程式碼
+- 宏任務：`Script` (整體程式碼)、`setTimeout`、`setInterval`、UI渲染、事件
+- 微任務：`Promise` 的 `then`、`catch`、`finally` 方法、`MutationObserver`、`await` 後的程式碼
 
 ### 執行順序如下：
 
