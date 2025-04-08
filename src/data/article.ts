@@ -9,14 +9,14 @@ const articles: Article[] = [
   //   tags: [CategoryKey.React],
   //   updated: '2025-02-17',
   // },
-  // {
-  //   id: 'pixi-platformer-7',
-  //   name: '手把手教你用 PixiJS 做一個平台遊戲 #7 地形碰撞偵測',
-  //   description: '',
-  //   tags: [CategoryKey.Pixi],
-  //   updated: '2025-03-28',
-  //   recommend: ['pixi-notes'],
-  // },
+  {
+    id: 'pixi-platformer-7',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #7 地形碰撞偵測',
+    description: '',
+    tags: [CategoryKey.Pixi],
+    updated: '2025-03-28',
+    recommend: ['pixi-notes'],
+  },
   {
     id: 'pixi-platformer-6',
     name: '手把手教你用 PixiJS 做一個平台遊戲 #6 創建地形場景',
