@@ -3,7 +3,7 @@
 
 ## 說明
 
-我們先簡單說明要做什麼事，這章節會偵測地形的碰撞。\
+這章節會偵測地形的碰撞，我們先簡單說明要做什麼事。
 
 1. 首先要取得 `Terrain` 中的地形資料（也就是各個 `Tile` 的 x, y 座標），將地形資料傳入 `Character` 讓它使用（因這只是個簡單的小遊戲教學，所以用最簡便的方法，直接傳入）
 2. 創建一個 getNearbyTiles 函式，用來取得角色四周的 tiles
@@ -156,7 +156,7 @@ const yOverlap = charBottom > itemTop && charTop < itemBottom;
 - `charRight > itemLeft` 表示角色右方超過了物體左方，中間重疊代表他們碰撞了
 - `charLeft > itemRight` 表示角色左方超過了物體右方，中間重疊代表他們碰撞了
 
-因此使用 `||`，代表角色右方的碰撞或左方的碰撞都屬於 `xOverlap`（水平向碰撞）的範疇。
+因此使用 `||`，代表角色右方的碰撞或左方的碰撞都屬於 `xOverlap` 的範疇。
 
 以下為角色右方超過物體左方的示意圖：
 ![img](https://i.imgur.com/wuefJFt.png)
