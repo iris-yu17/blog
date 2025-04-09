@@ -11,7 +11,7 @@ const articles: Article[] = [
   // },
   {
     id: 'pixi-platformer-7',
-    name: '手把手教你用 PixiJS 做一個平台遊戲 #7 地形碰撞偵測',
+    name: '手把手教你用 PixiJS 做一個平台遊戲 #7 碰撞偵測',
     description: '',
     tags: [CategoryKey.Pixi],
     updated: '2025-03-28',
