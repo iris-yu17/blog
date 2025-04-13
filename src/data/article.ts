@@ -10,6 +10,14 @@ const articles: Article[] = [
   //   updated: '2025-02-17',
   // },
   {
+    id: 'react-useeffect',
+    name: '告別錯誤觀念 -- useEffect 不是生命週期 API',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2025-04-10',
+    recommend: ['react-advance-understanding-ch5-I, react-advance-understanding-ch5-II'],
+  },
+  {
     id: 'pixi-platformer-7',
     name: '手把手教你用 PixiJS 做一個平台遊戲 #7 碰撞偵測',
     description: '',
