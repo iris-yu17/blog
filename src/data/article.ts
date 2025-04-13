@@ -15,7 +15,9 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.React],
     updated: '2025-04-10',
-    recommend: ['react-advance-understanding-ch5-I, react-advance-understanding-ch5-II'],
+    recommend: ['react-advance-understanding-ch5-I',
+      'react-advance-understanding-ch5-II'
+    ],
   },
   {
     id: 'pixi-platformer-7',
