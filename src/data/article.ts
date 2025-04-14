@@ -11,7 +11,7 @@ const articles: Article[] = [
   // },
   {
     id: 'react-useeffect',
-    name: '告別錯誤觀念 -- useEffect 不是生命週期 API',
+    name: '告別錯誤觀念 —— useEffect 不是生命週期 API',
     description: '',
     tags: [CategoryKey.React],
     updated: '2025-04-10',
