@@ -109,6 +109,7 @@ export default async function Article({
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${id}.md`,
+      { next: { revalidate: 60 } },
     );
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
