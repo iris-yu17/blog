@@ -14,7 +14,7 @@ const articles: Article[] = [
     name: '告別錯誤觀念 —— useEffect 不是生命週期 API',
     description: '',
     tags: [CategoryKey.React],
-    updated: '2025-04-10',
+    updated: '2025-04-13',
     recommend: ['react-advance-understanding-ch5-I',
       'react-advance-understanding-ch5-II'
     ],
