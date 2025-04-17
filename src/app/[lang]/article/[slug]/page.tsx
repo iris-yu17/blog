@@ -96,7 +96,7 @@ export default async function Article({
 
   if (!article) throw new Error("Can't find article.");
 
-  const { id, name, tags, updated } = article;
+  const { id, name, tags, updated, revalidate } = article;
   const recommend = article.recommend || [articles[0].id];
 
   // const nextArticle = articles.find((item) => item.id === nextId);
@@ -109,7 +109,7 @@ export default async function Article({
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_HOST}/markdown/${file}/${id}.md`,
-      { next: { revalidate: 60 } },
+      revalidate ? { next: { revalidate: 60 } } : {},
     );
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);

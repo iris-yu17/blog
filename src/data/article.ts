@@ -18,6 +18,7 @@ const articles: Article[] = [
     recommend: ['react-advance-understanding-ch5-I',
       'react-advance-understanding-ch5-II'
     ],
+    revalidate: true
   },
   {
     id: 'pixi-platformer-7',

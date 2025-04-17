@@ -8,4 +8,5 @@ export type Article = {
   updated: string;
   priority?: number;
   recommend?: string[];
+  revalidate?: true;
 };
