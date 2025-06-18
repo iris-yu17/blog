@@ -1,9 +1,9 @@
 {
   "h1": "About",
   "intro": [
-    "This is Iris, a front-end engineer. I'm familiar with React and Next.js development.",
-    "The best way to learn is to teach, and that is why I created this blog. I hope to examine my understanding and revise my thinking through writing. It would be even better if anyone finds my posts useful!",
-    "I'll be recording front-end development notes here. Any suggestions are welcome and appreciated:)"
+    "Hi, I'm Iris, a front-end engineer specializing in React and Next.js.",
+    "I believe that teaching is the best way to learn, so I've started this blog as a space to explore and refine my understanding through writing. If my posts help you along the way, that's a bonus!",
+    "Your suggestions are always welcome and appreciated."
   ],
   "skills-others": {
     "WA": "Web accessibility",
