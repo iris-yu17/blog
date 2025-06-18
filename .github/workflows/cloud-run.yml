@@ -21,33 +21,33 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    # This step is where our service account will be authenticated
+    # Authenticate with service account
     - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
         project_id: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
         service_account_key: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}
         service_account_email: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_EMAIL }}
 
-    - name: Enable the necessary APIs and enable docker auth
+    - name: Enable necessary APIs and configure docker auth
       run: |-
-        gcloud services enable containerregistry.googleapis.com
+        gcloud services enable artifactregistry.googleapis.com
         gcloud services enable run.googleapis.com
-        gcloud --quiet auth configure-docker
+        gcloud --quiet auth configure-docker asia-docker.pkg.dev
 
     - name: Build and tag image     
       env:
         NEXT_PUBLIC_HOST: ${{ env.NEXT_PUBLIC_HOST }}
       run: |-
-        docker build . --tag "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
+        docker build . --tag "asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA"
 
-    - name: Push image to GCR
+    - name: Push image to Artifact Registry
       run: |-
-        docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+        docker push asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA
 
     - name: Deploy
       run: |-
         gcloud components install beta --quiet
-        gcloud beta run deploy $REPO_NAME --image gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
+        gcloud beta run deploy $REPO_NAME --image asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA \
           --project $CLOUD_RUN_PROJECT_ID \
           --platform managed \
           --region $CLOUD_RUN_REGION \
