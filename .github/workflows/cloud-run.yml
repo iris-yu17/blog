@@ -32,22 +32,22 @@ jobs:
       run: |-
         gcloud services enable artifactregistry.googleapis.com
         gcloud services enable run.googleapis.com
-        gcloud --quiet auth configure-docker asia-docker.pkg.dev
+        gcloud --quiet auth configure-docker asia-northeast1-docker.pkg.dev
 
     - name: Build and tag image     
       env:
         NEXT_PUBLIC_HOST: ${{ env.NEXT_PUBLIC_HOST }}
       run: |-
-        docker build . --tag "asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA"
+        docker build . --tag "asia-northeast1-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA"
 
     - name: Push image to Artifact Registry
       run: |-
-        docker push asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA
+        docker push asia-northeast1-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA
 
     - name: Deploy
       run: |-
         gcloud components install beta --quiet
-        gcloud beta run deploy $REPO_NAME --image asia-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA \
+        gcloud beta run deploy $REPO_NAME --image asia-northeast1-docker.pkg.dev/$CLOUD_RUN_PROJECT_ID/$REPO_NAME/$REPO_NAME:$GITHUB_SHA \
           --project $CLOUD_RUN_PROJECT_ID \
           --platform managed \
           --region $CLOUD_RUN_REGION \
