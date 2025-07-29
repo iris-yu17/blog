@@ -16,7 +16,7 @@
 
 ## 基本使用方式： `Atom()` 及 `useAtom()`
 
-Jotai 中，我們會用 `atom()` 方法來創建 atom；並用 `useAtom()` 來使用 atom。
+Jotai 中，我們會用 `atom()` 方法來創建 atom；並用 `useAtom()` 來使用 atom。\
 `useAtom()` 的用法類似 `useState()`，會回傳這個 atom 當前的值，與 updating function。
  
 ```javascript
@@ -44,8 +44,8 @@ export default function Page() {
 
 ### - Primitive atom（原始 atom）
 
-當只傳入一個參數，且此參數非函式時，就是 Primitive atom。
-是最基本、最單純的 atom，可以直接讀取、更新它的值。
+當只傳入一個參數，且此參數非函式時，就是 Primitive atom。\
+是最基本、最單純的 atom，可以直接讀取、更新它的值。\
 它是其他 Derived atom 的「來源」。
 
 ```javascript
@@ -149,9 +149,9 @@ const App = () => {
 export default App;
 ```
 
-可能會有人疑惑，為何不直接更新 atom 就好了，要用 Write-only atom 來更新。原因如下：
-當元件透過 `useAtom(someAtom)` 使用某個 atom 時，它就會訂閱該 atom，導致當 atom 值更新時，元件重新渲染。
-但 write-only atom 自身不儲存值、不可讀取，因此元件不會訂閱它，只是單純觸發 atom 更新，所以不會造成重繪。
+可能會有人疑惑，為何不直接更新 atom 就好了，要用 Write-only atom 來更新。原因如下：\
+當元件透過 `useAtom(someAtom)` 使用某個 atom 時，它就會訂閱該 atom，導致當 atom 值更新時，元件重新渲染。\
+但 write-only atom 自身不儲存值、不可讀取，因此元件不會訂閱它，只是單純觸發 atom 更新，所以不會造成重繪。\
 簡單來說，可以避免不必要的重新渲染。
 
 #### 3. Read-Write atom
