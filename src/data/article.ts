@@ -10,6 +10,15 @@ const articles: Article[] = [
   //   updated: '2025-02-17',
   // },
   {
+    id: 'jotai',
+    name: 'Jotai 學習筆記',
+    description: '',
+    tags: [CategoryKey.React],
+    updated: '2025-07-15',
+    recommend: ['react-useeffect'],
+    revalidate: true
+  },
+  {
     id: 'react-useeffect',
     name: '告別錯誤觀念 —— useEffect 不是生命週期 API',
     description: '',
@@ -18,7 +27,6 @@ const articles: Article[] = [
     recommend: ['react-advance-understanding-ch5-I',
       'react-advance-understanding-ch5-II'
     ],
-    revalidate: true
   },
   {
     id: 'pixi-platformer-7',
