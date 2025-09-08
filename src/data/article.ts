@@ -10,6 +10,13 @@ const articles: Article[] = [
   //   updated: '2025-02-17',
   // },
   {
+    id: 'enum-compile',
+    name: 'Enum 編譯',
+    description: '',
+    tags: [CategoryKey.TypeScript],
+    updated: '2025-09-08',
+  },
+  {
     id: 'jotai',
     name: 'Jotai 學習筆記',
     description: '',
