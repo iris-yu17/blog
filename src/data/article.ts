@@ -15,6 +15,7 @@ const articles: Article[] = [
     description: '',
     tags: [CategoryKey.TypeScript],
     updated: '2025-09-08',
+    revalidate: true
   },
   {
     id: 'jotai',
@@ -23,7 +24,6 @@ const articles: Article[] = [
     tags: [CategoryKey.React],
     updated: '2025-07-15',
     recommend: ['react-useeffect'],
-    revalidate: true
   },
   {
     id: 'react-useeffect',
